@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Astronomi Modern</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.6;color:#0b1220;background:#f4f7fb}
+    header{background:linear-gradient(90deg,#0f1724,#0b3d91);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:1000}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:700;letter-spacing:0.4px}
+    nav ul{list-style:none;display:flex;gap:14px;align-items:center}
+    nav a{color:#dbeafe;text-decoration:none;padding:8px 10px;border-radius:6px;font-weight:600}
+    nav a:hover{background:rgba(255,255,255,0.06)}
+    .menu-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
+    .hero{display:flex;align-items:center;gap:20px;padding:60px 0}
+    .hero-left{flex:1}
+    .hero h1{font-size:34px;margin-bottom:8px;color:#fff}
+    .hero p{color:#cfe1ff;margin-bottom:16px}
+    .btn{display:inline-block;padding:10px 16px;background:#ffdd57;color:#0b1220;border-radius:8px;text-decoration:none;font-weight:700}
+    .hero-right{flex:1;text-align:center}
+    .hero-right img{max-width:320px;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.25)}
+
+    section{padding:50px 0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
+    .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+    .card h3{margin-bottom:8px;font-size:18px}
+    .card p{font-size:14px;color:#334155}
+
+    .grid-two{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    aside{background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
+
+    footer{padding:30px 0;background:#071133;color:#cfe1ff;text-align:center;border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* responsive */
+    @media(max-width:800px){
+      .menu-toggle{display:block}
+      nav ul{display:none;position:absolute;top:64px;right:20px;background:linear-gradient(180deg,#082146,#061029);padding:12px;border-radius:10px}
+      nav ul.show{display:flex;flex-direction:column;min-width:160px}
+      .hero{flex-direction:column;text-align:center}
+      .hero-right img{max-width:260px}
+      .grid-two{grid-template-columns:1fr}
+    }
+
+    /* image modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:2000}
+    .modal.show{display:flex}
+    .modal img{max-width:92%;max-height:92%;border-radius:8px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .close-modal{position:absolute;top:18px;right:18px;color:#fff;background:transparent;border:0;font-size:28px}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="brand">Astronomi Modern</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="toggle menu">☰</button>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#planet">Planet</a></li>
+        <li><a href="#galaksi">Galaksi</a></li>
+        <li><a href="#foto">Foto</a></li>
+        <li><a href="#sumber">Sumber</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section id="home" class="hero" aria-label="hero">
+    <div class="hero-left">
+      <h1>Jelajahi Langit. Pahami Alam Semesta.</h1>
+      <p>Artikel ringkas. Foto asli. Sumber terpercaya. Untuk pelajar dan pecinta bintang.</p>
+      <a class="btn" href="#planet">Mulai</a>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000&auto=format&fit=crop" alt="Bintang dan galaksi">
+    </div>
+  </section>
+
+  <section id="planet" aria-label="planet">
+    <h2>Planet Populer</h2>
+    <div class="cards" style="margin-top:18px">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop" alt="Merkurius" data-large="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=2000&auto=format&fit=crop">
+        <h3>Merkurius</h3>
+        <p>Planet terdekat ke Matahari. Permukaan berbatu dan sangat panas di siang hari.</p>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200&auto=format&fit=crop" alt="Venus" data-large="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=2000&auto=format&fit=crop">
+        <h3>Venus</h3>
+        <p>Atmosfer tebal dan efek rumah kaca ekstrem. Suhu permukaan sangat tinggi.</p>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1505433324547-2b8b0b05d6b0?q=80&w=1200&auto=format&fit=crop" alt="Mars" data-large="https://images.unsplash.com/photo-1505433324547-2b8b0b05d6b0?q=80&w=2000&auto=format&fit=crop">
+        <h3>Mars</h3>
+        <p>Planet merah. Target misi robotik dan rencana misi berawak di masa depan.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="galaksi">
+    <h2>Galaksi dan Struktur Besar</h2>
+    <div class="grid-two" style="margin-top:18px">
+      <div>
+        <div class="card" style="margin-bottom:14px">
+          <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1200&auto=format&fit=crop" alt="Bima Sakti" data-large="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2000&auto=format&fit=crop">
+          <h3>Bima Sakti</h3>
+          <p>Bima Sakti adalah galaksi tempat kita tinggal. Memiliki lengan spiral dan pusat yang kaya bintang.</p>
+        </div>
+        <div class="card">
+          <h3>Cluster dan Supercluster</h3>
+          <p>Galaksi tersusun dalam gugus. Gugus membentuk struktur lebih besar, sampai supercluster.</p>
+        </div>
+      </div>
+      <aside>
+        <h4>Fakta Cepat</h4>
+        <ul style="margin-top:10px;color:#0f1724">
+          <li>Umur alam semesta sekitar 13.8 miliar tahun.</li>
+          <li>Diameter Bima Sakti ~100.000 tahun cahaya.</li>
+          <li>Cahaya terjauh yang terdeteksi datang dari galaksi sangat jauh.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="foto">
+    <h2>Galeri Foto</h2>
+    <p style="margin-top:8px">Klik gambar untuk lihat ukuran besar.</p>
+    <div class="cards" style="margin-top:14px">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?q=80&w=1200&auto=format&fit=crop" alt="Nebula" data-large="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?q=80&w=2000&auto=format&fit=crop">
+        <h3>Nebula</h3>
+        <p>Awan gas dan debu. Tempat lahir bintang baru.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1516110833967-578f0b30a0a3?q=80&w=1200&auto=format&fit=crop" alt="Gagak Bintang" data-large="https://images.unsplash.com/photo-1516110833967-578f0b30a0a3?q=80&w=2000&auto=format&fit=crop">
+        <h3>Supernova</h3>
+        <p>Ledakan akhir hayat bintang masif. Meninggalkan materi berat.</p>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1200&auto=format&fit=crop" alt="Galaksi" data-large="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2000&auto=format&fit=crop">
+        <h3>Galaksi Spiral</h3>
+        <p>Pembentukan bintang aktif di lengan spiral.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sumber">
+    <h2>Sumber & Referensi</h2>
+    <ul style="margin-top:12px">
+      <li><a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA</a></li>
+      <li><a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a></li>
+      <li><a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a></li>
+    </ul>
+  </section>
+
+  <section id="kontak">
+    <h2>Kontak</h2>
+    <p style="margin-top:12px">Ingin berkontribusi atau tanya? Kirim email ke: <strong>hello@astronomimodern.example</strong></p>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Astronomi Modern. Semua hak cipta milik penulis.</p>
+  </div>
+</footer>
+
+<!-- modal untuk tampilan gambar besar -->
+<div id="imgModal" class="modal" role="dialog" aria-hidden="true">
+  <button class="close-modal" id="closeModal" aria-label="Tutup">✕</button>
+  <img id="modalImg" src="" alt="Gambar besar">
+</div>
+
+<script>
+  // menu toggle mobile
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('menu');
+  toggle.addEventListener('click', ()=> menu.classList.toggle('show'));
+
+  // smooth scroll and active link
+  const links = document.querySelectorAll('nav a');
+  links.forEach(l=>{
+    l.addEventListener('click', e=>{
+      e.preventDefault();
+      const id = l.getAttribute('href');
+      document.querySelector(id).scrollIntoView({behavior:'smooth',block:'start'});
+      // close mobile menu
+      menu.classList.remove('show');
+    });
+  });
+
+  // highlight active nav on scroll
+  const sections = document.querySelectorAll('main section[id]');
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    sections.forEach(s=>{
+      const top = s.offsetTop - 80;
+      const h = s.offsetHeight;
+      const id = '#' + s.id;
+      if(y >= top && y < top + h){
+        document.querySelectorAll('nav a').forEach(a=> a.style.background='');
+        const active = document.querySelector('nav a[href="'+id+'"]');
+        if(active) active.style.background='rgba(255,255,255,0.08)';
+      }
+    });
+  });
+
+  // image modal
+  const modal = document.getElementById('imgModal');
+  const modalImg = document.getElementById('modalImg');
+  const closeModal = document.getElementById('closeModal');
+  document.querySelectorAll('img[data-large]').forEach(img=>{
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', ()=>{
+      modalImg.src = img.dataset.large || img.src;
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+    });
+  });
+  closeModal.addEventListener('click', ()=>{
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    modalImg.src = '';
+  });
+  modal.addEventListener('click', (e)=>{
+    if(e.target === modal) { closeModal.click(); }
+  });
+
+  // enable keyboard escape to close
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeModal.click(); });
+</script>
+</body>
+</html>
