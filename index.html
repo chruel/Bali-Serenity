@@ -1,3 +1,8 @@
+
+
+
+HTML icon
+index
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -528,10 +533,10 @@
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <div class="max-w-xl space-y-4">
                     <p class="text-[11px] uppercase tracking-[0.26em] text-white/95 font-semibold drop-shadow">Welcome to Bali Serenity</p>
-                    <h1 class="font-serif text-4xl sm:text-6xl text-white font-normal leading-[1.08] drop-shadow">
+                    <h1 id="heroTitleText" class="font-serif text-4xl sm:text-6xl text-white font-normal leading-[1.08] drop-shadow">
                         Your Perfect Stay <span class="italic font-normal text-stoneBg">in Paradise</span>
                     </h1>
-                    <p class="text-xs sm:text-sm text-white/95 font-light leading-relaxed max-w-md drop-shadow">
+                    <p id="heroSubtitleText" class="text-xs sm:text-sm text-white/95 font-light leading-relaxed max-w-md drop-shadow">
                         Experience the quiet harmony of tropical gardens, warm teak interiors, and true Balinese hospitality.
                     </p>
 
@@ -640,17 +645,17 @@
                 <div id="roomsCarousel" class="-mx-3 px-4 md:mx-0 md:px-0 scroll-pl-4 flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-3.5 pb-2 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible">
                     
                     <!-- Deluxe Room -->
-                    <article onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article data-room-card="deluxe" onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
                             <img data-img="roomDeluxeMain" src="" alt="Deluxe Room" class="img-zoom w-full h-full object-cover">
-                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Garden View</span>
+                            <span data-room-tag class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Garden View</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
-                                <h3 class="font-serif text-2xl text-ink">Deluxe Room</h3>
+                                <h3 data-room-name class="font-serif text-2xl text-ink">Deluxe Room</h3>
                                 <span class="text-xs font-medium text-inkMuted">28 m²</span>
                             </div>
-                            <p class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
+                            <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Spacious and elegant room with a private balcony and lush tropical garden views.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
@@ -668,17 +673,17 @@
                     </article>
 
                     <!-- Pool Villa -->
-                    <article onclick="openRoomDrawer('villa')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article data-room-card="villa" onclick="openRoomDrawer('villa')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
                             <img data-img="roomVillaMain" src="" alt="Pool Villa" class="img-zoom w-full h-full object-cover">
-                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Private Pool</span>
+                            <span data-room-tag class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Private Pool</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
-                                <h3 class="font-serif text-2xl text-ink">Pool Villa</h3>
+                                <h3 data-room-name class="font-serif text-2xl text-ink">Pool Villa</h3>
                                 <span class="text-xs font-medium text-inkMuted">45 m²</span>
                             </div>
-                            <p class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
+                            <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Your private walled sanctuary with a plunge pool, outdoor daybed, and serene privacy.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
@@ -696,17 +701,17 @@
                     </article>
 
                     <!-- Family Room -->
-                    <article onclick="openRoomDrawer('family')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article data-room-card="family" onclick="openRoomDrawer('family')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
                             <img data-img="roomFamilyMain" src="" alt="Family Room" class="img-zoom w-full h-full object-cover">
-                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Family Suite</span>
+                            <span data-room-tag class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Family Suite</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
-                                <h3 class="font-serif text-2xl text-ink">Family Room</h3>
+                                <h3 data-room-name class="font-serif text-2xl text-ink">Family Room</h3>
                                 <span class="text-xs font-medium text-inkMuted">50 m²</span>
                             </div>
-                            <p class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
+                            <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Generous living space crafted for loved ones to gather and create lasting island memories.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
@@ -1299,54 +1304,54 @@
                         </div>
 
                         <div class="space-y-3">
-                            <div onclick="selectSanctuary('Deluxe Room', 185)" data-room="Deluxe Room" class="room-card-opt selected tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                            <div onclick="selectSanctuary('Deluxe Room', 185)" data-room-opt="deluxe" data-room="Deluxe Room" class="room-card-opt selected tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
                                 <img data-img="roomDeluxeMain" src="" alt="Deluxe Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
-                                            <span class="text-[10px] uppercase tracking-wider text-inkMuted">28 m² • Garden View</span>
-                                            <h3 class="font-serif text-xl sm:text-2xl text-ink leading-tight">Deluxe Room</h3>
+                                            <span data-opt-tag class="text-[10px] uppercase tracking-wider text-inkMuted">28 m² • Garden View</span>
+                                            <h3 data-opt-name class="font-serif text-xl sm:text-2xl text-ink leading-tight">Deluxe Room</h3>
                                         </div>
                                         <div class="text-right shrink-0">
-                                            <span class="font-serif text-xl sm:text-2xl font-semibold text-ink">$185</span>
+                                            <span data-opt-rate class="font-serif text-xl sm:text-2xl font-semibold text-ink">$185</span>
                                             <span class="block text-[10px] text-inkMuted">/ night</span>
                                         </div>
                                     </div>
-                                    <p class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Private balcony, teak interiors, 1 King or Twin bed for up to 2 adults.</p>
+                                    <p data-opt-desc class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Private balcony, teak interiors, 1 King or Twin bed for up to 2 adults.</p>
                                 </div>
                             </div>
 
-                            <div onclick="selectSanctuary('Pool Villa', 340)" data-room="Pool Villa" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                            <div onclick="selectSanctuary('Pool Villa', 340)" data-room-opt="villa" data-room="Pool Villa" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
                                 <img data-img="roomVillaMain" src="" alt="Pool Villa" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
-                                            <span class="text-[10px] uppercase tracking-wider text-inkMuted">45 m² • Private Pool</span>
-                                            <h3 class="font-serif text-xl sm:text-2xl text-ink leading-tight">Pool Villa</h3>
+                                            <span data-opt-tag class="text-[10px] uppercase tracking-wider text-inkMuted">45 m² • Private Pool</span>
+                                            <h3 data-opt-name class="font-serif text-xl sm:text-2xl text-ink leading-tight">Pool Villa</h3>
                                         </div>
                                         <div class="text-right shrink-0">
-                                            <span class="font-serif text-xl sm:text-2xl font-semibold text-ink">$340</span>
+                                            <span data-opt-rate class="font-serif text-xl sm:text-2xl font-semibold text-ink">$340</span>
                                             <span class="block text-[10px] text-inkMuted">/ night</span>
                                         </div>
                                     </div>
-                                    <p class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Private walled plunge pool, timber sundeck, up to 4 guests.</p>
+                                    <p data-opt-desc class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Private walled plunge pool, timber sundeck, up to 4 guests.</p>
                                 </div>
                             </div>
 
-                            <div onclick="selectSanctuary('Family Room', 260)" data-room="Family Room" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                            <div onclick="selectSanctuary('Family Room', 260)" data-room-opt="family" data-room="Family Room" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
                                 <img data-img="roomFamilyMain" src="" alt="Family Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
-                                            <span class="text-[10px] uppercase tracking-wider text-inkMuted">50 m² • Family Suite</span>
-                                            <h3 class="font-serif text-xl sm:text-2xl text-ink leading-tight">Family Room</h3>
+                                            <span data-opt-tag class="text-[10px] uppercase tracking-wider text-inkMuted">50 m² • Family Suite</span>
+                                            <h3 data-opt-name class="font-serif text-xl sm:text-2xl text-ink leading-tight">Family Room</h3>
                                         </div>
                                         <div class="text-right shrink-0">
-                                            <span class="font-serif text-xl sm:text-2xl font-semibold text-ink">$260</span>
+                                            <span data-opt-rate class="font-serif text-xl sm:text-2xl font-semibold text-ink">$260</span>
                                             <span class="block text-[10px] text-inkMuted">/ night</span>
                                         </div>
                                     </div>
-                                    <p class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Two King beds, dedicated lounge corner, spacious garden terrace.</p>
+                                    <p data-opt-desc class="text-xs text-inkMuted font-light line-clamp-2 mt-1">Two King beds, dedicated lounge corner, spacious garden terrace.</p>
                                 </div>
                             </div>
                         </div>
@@ -1806,9 +1811,7 @@
 
     <script>
         // =====================================================================
-        // PENGATURAN GANTI FOTO TERPUSAT (Cukup ubah URL di sini)
-        // Bisa pakai link online (Unsplash / Google Drive) atau file lokal
-        // contoh file lokal di GitHub: './images/hero.jpg'
+        // PENGATURAN GANTI FOTO DEFAULT (Otomatis ditimpa jika edit di Pages CMS)
         // =====================================================================
         const SITE_IMAGES = {
             hero:           'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop',
@@ -1825,12 +1828,17 @@
             footerMap:      'https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600'
         };
 
-        // Otomatis memasang semua foto dari SITE_IMAGES ke elemen HTML
+        function normalizeCmsAssetPath(url) {
+            if (!url || typeof url !== 'string') return url;
+            if (url.startsWith('/images/')) return '.' + url;
+            return url;
+        }
+
         function applySiteImages() {
             document.querySelectorAll('[data-img]').forEach(img => {
                 const key = img.dataset.img;
                 if (SITE_IMAGES[key]) {
-                    img.src = SITE_IMAGES[key];
+                    img.src = normalizeCmsAssetPath(SITE_IMAGES[key]);
                 }
             });
         }
@@ -2113,8 +2121,8 @@
 
             if (viewName === 'book') {
                 if (options.room) {
-                    const rateMap = { 'Deluxe Room': 185, 'Pool Villa': 340, 'Family Room': 260 };
-                    selectSanctuary(options.room, rateMap[options.room] || 185);
+                    const matched = Object.values(ROOM_DATA).find(r => r.name.toLowerCase() === options.room.toLowerCase());
+                    selectSanctuary(matched ? matched.name : options.room, matched ? matched.rate : 185);
                 }
                 if (options.nights) {
                     const inInput = document.getElementById('checkInInput');
@@ -2375,7 +2383,7 @@
             document.getElementById('drawerDesc').textContent = data.desc;
 
             const mainImg = document.getElementById('drawerMainImg');
-            mainImg.src = data.photos[0].src;
+            mainImg.src = normalizeCmsAssetPath(data.photos[0].src);
 
             const thumbsContainer = document.getElementById('drawerThumbs');
             thumbsContainer.innerHTML = '';
@@ -2386,7 +2394,7 @@
                 btn.textContent = photo.label;
                 btn.onclick = () => {
                     mainImg.style.opacity = '0.4';
-                    setTimeout(() => { mainImg.src = photo.src; mainImg.style.opacity = '1'; }, 140);
+                    setTimeout(() => { mainImg.src = normalizeCmsAssetPath(photo.src); mainImg.style.opacity = '1'; }, 140);
                     thumbsContainer.querySelectorAll('button').forEach(b => {
                         b.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
                         b.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
@@ -2589,6 +2597,95 @@
         }
 
         // =====================================================================
+        // PAGES CMS LIVE SYNC (Membaca perubahan dari content.json otomatis)
+        // =====================================================================
+        async function syncWithPagesCMS() {
+            try {
+                const res = await fetch('./content.json?v=' + Date.now());
+                if (!res.ok) return;
+                const data = await res.json();
+
+                // 1. Hero Text & Image
+                if (data.hero_title) {
+                    const h1 = document.getElementById('heroTitleText');
+                    if (h1) h1.innerHTML = data.hero_title;
+                }
+                if (data.hero_subtitle) {
+                    const p = document.getElementById('heroSubtitleText');
+                    if (p) p.textContent = data.hero_subtitle;
+                }
+                if (data.hero_image) {
+                    SITE_IMAGES.hero = normalizeCmsAssetPath(data.hero_image);
+                }
+
+                // 2. Offers & Gathering Images
+                if (data.offers) {
+                    if (data.offers.offer_stay) SITE_IMAGES.offerStay = normalizeCmsAssetPath(data.offers.offer_stay);
+                    if (data.offers.offer_spa) SITE_IMAGES.offerSpa = normalizeCmsAssetPath(data.offers.offer_spa);
+                    if (data.offers.offer_dining) SITE_IMAGES.offerDining = normalizeCmsAssetPath(data.offers.offer_dining);
+                    if (data.offers.event_wedding) SITE_IMAGES.eventWedding = normalizeCmsAssetPath(data.offers.event_wedding);
+                    if (data.offers.event_meeting) SITE_IMAGES.eventMeeting = normalizeCmsAssetPath(data.offers.event_meeting);
+                    if (data.offers.footer_map) SITE_IMAGES.footerMap = normalizeCmsAssetPath(data.offers.footer_map);
+                }
+
+                // 3. Rooms (Data, Explore Cards & Booking Cards)
+                if (Array.isArray(data.rooms)) {
+                    data.rooms.forEach((r, idx) => {
+                        const roomObj = ROOM_DATA[r.id];
+                        if (!roomObj) return;
+
+                        roomObj.name = r.name || roomObj.name;
+                        roomObj.tag = r.tag || roomObj.tag;
+                        roomObj.rate = Number(r.rate) || roomObj.rate;
+                        roomObj.desc = r.desc || roomObj.desc;
+
+                        if (r.main_image) {
+                            const cleanImg = normalizeCmsAssetPath(r.main_image);
+                            roomObj.photos[0].src = cleanImg;
+                            if (r.id === 'deluxe') SITE_IMAGES.roomDeluxeMain = cleanImg;
+                            if (r.id === 'villa') SITE_IMAGES.roomVillaMain = cleanImg;
+                            if (r.id === 'family') SITE_IMAGES.roomFamilyMain = cleanImg;
+                        }
+
+                        // Update kartu kamar di halaman Explore
+                        const exploreCard = document.querySelector(`[data-room-card="${r.id}"]`);
+                        if (exploreCard) {
+                            const tagEl = exploreCard.querySelector('[data-room-tag]');
+                            const nameEl = exploreCard.querySelector('[data-room-name]');
+                            const descEl = exploreCard.querySelector('[data-room-desc]');
+                            if (tagEl && r.tag) tagEl.textContent = r.tag;
+                            if (nameEl && r.name) nameEl.textContent = r.name;
+                            if (descEl && r.desc) descEl.textContent = r.desc;
+                        }
+
+                        // Update kartu pilihan kamar di halaman Book
+                        const bookOpt = document.querySelector(`[data-room-opt="${r.id}"]`);
+                        if (bookOpt) {
+                            const optName = bookOpt.querySelector('[data-opt-name]');
+                            const optRate = bookOpt.querySelector('[data-opt-rate]');
+                            const optDesc = bookOpt.querySelector('[data-opt-desc]');
+                            if (optName) optName.textContent = roomObj.name;
+                            if (optRate) optRate.textContent = `$${roomObj.rate}`;
+                            if (optDesc) optDesc.textContent = roomObj.desc;
+                            bookOpt.dataset.room = roomObj.name;
+                            bookOpt.setAttribute('onclick', `selectSanctuary('${roomObj.name.replace(/'/g, "\\'")}', ${roomObj.rate})`);
+                        }
+
+                        if (idx === 0) {
+                            selectedRoom = roomObj.name;
+                            selectedRate = roomObj.rate;
+                        }
+                    });
+                }
+
+                applySiteImages();
+                recalculateTotal();
+            } catch (err) {
+                console.warn('Pages CMS sync skipped:', err);
+            }
+        }
+
+        // =====================================================================
         // INITIALIZE APP STATE ON LOAD
         // =====================================================================
         (function initApp() {
@@ -2602,6 +2699,7 @@
 
             switchMenu('tasting', null);
             recalculateTotal();
+            syncWithPagesCMS();
 
             const initialHash = window.location.hash.replace('#', '');
             if (['explore', 'offers', 'spa', 'dining', 'book'].includes(initialHash)) {
@@ -2621,3 +2719,4 @@
     </script>
 </body>
 </html>
+Ensuring seamless user HTML file handling
