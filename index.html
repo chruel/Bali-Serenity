@@ -181,7 +181,6 @@
             transition: opacity 0.24s ease 0.12s, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Sliding Active Tab Pill Indicator */
         .dock-sliding-pill {
             position: absolute;
             top: 0;
@@ -212,7 +211,6 @@
             transition: opacity 0.22s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Collapsed Circular State on Right Edge */
         .liquid-glass-dock.dock-collapsed {
             width: 54px;
             height: 54px;
@@ -239,7 +237,6 @@
             transition: opacity 0.28s ease 0.14s, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
         }
 
-        /* Nav Tab States & Page Switch Icon Animation */
         .nav-tab {
             position: relative;
             z-index: 1;
@@ -259,7 +256,6 @@
             100% { transform: scale(1) translateY(0); }
         }
 
-        /* Desktop Nav Animated Underline */
         .desktop-nav-btn {
             position: relative;
             padding-bottom: 4px;
@@ -284,7 +280,7 @@
             transform-origin: left;
         }
 
-        /* Guaranteed Strong Card Gradient Scrims for Legible White Text */
+        /* High-Contrast Gradient Scrims */
         .card-scrim-strong {
             background: linear-gradient(
                 to top,
@@ -322,14 +318,8 @@
             display: none;
         }
         @keyframes viewEnter {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Elegant Scroll Reveal */
@@ -344,41 +334,83 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Tactile Spring Press Reaction */
+        /* Universal Button Hover + Tactile Click Spring Physics */
+        button,
         .tap-react {
-            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            transition:
+                transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease,
+                opacity 0.25s ease;
             will-change: transform;
             cursor: pointer;
         }
-        .tap-react:active {
-            transform: scale(0.975);
+
+        /* Desktop / iPad Pointer Hover Elevation & Icon Nudge */
+        @media (hover: hover) and (pointer: fine) {
+            button:hover,
+            .tap-react:hover {
+                transform: translateY(-2px);
+            }
+            .btn-elevate:hover {
+                box-shadow: 0 12px 26px -6px rgba(36, 35, 32, 0.24);
+            }
+            .btn-elevate:hover i.fa-arrow-right {
+                transform: translateX(3px);
+            }
+            .header-cta:hover {
+                background-color: #242320;
+                border-color: #242320;
+                color: #f7f6f0;
+                box-shadow: 0 10px 22px -6px rgba(0, 0, 0, 0.28);
+            }
+            .app-header.scrolled .header-cta:hover {
+                background-color: #181715;
+                border-color: #181715;
+            }
         }
 
-        /* Touch Ripple Effect */
-        .ripple-box {
-            position: relative;
-            overflow: hidden;
+        button i.fa-arrow-right,
+        .tap-react i.fa-arrow-right {
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
+        button:active,
+        .tap-react:active {
+            transform: scale(0.955) translateY(0) !important;
+            transition-duration: 0.1s;
+        }
+
+        /* Universal Click / Touch Ripple Wave */
         .touch-ripple {
             position: absolute;
             border-radius: 50%;
             transform: scale(0);
-            animation: rippleAnim 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            background: rgba(255, 255, 255, 0.38);
+            animation: rippleAnim 0.58s cubic-bezier(0.22, 1, 0.36, 1);
+            background: rgba(255, 255, 255, 0.34);
             pointer-events: none;
+            z-index: 5;
         }
         .touch-ripple-dark {
             background: rgba(36, 35, 32, 0.12);
         }
         @keyframes rippleAnim {
             to {
-                transform: scale(3.5);
+                transform: scale(3.6);
                 opacity: 0;
             }
         }
 
-        /* Bottom Sheet Transition */
+        /* Full-Flush Bottom Sheet & Modal Transitions */
         .sheet-backdrop {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100dvh;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.32s ease;
@@ -390,6 +422,12 @@
         .sheet-panel {
             transform: translateY(100%);
             transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+        }
+        @media (min-width: 768px) {
+            .sheet-panel {
+                padding-bottom: 2rem;
+            }
         }
         .sheet-backdrop.open .sheet-panel {
             transform: translateY(0);
@@ -410,8 +448,9 @@
             box-shadow: 0 10px 26px rgba(36, 35, 32, 0.08);
         }
 
-        /* Infinite Review Marquee */
+        /* Full-Bleed Infinite Review Marquee */
         .marquee-viewport {
+            width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             cursor: grab;
@@ -439,8 +478,8 @@
     <!-- FIXED GLASS TOP APP HEADER -->
     <header id="topHeader" class="app-header fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 pb-3">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
-            <button type="button" onclick="navigateApp('explore')" class="flex items-center gap-2.5 tap-react text-left">
-                <span class="header-logo-badge w-8 h-8 rounded-full flex items-center justify-center text-xs">
+            <button type="button" onclick="navigateApp('explore')" class="flex items-center gap-2.5 tap-react text-left overflow-visible">
+                <span class="header-logo-badge w-8 h-8 rounded-full flex items-center justify-center text-xs shrink-0">
                     <i id="headerBrandIcon" class="fa-solid fa-spa"></i>
                 </span>
                 <div>
@@ -451,14 +490,14 @@
 
             <!-- Desktop App Navigation -->
             <nav class="hidden md:flex items-center gap-7 text-xs font-medium">
-                <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="desktop-nav-btn active hover:opacity-75 transition">Explore</button>
-                <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="desktop-nav-btn hover:opacity-75 transition">Offers</button>
-                <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="desktop-nav-btn hover:opacity-75 transition">Spa & Wellness</button>
-                <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="desktop-nav-btn hover:opacity-75 transition">Dining</button>
+                <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="desktop-nav-btn active hover:opacity-80 transition overflow-visible">Explore</button>
+                <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="desktop-nav-btn hover:opacity-80 transition overflow-visible">Offers</button>
+                <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="desktop-nav-btn hover:opacity-80 transition overflow-visible">Spa & Wellness</button>
+                <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="desktop-nav-btn hover:opacity-80 transition overflow-visible">Dining</button>
             </nav>
 
             <!-- Action Pill -->
-            <button type="button" onclick="navigateApp('book')" class="header-cta tap-react ripple-box text-xs font-medium px-4 py-2 rounded-full flex items-center gap-2 shadow-xs">
+            <button type="button" onclick="navigateApp('book')" class="header-cta tap-react btn-elevate text-xs font-medium px-4 py-2 rounded-full flex items-center gap-2 shadow-xs">
                 <span>Reserve</span>
                 <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </button>
@@ -472,7 +511,7 @@
         
         <!-- FULL-BLEED HERO SECTION -->
         <section id="exploreHero" class="relative w-full min-h-[84svh] sm:min-h-[620px] flex flex-col justify-between pt-[74px] sm:pt-[86px] pb-8 sm:pb-12 px-4 sm:px-8 overflow-hidden">
-            <img id="heroParallaxImg" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Resort" class="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.82] transition-transform duration-300 ease-out">
+            <img id="heroParallaxImg" data-img="hero" src="" alt="Bali Serenity Resort" class="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.82] transition-transform duration-300 ease-out">
             <div class="absolute inset-0 bg-black/25"></div>
             <div class="absolute inset-0 hero-scrim-dual"></div>
 
@@ -481,7 +520,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     Nusa Dua Selatan • 29°C
                 </span>
-                <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center" aria-label="Chat WhatsApp">
+                <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-black/60" aria-label="Chat WhatsApp">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                 </a>
             </div>
@@ -497,11 +536,11 @@
                     </p>
 
                     <div class="pt-2 flex flex-wrap items-center gap-2.5">
-                        <button type="button" onclick="navigateApp('book')" class="tap-react ripple-box bg-stoneLight text-ink text-xs sm:text-sm font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 shadow-lg">
+                        <button type="button" onclick="navigateApp('book')" class="tap-react btn-elevate bg-stoneLight hover:bg-white text-ink text-xs sm:text-sm font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 shadow-lg">
                             <span>Book Your Stay</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
-                        <button type="button" onclick="scrollToRooms()" class="tap-react ripple-box bg-black/40 backdrop-blur-md border border-white/45 text-white text-xs sm:text-sm font-medium px-5 py-3.5 rounded-full">
+                        <button type="button" onclick="scrollToRooms()" class="tap-react btn-elevate bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/45 text-white text-xs sm:text-sm font-medium px-5 py-3.5 rounded-full">
                             Explore Rooms
                         </button>
                     </div>
@@ -512,9 +551,9 @@
         <!-- EXPLORE MAIN CONTENT -->
         <div class="pt-10 sm:pt-16 pb-14 space-y-14 sm:space-y-20">
 
-            <!-- Stacked Multi-Row Facilities Grid (No Horizontal Scroll, No Info Box) -->
+            <!-- Container-Free Editorial Architectural Facilities List -->
             <section class="reveal-up is-visible max-w-6xl mx-auto px-4 sm:px-6">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-5">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-6">
                     <div>
                         <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Curated Comforts</span>
                         <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">Everything You Need <span class="italic">to Unwind</span></h2>
@@ -522,47 +561,66 @@
                     <p class="text-xs text-inkMuted max-w-sm font-light">Thoughtful resort amenities prepared for every moment of your stay.</p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-wifi text-xs text-ink"></i>
+                <!-- Clean Hairline Architectural Grid (Zero Boxy Containers) -->
+                <div class="border-y border-stoneBorder/80 grid grid-cols-2 lg:grid-cols-3">
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pr-3 sm:pr-6 border-b border-r lg:border-r border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-wifi text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Free Wi-Fi</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Free Fiber Wi-Fi</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">All suites & gardens</p>
+                        </div>
                     </div>
 
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-utensils text-xs text-ink"></i>
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pl-3.5 sm:pl-6 lg:px-6 border-b lg:border-r border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-utensils text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Restaurant</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Teak Restaurant</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Coastal & Balinese dining</p>
+                        </div>
                     </div>
 
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-water-ladder text-xs text-ink"></i>
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pr-3 sm:pr-6 lg:pl-6 lg:pr-0 border-b border-r lg:border-r-0 border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-water-ladder text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Swimming Pool</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Infinity Pool</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Garden lagoon loungers</p>
+                        </div>
                     </div>
 
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-spa text-xs text-ink"></i>
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pl-3.5 sm:pl-6 lg:pl-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-spa text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Spa & Wellness</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Spa & Wellness</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Botanical healing rituals</p>
+                        </div>
                     </div>
 
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-dumbbell text-xs text-ink"></i>
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pr-3 sm:pr-6 lg:px-6 border-r border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-dumbbell text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Fitness Center</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Fitness Pavilion</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Open-air yoga & studio</p>
+                        </div>
                     </div>
 
-                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
-                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-van-shuttle text-xs text-ink"></i>
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pl-3.5 sm:pl-6">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid fa-van-shuttle text-xs"></i>
                         </span>
-                        <span class="text-xs font-medium leading-tight">Airport Shuttle</span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">Airport Shuttle</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Private 25-min transfer</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -574,7 +632,7 @@
                         <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Sanctuaries</span>
                         <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">Comfortable Rooms <span class="italic">for a Better Stay</span></h2>
                     </div>
-                    <button type="button" onclick="navigateApp('book')" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold border-b border-ink pb-0.5 tap-react">
+                    <button type="button" onclick="navigateApp('book')" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold border-b border-ink pb-0.5 tap-react hover:opacity-75 overflow-visible">
                         Compare Rates &rarr;
                     </button>
                 </div>
@@ -582,9 +640,9 @@
                 <div id="roomsCarousel" class="-mx-3 px-4 md:mx-0 md:px-0 scroll-pl-4 flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-3.5 pb-2 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible">
                     
                     <!-- Deluxe Room -->
-                    <article onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000" alt="Deluxe Room" class="img-zoom w-full h-full object-cover">
+                            <img data-img="roomDeluxeMain" src="" alt="Deluxe Room" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Garden View</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -602,7 +660,7 @@
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
-                                <span class="w-8 h-8 rounded-full bg-accentBtn text-stoneLight flex items-center justify-center text-xs">
+                                <span class="w-8 h-8 rounded-full bg-accentBtn group-hover:bg-ink text-stoneLight flex items-center justify-center text-xs transition-colors">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </span>
                             </div>
@@ -610,9 +668,9 @@
                     </article>
 
                     <!-- Pool Villa -->
-                    <article onclick="openRoomDrawer('villa')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('villa')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000" alt="Pool Villa" class="img-zoom w-full h-full object-cover">
+                            <img data-img="roomVillaMain" src="" alt="Pool Villa" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Private Pool</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -630,7 +688,7 @@
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
-                                <span class="w-8 h-8 rounded-full bg-accentBtn text-stoneLight flex items-center justify-center text-xs">
+                                <span class="w-8 h-8 rounded-full bg-accentBtn group-hover:bg-ink text-stoneLight flex items-center justify-center text-xs transition-colors">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </span>
                             </div>
@@ -638,9 +696,9 @@
                     </article>
 
                     <!-- Family Room -->
-                    <article onclick="openRoomDrawer('family')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('family')" class="room-slide group tap-react btn-elevate snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000" alt="Family Room" class="img-zoom w-full h-full object-cover">
+                            <img data-img="roomFamilyMain" src="" alt="Family Room" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Family Suite</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -658,7 +716,7 @@
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
-                                <span class="w-8 h-8 rounded-full bg-accentBtn text-stoneLight flex items-center justify-center text-xs">
+                                <span class="w-8 h-8 rounded-full bg-accentBtn group-hover:bg-ink text-stoneLight flex items-center justify-center text-xs transition-colors">
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </span>
                             </div>
@@ -675,10 +733,10 @@
                         <button type="button" data-index="2" class="room-dot h-1.5 w-1.5 rounded-full bg-ink/25 transition-all duration-300" aria-label="Slide 3"></button>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button type="button" id="prevRoomBtn" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Previous">
+                        <button type="button" id="prevRoomBtn" class="tap-react btn-elevate w-8 h-8 rounded-full bg-stoneCard hover:bg-stoneLight border border-stoneBorder flex items-center justify-center text-xs" aria-label="Previous">
                             <i class="fa-solid fa-chevron-left"></i>
                         </button>
-                        <button type="button" id="nextRoomBtn" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Next">
+                        <button type="button" id="nextRoomBtn" class="tap-react btn-elevate w-8 h-8 rounded-full bg-stoneCard hover:bg-stoneLight border border-stoneBorder flex items-center justify-center text-xs" aria-label="Next">
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
                     </div>
@@ -693,8 +751,8 @@
                 </div>
 
                 <div id="offersCarousel" class="w-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-0 md:grid md:grid-cols-3 md:gap-0 md:overflow-visible">
-                    <button type="button" onclick="navigateApp('offers')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop" alt="Stay Longer" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                    <button type="button" onclick="navigateApp('offers')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                        <img data-img="offerStay" src="" alt="Stay Longer" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Stay Longer</span>
@@ -706,8 +764,8 @@
                         </div>
                     </button>
 
-                    <button type="button" onclick="navigateApp('spa')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                    <button type="button" onclick="navigateApp('spa')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                        <img data-img="offerSpa" src="" alt="Wellness Escape" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Wellness</span>
@@ -719,8 +777,8 @@
                         </div>
                     </button>
 
-                    <button type="button" onclick="navigateApp('dining')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                    <button type="button" onclick="navigateApp('dining')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                        <img data-img="offerDining" src="" alt="Sunset Dinner" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Dining</span>
@@ -748,29 +806,29 @@
                 </div>
 
                 <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-0">
-                    <button type="button" onclick="navigateApp('book', { promo: 'Intimate Island Wedding' })" class="text-left group tap-react ripple-box relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
-                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Weddings" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                    <button type="button" onclick="navigateApp('book', { promo: 'Intimate Island Wedding' })" class="text-left group tap-react relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
+                        <img data-img="eventWedding" src="" alt="Weddings" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
                                 <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Intimate Ceremonies</span>
                                 <h3 class="font-serif text-2xl sm:text-3xl text-white">Weddings</h3>
                             </div>
-                            <span class="w-9 h-9 rounded-full bg-black/35 backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white">
+                            <span class="w-9 h-9 rounded-full bg-black/35 group-hover:bg-white group-hover:text-ink backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white transition-colors">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </span>
                         </div>
                     </button>
 
-                    <button type="button" onclick="navigateApp('book', { promo: 'Private Executive Retreat' })" class="text-left group tap-react ripple-box relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
-                        <img src="https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000" alt="Meetings & Events" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                    <button type="button" onclick="navigateApp('book', { promo: 'Private Executive Retreat' })" class="text-left group tap-react relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
+                        <img data-img="eventMeeting" src="" alt="Meetings & Events" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
                                 <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Private Retreats</span>
                                 <h3 class="font-serif text-2xl sm:text-3xl text-white">Meetings & Events</h3>
                             </div>
-                            <span class="w-9 h-9 rounded-full bg-black/35 backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white">
+                            <span class="w-9 h-9 rounded-full bg-black/35 group-hover:bg-white group-hover:text-ink backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white transition-colors">
                                 <i class="fa-solid fa-arrow-right"></i>
                             </span>
                         </div>
@@ -778,9 +836,9 @@
                 </div>
             </section>
 
-            <!-- Continuous Infinite Guest Notes Marquee -->
-            <section class="reveal-up max-w-6xl mx-auto px-3 sm:px-6">
-                <div class="px-1 flex items-end justify-between mb-5">
+            <!-- FULL-WIDTH INFINITE GUEST NOTES MARQUEE (Edge-to-Edge on iPad & Windows) -->
+            <section class="reveal-up w-full">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-end justify-between mb-5">
                     <div>
                         <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Guest Notes</span>
                         <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">Real Stories, <span class="italic">Happy Guests</span></h2>
@@ -790,10 +848,10 @@
                     </span>
                 </div>
 
-                <div id="reviewMarqueeViewport" class="marquee-viewport -mx-3 px-3 md:mx-0 md:px-0 no-scrollbar">
-                    <div id="reviewMarqueeTrack" class="flex gap-3.5 sm:gap-5 w-max py-1">
+                <div id="reviewMarqueeViewport" class="marquee-viewport w-full px-4 sm:px-8 no-scrollbar">
+                    <div id="reviewMarqueeTrack" class="flex gap-4 sm:gap-5 w-max py-1">
                         <!-- Set 1 -->
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -808,7 +866,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -823,7 +881,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -839,7 +897,7 @@
                         </div>
 
                         <!-- Set 2 (Seamless Loop Clone) -->
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -854,7 +912,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -869,7 +927,53 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                            <div>
+                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
+                                    “A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
+                                <span class="font-semibold text-ink">Michael Tan</span>
+                                <span class="text-inkMuted">Singapore</span>
+                            </div>
+                        </div>
+
+                        <!-- Set 3 (Extra Coverage for Wide iPad & Windows Screens) -->
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                            <div>
+                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
+                                    “Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
+                                <span class="font-semibold text-ink">Sarah Mitchell</span>
+                                <span class="text-inkMuted">United Kingdom</span>
+                            </div>
+                        </div>
+
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                            <div>
+                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
+                                    “The room was beautiful, clean, and incredibly comfortable. Would definitely return.”
+                                </p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
+                                <span class="font-semibold text-ink">Daniel & Emma Carter</span>
+                                <span class="text-inkMuted">Australia</span>
+                            </div>
+                        </div>
+
+                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -894,7 +998,7 @@
     <!-- ===================================================================== -->
     <div id="view-offers" class="app-view hidden">
         <section class="relative w-full min-h-[54svh] sm:min-h-[420px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Offers" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img data-img="offerStay" src="" alt="Bali Serenity Offers" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Curated Escapes</span>
@@ -908,17 +1012,17 @@
         </section>
 
         <main class="max-w-6xl mx-auto px-3 sm:px-6 pt-8 sm:pt-12 pb-14 space-y-8">
-            <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2">
-                <button type="button" onclick="filterOffers('all', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">All Privileges</button>
-                <button type="button" onclick="filterOffers('stay', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Extended Stay</button>
-                <button type="button" onclick="filterOffers('wellness', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Spa & Dining</button>
-                <button type="button" onclick="filterOffers('celebration', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Celebrations</button>
+            <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2 py-1">
+                <button type="button" onclick="filterOffers('all', this)" class="filter-chip tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">All Privileges</button>
+                <button type="button" onclick="filterOffers('stay', this)" class="filter-chip tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Extended Stay</button>
+                <button type="button" onclick="filterOffers('wellness', this)" class="filter-chip tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Spa & Dining</button>
+                <button type="button" onclick="filterOffers('celebration', this)" class="filter-chip tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Celebrations</button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <article data-cat="stay" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop" alt="Stay 3 Nights Pay 2" class="img-zoom w-full h-full object-cover">
+                        <img data-img="offerStay" src="" alt="Stay 3 Nights Pay 2" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Stay Longer</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -933,7 +1037,7 @@
                                 <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Welcome herbal rosella & ginger elixir</li>
                             </ul>
                         </div>
-                        <button type="button" onclick="navigateApp('book', { promo: 'Stay 3 Nights, Pay 2', nights: 3 })" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                        <button type="button" onclick="navigateApp('book', { promo: 'Stay 3 Nights, Pay 2', nights: 3 })" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
                             <span>Claim This Offer</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </button>
@@ -942,7 +1046,7 @@
 
                 <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom w-full h-full object-cover">
+                        <img data-img="offerSpa" src="" alt="Wellness Escape" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Wellness</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -957,7 +1061,7 @@
                                 <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Cold-pressed wellness tonic bar access</li>
                             </ul>
                         </div>
-                        <button type="button" onclick="navigateApp('spa')" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                        <button type="button" onclick="navigateApp('spa')" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
                             <span>Explore Spa Rituals</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </button>
@@ -966,7 +1070,7 @@
 
                 <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom w-full h-full object-cover">
+                        <img data-img="offerDining" src="" alt="Sunset Dinner" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Coastal Dining</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -981,7 +1085,7 @@
                                 <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Reserved lantern-lit pavilion seating</li>
                             </ul>
                         </div>
-                        <button type="button" onclick="navigateApp('dining')" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                        <button type="button" onclick="navigateApp('dining')" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
                             <span>View Tasting Menu</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </button>
@@ -990,7 +1094,7 @@
 
                 <article data-cat="celebration" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Intimate Island Vows" class="img-zoom w-full h-full object-cover">
+                        <img data-img="eventWedding" src="" alt="Intimate Island Vows" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Celebrations</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -1005,7 +1109,7 @@
                                 <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Private chauffeur airport transfers both ways</li>
                             </ul>
                         </div>
-                        <button type="button" onclick="navigateApp('book', { room: 'Pool Villa', promo: 'Intimate Island Vows' })" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                        <button type="button" onclick="navigateApp('book', { room: 'Pool Villa', promo: 'Intimate Island Vows' })" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
                             <span>Inquire Package</span>
                             <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </button>
@@ -1020,7 +1124,7 @@
     <!-- ===================================================================== -->
     <div id="view-spa" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600&auto=format&fit=crop" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img data-img="offerSpa" src="" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Open Daily • 09:00 – 21:00</span>
@@ -1043,7 +1147,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                <div onclick="openSpaSheet('Serenity Balinese Massage', '90 Mins', '$75')" class="tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                <div onclick="openSpaSheet('Serenity Balinese Massage', '90 Mins', '$75')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-start justify-between gap-3">
                             <div>
@@ -1062,7 +1166,7 @@
                     </div>
                 </div>
 
-                <div onclick="openSpaSheet('Volcanic Warm Stone Ritual', '90 Mins', '$90')" class="tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                <div onclick="openSpaSheet('Volcanic Warm Stone Ritual', '90 Mins', '$90')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-start justify-between gap-3">
                             <div>
@@ -1081,7 +1185,7 @@
                     </div>
                 </div>
 
-                <div onclick="openSpaSheet('Royal Lulur & Flower Bath', '120 Mins', '$115')" class="tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                <div onclick="openSpaSheet('Royal Lulur & Flower Bath', '120 Mins', '$115')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-start justify-between gap-3">
                             <div>
@@ -1100,7 +1204,7 @@
                     </div>
                 </div>
 
-                <div onclick="openSpaSheet('Couples Harmony Journey', '150 Mins', '$195')" class="tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                <div onclick="openSpaSheet('Couples Harmony Journey', '150 Mins', '$195')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
                     <div>
                         <div class="flex items-start justify-between gap-3">
                             <div>
@@ -1127,7 +1231,7 @@
     <!-- ===================================================================== -->
     <div id="view-dining" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img data-img="offerDining" src="" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">The Teak Terrace • 07:00 – 23:00</span>
@@ -1141,11 +1245,11 @@
         </section>
 
         <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-14 space-y-8">
-            <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2">
-                <button type="button" onclick="switchMenu('tasting', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">Sunset Tasting</button>
-                <button type="button" onclick="switchMenu('coastal', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">All-Day Mains</button>
-                <button type="button" onclick="switchMenu('morning', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Morning Terrace</button>
-                <button type="button" onclick="switchMenu('drinks', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Botanical Bar</button>
+            <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2 py-1">
+                <button type="button" onclick="switchMenu('tasting', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">Sunset Tasting</button>
+                <button type="button" onclick="switchMenu('coastal', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">All-Day Mains</button>
+                <button type="button" onclick="switchMenu('morning', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Morning Terrace</button>
+                <button type="button" onclick="switchMenu('drinks', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Botanical Bar</button>
             </div>
 
             <div id="menuContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
@@ -1156,7 +1260,7 @@
                     <h2 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Reserve a Lantern-Lit Pavilion</h2>
                     <p class="text-xs text-inkMuted font-light mt-1">Recommended at 17:45 for unobstructed twilight views across the tropical garden.</p>
                 </div>
-                <button type="button" onclick="openTableSheet()" class="tap-react ripple-box shrink-0 bg-accentBtn text-stoneLight text-xs font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2 shadow-sm">
+                <button type="button" onclick="openTableSheet()" class="tap-react btn-elevate shrink-0 bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2 shadow-sm">
                     <span>Book a Table</span>
                     <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </button>
@@ -1195,8 +1299,8 @@
                         </div>
 
                         <div class="space-y-3">
-                            <div onclick="selectSanctuary('Deluxe Room', 185)" data-room="Deluxe Room" class="room-card-opt selected tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w600" alt="Deluxe Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                            <div onclick="selectSanctuary('Deluxe Room', 185)" data-room="Deluxe Room" class="room-card-opt selected tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                                <img data-img="roomDeluxeMain" src="" alt="Deluxe Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1212,8 +1316,8 @@
                                 </div>
                             </div>
 
-                            <div onclick="selectSanctuary('Pool Villa', 340)" data-room="Pool Villa" class="room-card-opt tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w600" alt="Pool Villa" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                            <div onclick="selectSanctuary('Pool Villa', 340)" data-room="Pool Villa" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                                <img data-img="roomVillaMain" src="" alt="Pool Villa" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1229,8 +1333,8 @@
                                 </div>
                             </div>
 
-                            <div onclick="selectSanctuary('Family Room', 260)" data-room="Family Room" class="room-card-opt tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w600" alt="Family Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                            <div onclick="selectSanctuary('Family Room', 260)" data-room="Family Room" class="room-card-opt tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
+                                <img data-img="roomFamilyMain" src="" alt="Family Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1276,14 +1380,14 @@
                         <div class="pt-2 border-t border-stoneBorder/60 space-y-2">
                             <span class="text-xs font-medium text-ink block">Enhance Your Arrival</span>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                                <label class="tap-react flex items-center justify-between bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 cursor-pointer">
+                                <label class="tap-react btn-elevate flex items-center justify-between bg-stoneLight hover:bg-white border border-stoneBorder rounded-xl px-3.5 py-3 cursor-pointer">
                                     <span class="flex items-center gap-2.5">
                                         <input type="checkbox" id="addonAirport" onchange="recalculateTotal()" class="accent-ink w-4 h-4">
                                         <span>Private Airport Transfer</span>
                                     </span>
                                     <span class="font-semibold text-ink">+$35</span>
                                 </label>
-                                <label class="tap-react flex items-center justify-between bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 cursor-pointer">
+                                <label class="tap-react btn-elevate flex items-center justify-between bg-stoneLight hover:bg-white border border-stoneBorder rounded-xl px-3.5 py-3 cursor-pointer">
                                     <span class="flex items-center gap-2.5">
                                         <input type="checkbox" id="addonSpa" onchange="recalculateTotal()" class="accent-ink w-4 h-4">
                                         <span>Welcome Balinese Massage</span>
@@ -1364,7 +1468,7 @@
                         <span id="summaryTotal" class="font-serif text-3xl sm:text-4xl font-semibold text-ink">$370</span>
                     </div>
 
-                    <button type="button" onclick="confirmReservation()" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-4 rounded-full flex items-center justify-center gap-2.5 shadow-md">
+                    <button type="button" onclick="confirmReservation()" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs sm:text-sm font-medium py-4 rounded-full flex items-center justify-center gap-2.5 shadow-md">
                         <span>Confirm Reservation</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
@@ -1401,8 +1505,8 @@
                 </div>
 
                 <!-- Compact Map Thumbnail Card -->
-                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
-                    <img src="https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
+                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react btn-elevate block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
+                    <img data-img="footerMap" src="" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
                     <span class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10px] text-white font-medium">
                         <span class="truncate"><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i>Nusa Dua</span>
@@ -1416,11 +1520,11 @@
                 <div class="lg:col-span-4 space-y-3">
                     <span class="text-[10px] font-semibold uppercase tracking-widest text-white/75 block">24/7 Concierge Desk</span>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box flex items-center justify-center gap-2 bg-[#f0f2ef] text-forest text-xs font-medium py-3 rounded-xl">
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-[#f0f2ef] hover:bg-white text-forest text-xs font-medium py-3 rounded-xl">
                             <i class="fa-brands fa-whatsapp text-sm text-green-700"></i>
                             <span>WhatsApp</span>
                         </a>
-                        <a href="mailto:support@baliserenity.com" class="tap-react ripple-box flex items-center justify-center gap-2 bg-white/10 text-white border border-white/15 text-xs font-medium py-3 rounded-xl">
+                        <a href="mailto:support@baliserenity.com" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/15 text-xs font-medium py-3 rounded-xl">
                             <i class="fa-regular fa-envelope text-sm"></i>
                             <span>Email Us</span>
                         </a>
@@ -1431,20 +1535,20 @@
                     <div class="space-y-2">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Explore</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
-                            <li><button type="button" onclick="navigateApp('explore')" class="hover:text-white transition">Sanctuaries & Rooms</button></li>
-                            <li><button type="button" onclick="navigateApp('offers')" class="hover:text-white transition">Seasonal Offers</button></li>
-                            <li><button type="button" onclick="navigateApp('spa')" class="hover:text-white transition">Botanical Spa</button></li>
-                            <li><button type="button" onclick="navigateApp('dining')" class="hover:text-white transition">The Teak Terrace</button></li>
+                            <li><button type="button" onclick="navigateApp('explore')" class="hover:text-white transition overflow-visible">Sanctuaries & Rooms</button></li>
+                            <li><button type="button" onclick="navigateApp('offers')" class="hover:text-white transition overflow-visible">Seasonal Offers</button></li>
+                            <li><button type="button" onclick="navigateApp('spa')" class="hover:text-white transition overflow-visible">Botanical Spa</button></li>
+                            <li><button type="button" onclick="navigateApp('dining')" class="hover:text-white transition overflow-visible">The Teak Terrace</button></li>
                         </ul>
                     </div>
 
                     <div class="space-y-2">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Guest Services</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
-                            <li><button type="button" onclick="navigateApp('book')" class="hover:text-white transition">Direct Booking</button></li>
-                            <li><button type="button" onclick="openRoomDrawer('deluxe')" class="hover:text-white transition">Check-in & Out</button></li>
-                            <li><button type="button" onclick="navigateApp('book', { promo: 'Intimate Island Wedding' })" class="hover:text-white transition">Weddings & Retreats</button></li>
-                            <li><button type="button" onclick="openTableSheet()" class="hover:text-white transition">Table Reservations</button></li>
+                            <li><button type="button" onclick="navigateApp('book')" class="hover:text-white transition overflow-visible">Direct Booking</button></li>
+                            <li><button type="button" onclick="openRoomDrawer('deluxe')" class="hover:text-white transition overflow-visible">Check-in & Out</button></li>
+                            <li><button type="button" onclick="navigateApp('book', { promo: 'Intimate Island Wedding' })" class="hover:text-white transition overflow-visible">Weddings & Retreats</button></li>
+                            <li><button type="button" onclick="openTableSheet()" class="hover:text-white transition overflow-visible">Table Reservations</button></li>
                         </ul>
                     </div>
 
@@ -1463,13 +1567,13 @@
             <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p class="text-[11px] text-[#d4d7d2]/60">&copy; 2026 Bali Serenity Hotel & Resort. All rights reserved.</p>
                 <div class="flex items-center gap-2.5">
-                    <a href="#" aria-label="Instagram" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="Instagram" class="tap-react btn-elevate w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-instagram text-xs"></i>
                     </a>
-                    <a href="#" aria-label="TikTok" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="TikTok" class="tap-react btn-elevate w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-tiktok text-xs"></i>
                     </a>
-                    <a href="#" aria-label="X" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="X" class="tap-react btn-elevate w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-x-twitter text-xs"></i>
                     </a>
                 </div>
@@ -1481,32 +1585,30 @@
     <!-- LIQUID GLASS FLOATING BOTTOM NAVIGATION (Sliding Pill + Circle Morph) -->
     <!-- ===================================================================== -->
     <nav id="bottomDock" class="liquid-glass-dock md:hidden z-40">
-        <!-- Collapsed Right-Edge Circular Button -->
         <button type="button" id="dockCircleTrigger" onclick="expandBottomDock(event)" class="dock-circle-trigger" aria-label="Expand Navigation">
             <i id="dockActiveIcon" class="fa-solid fa-compass text-base"></i>
         </button>
 
-        <!-- Full 5-Tab Pill Content with Smooth Sliding Active Indicator -->
         <div id="dockItemsWrap" class="dock-items-wrap">
             <div id="dockActivePill" class="dock-sliding-pill"></div>
 
-            <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="nav-tab active tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="nav-tab active tap-react flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-compass text-xs"></i>
                 <span>Explore</span>
             </button>
-            <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="nav-tab tap-react flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-tag text-xs"></i>
                 <span>Offers</span>
             </button>
-            <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="nav-tab tap-react flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-spa text-xs"></i>
                 <span>Spa</span>
             </button>
-            <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="nav-tab tap-react flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-utensils text-xs"></i>
                 <span>Dining</span>
             </button>
-            <button type="button" onclick="navigateApp('book')" data-nav="book" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('book')" data-nav="book" class="nav-tab tap-react flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-regular fa-calendar-check text-xs"></i>
                 <span>Book</span>
             </button>
@@ -1514,16 +1616,16 @@
     </nav>
 
     <!-- ===================================================================== -->
-    <!-- SLIDE-UP BOTTOM SHEETS & MODALS                                       -->
+    <!-- SLIDE-UP BOTTOM SHEETS & FULL-FLUSH CONFIRMATION MODAL                -->
     <!-- ===================================================================== -->
 
     <!-- 1. Room Details Drawer -->
-    <div id="roomDrawer" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeRoomDrawer()">
-        <div class="sheet-panel w-full max-w-2xl max-h-[88svh] bg-stoneBg rounded-t-[28px] md:rounded-[28px] overflow-hidden flex flex-col shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
+    <div id="roomDrawer" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeRoomDrawer()">
+        <div class="sheet-panel !pb-0 w-full max-w-2xl max-h-[88dvh] bg-stoneBg rounded-t-[28px] md:rounded-[28px] overflow-hidden flex flex-col shadow-2xl border-t border-x border-b-0 md:border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="px-5 pt-3 pb-3 bg-stoneCard border-b border-stoneBorder/70 flex items-center justify-between">
                 <div class="w-8"></div>
                 <div class="w-10 h-1 rounded-full bg-ink/20 md:hidden"></div>
-                <button type="button" onclick="closeRoomDrawer()" class="tap-react w-8 h-8 rounded-full bg-stoneBg border border-stoneBorder flex items-center justify-center text-xs text-ink" aria-label="Close">
+                <button type="button" onclick="closeRoomDrawer()" class="tap-react btn-elevate w-8 h-8 rounded-full bg-stoneBg hover:bg-stoneLight border border-stoneBorder flex items-center justify-center text-xs text-ink" aria-label="Close">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1576,11 +1678,11 @@
                 </div>
             </div>
 
-            <div class="p-4 bg-stoneCard border-t border-stoneBorder flex items-center justify-between gap-3">
+            <div class="px-4 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))] md:pb-4 bg-stoneCard border-t border-stoneBorder flex items-center justify-between gap-3">
                 <button type="button" onclick="closeRoomDrawer()" class="tap-react text-xs font-medium text-ink underline underline-offset-4 px-2">
                     Close
                 </button>
-                <button type="button" onclick="proceedToBookingFromDrawer()" class="tap-react ripple-box flex-1 bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-3.5 px-6 rounded-full flex items-center justify-center gap-2 shadow-md">
+                <button type="button" onclick="proceedToBookingFromDrawer()" class="tap-react btn-elevate flex-1 bg-accentBtn hover:bg-ink text-stoneLight text-xs sm:text-sm font-medium py-3.5 px-6 rounded-full flex items-center justify-center gap-2 shadow-md">
                     <span>Reserve This Sanctuary</span>
                     <i class="fa-solid fa-arrow-right text-xs"></i>
                 </button>
@@ -1589,14 +1691,14 @@
     </div>
 
     <!-- 2. Spa Reservation Drawer -->
-    <div id="spaSheet" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeSpaSheet()">
-        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-5 sm:p-7 space-y-5 shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
+    <div id="spaSheet" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeSpaSheet()">
+        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] px-5 pt-5 sm:px-7 sm:pt-7 space-y-5 shadow-2xl border-t border-x border-b-0 md:border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between">
                 <div>
                     <span id="spaSheetMeta" class="text-[10px] uppercase tracking-[0.2em] text-inkMuted font-semibold">90 Mins • $75</span>
                     <h3 id="spaSheetTitle" class="font-serif text-2xl sm:text-3xl text-ink">Serenity Massage</h3>
                 </div>
-                <button type="button" onclick="closeSpaSheet()" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
+                <button type="button" onclick="closeSpaSheet()" class="tap-react btn-elevate w-8 h-8 rounded-full bg-stoneCard hover:bg-stoneLight border border-stoneBorder flex items-center justify-center text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1619,7 +1721,7 @@
                     <input type="text" id="spaGuest" placeholder="e.g. Room 104 / Emma" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
                 </div>
             </div>
-            <a id="spaConfirmWa" href="https://wa.me/" target="_blank" rel="noopener" onclick="updateSpaWaLink()" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
+            <a id="spaConfirmWa" href="https://wa.me/" target="_blank" rel="noopener" onclick="updateSpaWaLink()" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>Reserve via Spa Concierge</span>
             </a>
@@ -1627,14 +1729,14 @@
     </div>
 
     <!-- 3. Table Reservation Drawer -->
-    <div id="tableSheet" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeTableSheet()">
-        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-5 sm:p-7 space-y-5 shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
+    <div id="tableSheet" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeTableSheet()">
+        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] px-5 pt-5 sm:px-7 sm:pt-7 space-y-5 shadow-2xl border-t border-x border-b-0 md:border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-inkMuted font-semibold">The Teak Terrace</span>
                     <h3 class="font-serif text-2xl sm:text-3xl text-ink">Reserve Your Table</h3>
                 </div>
-                <button type="button" onclick="closeTableSheet()" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
+                <button type="button" onclick="closeTableSheet()" class="tap-react btn-elevate w-8 h-8 rounded-full bg-stoneCard hover:bg-stoneLight border border-stoneBorder flex items-center justify-center text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1667,16 +1769,16 @@
                     <input type="text" id="tableGuest" placeholder="e.g. Daniel Carter • 2 Guests" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
                 </div>
             </div>
-            <a id="tableWaBtn" href="https://wa.me/" target="_blank" rel="noopener" onclick="prepareTableWa()" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
+            <a id="tableWaBtn" href="https://wa.me/" target="_blank" rel="noopener" onclick="prepareTableWa()" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>Confirm Table via WhatsApp</span>
             </a>
         </div>
     </div>
 
-    <!-- 4. Stay Booking Confirmation Modal -->
-    <div id="confirmModal" class="sheet-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeConfirmModal()">
-        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-6 sm:p-8 space-y-5 shadow-2xl border border-stoneBorder text-center" onclick="event.stopPropagation()">
+    <!-- 4. Stay Booking Confirmation Modal (100% Flush Bottom Edge on Mobile & Safe Area) -->
+    <div id="confirmModal" class="sheet-backdrop z-50 bg-black/60 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeConfirmModal()">
+        <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] px-6 pt-6 sm:px-8 sm:pt-8 space-y-5 shadow-2xl border-t border-x border-b-0 md:border border-stoneBorder text-center" onclick="event.stopPropagation()">
             <div class="w-12 h-12 rounded-full bg-ink text-stoneLight mx-auto flex items-center justify-center text-lg">
                 <i class="fa-solid fa-check"></i>
             </div>
@@ -1691,11 +1793,11 @@
                 <div class="flex justify-between"><span class="text-inkMuted">Estimated Total</span><span id="confTotal" class="font-semibold"></span></div>
             </div>
             <div class="grid grid-cols-2 gap-2.5">
-                <a id="waConfirmLink" href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box bg-accentBtn text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                <a id="waConfirmLink" href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
                     <i class="fa-brands fa-whatsapp"></i>
                     <span>Send WhatsApp</span>
                 </a>
-                <button type="button" onclick="closeConfirmModal(); navigateApp('explore');" class="tap-react ripple-box ripple-box-dark bg-stoneLight border border-stoneBorder text-ink text-xs font-medium py-3.5 rounded-full flex items-center justify-center">
+                <button type="button" onclick="closeConfirmModal(); navigateApp('explore');" class="tap-react btn-elevate bg-stoneLight hover:bg-white border border-stoneBorder text-ink text-xs font-medium py-3.5 rounded-full flex items-center justify-center">
                     Back to Resort
                 </button>
             </div>
@@ -1703,6 +1805,36 @@
     </div>
 
     <script>
+        // =====================================================================
+        // PENGATURAN GANTI FOTO TERPUSAT (Cukup ubah URL di sini)
+        // Bisa pakai link online (Unsplash / Google Drive) atau file lokal
+        // contoh file lokal di GitHub: './images/hero.jpg'
+        // =====================================================================
+        const SITE_IMAGES = {
+            hero:           'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop',
+            roomDeluxeMain: 'https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000',
+            roomDeluxeBed:  'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000',
+            roomDeluxeBath: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000',
+            roomVillaMain:  'https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000',
+            roomFamilyMain: 'https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000',
+            offerStay:      'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop',
+            offerSpa:       'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop',
+            offerDining:    'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop',
+            eventWedding:   'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop',
+            eventMeeting:   'https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000',
+            footerMap:      'https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600'
+        };
+
+        // Otomatis memasang semua foto dari SITE_IMAGES ke elemen HTML
+        function applySiteImages() {
+            document.querySelectorAll('[data-img]').forEach(img => {
+                const key = img.dataset.img;
+                if (SITE_IMAGES[key]) {
+                    img.src = SITE_IMAGES[key];
+                }
+            });
+        }
+
         // =====================================================================
         // DATA REPOSITORIES
         // =====================================================================
@@ -1713,9 +1845,9 @@
                 tag: 'Tropical Garden View',
                 desc: 'Designed as a serene sanctuary, the Deluxe Room blends authentic Balinese craftsmanship with modern luxury. Unwind with teak wood furnishings, plush linens, and floor-to-ceiling sliding doors opening onto your private balcony.',
                 photos: [
-                    { label: 'Main Bedroom', src: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000' },
-                    { label: 'Bathroom & Toilet', src: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000' },
-                    { label: 'Garden Terrace', src: 'https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000' }
+                    { label: 'Main Bedroom', src: SITE_IMAGES.roomDeluxeBed },
+                    { label: 'Bathroom & Toilet', src: SITE_IMAGES.roomDeluxeBath },
+                    { label: 'Garden Terrace', src: SITE_IMAGES.roomDeluxeMain }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Bed', val: '1 King / 2 Twin' },
@@ -1730,8 +1862,8 @@
                 tag: 'Private Walled Sanctuary',
                 desc: 'An intimate tropical compound featuring a private plunge pool, shaded timber sundeck, and tranquil indoor-outdoor living spaces tailored for unhurried island days.',
                 photos: [
-                    { label: 'Private Pool', src: 'https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000' },
-                    { label: 'Master Suite', src: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000' }
+                    { label: 'Private Pool', src: SITE_IMAGES.roomVillaMain },
+                    { label: 'Master Suite', src: SITE_IMAGES.roomDeluxeBed }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Layout', val: '3 Bedrooms' },
@@ -1746,8 +1878,8 @@
                 tag: 'Spacious Two-King Suite',
                 desc: 'Thoughtfully proportioned for families and small groups, offering dual king beds, a dedicated lounge corner, and seamless access to the resort gardens.',
                 photos: [
-                    { label: 'Family Suite', src: 'https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000' },
-                    { label: 'Bathroom', src: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000' }
+                    { label: 'Family Suite', src: SITE_IMAGES.roomFamilyMain },
+                    { label: 'Bathroom', src: SITE_IMAGES.roomDeluxeBath }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Beds', val: '2 King Beds' },
@@ -1905,7 +2037,7 @@
         let currentSpaTreatment = '';
 
         // =====================================================================
-        // BOTTOM DOCK SLIDING PILL & SCROLL MORPH (PILL <-> RIGHT-EDGE CIRCLE)
+        // BOTTOM DOCK SLIDING PILL & SCROLL MORPH
         // =====================================================================
         const bottomDock = document.getElementById('bottomDock');
         const dockItemsWrap = document.getElementById('dockItemsWrap');
@@ -2079,11 +2211,12 @@
         document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
         // =====================================================================
-        // TOUCH RIPPLE MICRO-INTERACTION
+        // UNIVERSAL BUTTON CLICK / TOUCH RIPPLE ANIMATION
         // =====================================================================
         document.addEventListener('pointerdown', function(e) {
-            const target = e.target.closest('.ripple-box');
-            if (!target) return;
+            const target = e.target.closest('button, .tap-react');
+            if (!target || target.classList.contains('overflow-visible')) return;
+
             const rect = target.getBoundingClientRect();
             const circle = document.createElement('span');
             const diameter = Math.max(rect.width, rect.height);
@@ -2091,14 +2224,19 @@
             circle.style.left = `${e.clientX - rect.left - diameter / 2}px`;
             circle.style.top = `${e.clientY - rect.top - diameter / 2}px`;
             circle.classList.add('touch-ripple');
-            if (target.classList.contains('ripple-box-dark')) circle.classList.add('touch-ripple-dark');
+
+            const bg = window.getComputedStyle(target).backgroundColor;
+            if (bg.includes('239, 238, 230') || bg.includes('247, 246, 240') || bg.includes('226, 225, 208') || bg.includes('240, 242, 239')) {
+                circle.classList.add('touch-ripple-dark');
+            }
+
             const existing = target.querySelector('.touch-ripple');
             if (existing) existing.remove();
             target.appendChild(circle);
         });
 
         // =====================================================================
-        // EXPLORE VIEW: CAROUSELS & CROSS-PLATFORM INFINITE MARQUEE
+        // EXPLORE VIEW: CAROUSELS & FULL-WIDTH INFINITE MARQUEE
         // =====================================================================
         function initCarouselSync(carouselId, slideSelector, dotSelector, prevBtnId, nextBtnId, leftPad = 16) {
             const carousel = document.getElementById(carouselId);
@@ -2162,9 +2300,9 @@
             function step() {
                 if (!isHoverPaused && !isTouchActive && !isDragging && currentAppView === 'explore') {
                     virtualScroll += 0.65;
-                    const halfWidth = track.scrollWidth / 2;
-                    if (halfWidth > 0 && virtualScroll >= halfWidth) {
-                        virtualScroll -= halfWidth;
+                    const singleSetWidth = track.scrollWidth / 3;
+                    if (singleSetWidth > 0 && virtualScroll >= singleSetWidth) {
+                        virtualScroll -= singleSetWidth;
                     }
                     viewport.scrollLeft = virtualScroll;
                 } else {
@@ -2187,9 +2325,9 @@
             function releaseTouch() {
                 clearTimeout(resumeTimer);
                 resumeTimer = setTimeout(() => {
-                    const halfWidth = track.scrollWidth / 2;
-                    if (halfWidth > 0 && viewport.scrollLeft >= halfWidth) {
-                        viewport.scrollLeft -= halfWidth;
+                    const singleSetWidth = track.scrollWidth / 3;
+                    if (singleSetWidth > 0 && viewport.scrollLeft >= singleSetWidth) {
+                        viewport.scrollLeft -= singleSetWidth;
                     }
                     virtualScroll = viewport.scrollLeft;
                     isTouchActive = false;
@@ -2213,9 +2351,9 @@
             window.addEventListener('mouseup', () => {
                 if (!isDragging) return;
                 isDragging = false;
-                const halfWidth = track.scrollWidth / 2;
-                if (halfWidth > 0 && viewport.scrollLeft >= halfWidth) viewport.scrollLeft -= halfWidth;
-                else if (viewport.scrollLeft <= 0 && halfWidth > 0) viewport.scrollLeft += halfWidth;
+                const singleSetWidth = track.scrollWidth / 3;
+                if (singleSetWidth > 0 && viewport.scrollLeft >= singleSetWidth) viewport.scrollLeft -= singleSetWidth;
+                else if (viewport.scrollLeft <= 0 && singleSetWidth > 0) viewport.scrollLeft += singleSetWidth;
                 virtualScroll = viewport.scrollLeft;
                 resumeTimer = setTimeout(() => { isHoverPaused = false; }, 1000);
             });
@@ -2244,7 +2382,7 @@
             data.photos.forEach((photo, idx) => {
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = `tap-react px-3 py-1.5 rounded-full text-[11px] font-medium border transition ${idx === 0 ? 'bg-ink text-stoneLight border-ink' : 'bg-stoneCard text-ink border-stoneBorder'}`;
+                btn.className = `tap-react btn-elevate px-3 py-1.5 rounded-full text-[11px] font-medium border transition ${idx === 0 ? 'bg-ink text-stoneLight border-ink' : 'bg-stoneCard text-ink border-stoneBorder'}`;
                 btn.textContent = photo.label;
                 btn.onclick = () => {
                     mainImg.style.opacity = '0.4';
@@ -2328,7 +2466,7 @@
             }
             const items = MENUS[key] || MENUS.tasting;
             document.getElementById('menuContainer').innerHTML = items.map(item => `
-                <div class="tap-react bg-stoneLight/90 border border-stoneBorder rounded-[20px] p-3 sm:p-3.5 flex items-center gap-3.5">
+                <div class="tap-react btn-elevate bg-stoneLight/90 hover:bg-white border border-stoneBorder rounded-[20px] p-3 sm:p-3.5 flex items-center gap-3.5">
                     <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-20 h-20 sm:w-[88px] sm:h-[88px] rounded-2xl object-cover shrink-0 bg-stoneCard border border-stoneBorder/50">
                     <div class="flex-grow min-w-0">
                         <div class="flex items-start justify-between gap-2">
@@ -2422,6 +2560,11 @@
         }
 
         function confirmReservation() {
+            // Dismiss virtual keyboard on iOS/Android so modal sits 100% flush to bottom edge
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
+
             const name = document.getElementById('guestName').value.trim() || 'Valued Guest';
             const dates = document.getElementById('summaryDates').textContent;
             const total = document.getElementById('summaryTotal').textContent;
@@ -2436,7 +2579,9 @@
             const msg = encodeURIComponent(`Hello Bali Serenity! I'd like to confirm reservation #${ref}:\n- Guest: ${name}\n- Sanctuary: ${selectedRoom}\n- Dates: ${dates}\n- Total: ${total}`);
             document.getElementById('waConfirmLink').href = `https://wa.me/?text=${msg}`;
 
-            document.getElementById('confirmModal').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('confirmModal').classList.add('open');
+            }, 60);
         }
 
         function closeConfirmModal() {
@@ -2447,6 +2592,8 @@
         // INITIALIZE APP STATE ON LOAD
         // =====================================================================
         (function initApp() {
+            applySiteImages();
+
             const today = new Date();
             const twoDays = new Date(today);
             twoDays.setDate(today.getDate() + 2);
