@@ -1,240 +1,434 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Astronomi Modern</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.6;color:#0b1220;background:#f4f7fb}
-    header{background:linear-gradient(90deg,#0f1724,#0b3d91);color:#fff;padding:14px 20px;position:sticky;top:0;z-index:1000}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{font-weight:700;letter-spacing:0.4px}
-    nav ul{list-style:none;display:flex;gap:14px;align-items:center}
-    nav a{color:#dbeafe;text-decoration:none;padding:8px 10px;border-radius:6px;font-weight:600}
-    nav a:hover{background:rgba(255,255,255,0.06)}
-    .menu-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
-    .hero{display:flex;align-items:center;gap:20px;padding:60px 0}
-    .hero-left{flex:1}
-    .hero h1{font-size:34px;margin-bottom:8px;color:#fff}
-    .hero p{color:#cfe1ff;margin-bottom:16px}
-    .btn{display:inline-block;padding:10px 16px;background:#ffdd57;color:#0b1220;border-radius:8px;text-decoration:none;font-weight:700}
-    .hero-right{flex:1;text-align:center}
-    .hero-right img{max-width:320px;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,0.25)}
-
-    section{padding:50px 0}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
-    .card img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px}
-    .card h3{margin-bottom:8px;font-size:18px}
-    .card p{font-size:14px;color:#334155}
-
-    .grid-two{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
-    aside{background:#fff;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
-
-    footer{padding:30px 0;background:#071133;color:#cfe1ff;text-align:center;border-top:1px solid rgba(255,255,255,0.03)}
-
-    /* responsive */
-    @media(max-width:800px){
-      .menu-toggle{display:block}
-      nav ul{display:none;position:absolute;top:64px;right:20px;background:linear-gradient(180deg,#082146,#061029);padding:12px;border-radius:10px}
-      nav ul.show{display:flex;flex-direction:column;min-width:160px}
-      .hero{flex-direction:column;text-align:center}
-      .hero-right img{max-width:260px}
-      .grid-two{grid-template-columns:1fr}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bali Serenity Hotel & Resort | Home</title>
+  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap)" rel="stylesheet">
+  <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#ddddc9',
+            brandCard: '#ecece4',
+            brandBorder: '#c5c5b2',
+            brandText: '#2c2a29',
+            brandBtn: '#383730'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
     }
-
-    /* image modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:2000}
-    .modal.show{display:flex}
-    .modal img{max-width:92%;max-height:92%;border-radius:8px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-    .close-modal{position:absolute;top:18px;right:18px;color:#fff;background:transparent;border:0;font-size:28px}
+  </script>
+  <style>
+    html, body {
+      background-color: #ddddc9;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', Georgia, serif !important;
+    }
+    .villa-glass-container {
+      box-sizing: border-box;
+      width: 90%;
+      max-width: 500px;
+      padding: 42px 35px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(15, 15, 15, 0.38);
+      backdrop-filter: blur(13px) brightness(90%);
+      -webkit-backdrop-filter: blur(13px) brightness(90%);
+      border-radius: 52px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: background 0.4s ease, border 0.4s ease, backdrop-filter 0.4s ease;
+    }
+    .villa-glass-container:hover {
+      background: rgba(15, 15, 15, 0.48);
+      backdrop-filter: blur(15px) brightness(85%);
+      -webkit-backdrop-filter: blur(15px) brightness(85%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .villa-glass-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 40%);
+      pointer-events: none;
+    }
+    .glass-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 11px 26px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 13.5px;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+    .glass-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      transform: scale(1.03);
+    }
+    .glass-button span {
+      transition: transform 0.3s ease;
+    }
+    .glass-button:hover span {
+      transform: translateX(4px);
+    }
+    .bg-zoom {
+      transition: transform 0.7s ease-in-out;
+    }
+    .offer-card:hover .bg-zoom {
+      transform: scale(1.05);
+    }
+    .facilities-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 15px;
+      gap: 40px;
+      box-sizing: border-box;
+    }
+    .left-content {
+      flex: 1.1;
+      max-width: 460px;
+    }
+    .right-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px 20px;
+      flex: 1.3;
+      justify-items: center;
+    }
+    .facility-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 110px;
+    }
+    .icon-circle {
+      width: 76px;
+      height: 76px;
+      background-color: rgba(0, 0, 0, 0.04);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    .facility-item:hover .icon-circle {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+    .facility-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #2c2a29;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+    }
+    @media (max-width: 768px) {
+      .facilities-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+        gap: 35px;
+      }
+      .left-content {
+        max-width: 100%;
+      }
+      .right-grid {
+        width: 100%;
+        gap: 25px 10px;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="bg-brandBg text-brandText font-sans antialiased flex flex-col min-h-screen">
 
-<header>
-  <div class="container nav">
-    <div class="brand">Astronomi Modern</div>
-    <button class="menu-toggle" id="menuToggle" aria-label="toggle menu">☰</button>
-    <nav>
-      <ul id="menu">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#planet">Planet</a></li>
-        <li><a href="#galaksi">Galaksi</a></li>
-        <li><a href="#foto">Foto</a></li>
-        <li><a href="#sumber">Sumber</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <!-- HERO SECTION -->
+  <section class="relative w-full min-h-[88vh] flex items-center justify-center px-4 pt-24 pb-12 overflow-hidden">
+    <img src="[https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1800](https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1800)" alt="Bali Serenity Resort" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/30"></div>
 
-<main class="container">
-  <section id="home" class="hero" aria-label="hero">
-    <div class="hero-left">
-      <h1>Jelajahi Langit. Pahami Alam Semesta.</h1>
-      <p>Artikel ringkas. Foto asli. Sumber terpercaya. Untuk pelajar dan pecinta bintang.</p>
-      <a class="btn" href="#planet">Mulai</a>
-    </div>
-    <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000&auto=format&fit=crop" alt="Bintang dan galaksi">
+    <div class="villa-glass-container relative z-10 text-left">
+      <div class="text-xs tracking-[3px] uppercase text-white mb-3" style="font-family: 'Montserrat', sans-serif;">WELCOME TO BALI SERENITY</div>
+      <h1 class="text-4xl sm:text-[42px] font-normal text-white leading-tight mb-3.5 drop-shadow">Your Perfect Stay<br>in Paradise</h1>
+      <p class="text-sm font-light text-white/90 leading-relaxed mb-6" style="font-family: 'Montserrat', sans-serif;">Experience the harmony of nature, comfort, and true Balinese hospitality.</p>
+      <a href="book-now.html" class="glass-button">
+        Book Your Stay <span>&rarr;</span>
+      </a>
     </div>
   </section>
 
-  <section id="planet" aria-label="planet">
-    <h2>Planet Populer</h2>
-    <div class="cards" style="margin-top:18px">
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop" alt="Merkurius" data-large="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=2000&auto=format&fit=crop">
-        <h3>Merkurius</h3>
-        <p>Planet terdekat ke Matahari. Permukaan berbatu dan sangat panas di siang hari.</p>
-      </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200&auto=format&fit=crop" alt="Venus" data-large="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=2000&auto=format&fit=crop">
-        <h3>Venus</h3>
-        <p>Atmosfer tebal dan efek rumah kaca ekstrem. Suhu permukaan sangat tinggi.</p>
-      </article>
-      <article class="card">
-        <img src="https://images.unsplash.com/photo-1505433324547-2b8b0b05d6b0?q=80&w=1200&auto=format&fit=crop" alt="Mars" data-large="https://images.unsplash.com/photo-1505433324547-2b8b0b05d6b0?q=80&w=2000&auto=format&fit=crop">
-        <h3>Mars</h3>
-        <p>Planet merah. Target misi robotik dan rencana misi berawak di masa depan.</p>
-      </article>
-    </div>
-  </section>
+  <!-- MAIN OVERVIEW CONTENT -->
+  <main class="w-full space-y-20 py-14">
 
-  <section id="galaksi">
-    <h2>Galaksi dan Struktur Besar</h2>
-    <div class="grid-two" style="margin-top:18px">
-      <div>
-        <div class="card" style="margin-bottom:14px">
-          <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1200&auto=format&fit=crop" alt="Bima Sakti" data-large="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2000&auto=format&fit=crop">
-          <h3>Bima Sakti</h3>
-          <p>Bima Sakti adalah galaksi tempat kita tinggal. Memiliki lengan spiral dan pusat yang kaya bintang.</p>
+    <!-- 1. OUR FACILITIES SECTION -->
+    <section class="facilities-section">
+      <div class="left-content">
+        <span class="text-[11px] font-semibold tracking-[0.2em] uppercase text-brandText/70 block mb-3">OUR FACILITIES</span>
+        <h2 class="text-3xl sm:text-[38px] font-normal leading-tight mb-4 text-[#2c2a29]">
+          Everything You Need<br>for a Relaxing Stay
+        </h2>
+        <p class="text-xs sm:text-sm text-brandText/80 leading-relaxed font-light mb-6">
+          From refreshing pools to delightful dining,<br>we provide the best facilities for your comfort.
+        </p>
+        <a href="book-now.html" class="inline-flex items-center justify-center gap-3 bg-brandBtn text-brandBg text-xs font-medium px-8 py-3.5 rounded-full hover:bg-black transition shadow-sm">
+          Book Your Stay &rarr;
+        </a>
+      </div>
+
+      <div class="right-grid">
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-wifi text-xl text-brandText"></i></div>
+          <div class="facility-label">Free Wi-Fi</div>
         </div>
-        <div class="card">
-          <h3>Cluster dan Supercluster</h3>
-          <p>Galaksi tersusun dalam gugus. Gugus membentuk struktur lebih besar, sampai supercluster.</p>
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-utensils text-xl text-brandText"></i></div>
+          <div class="facility-label">Restaurant</div>
+        </div>
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-water-ladder text-xl text-brandText"></i></div>
+          <div class="facility-label">Swimming Pool</div>
+        </div>
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-spa text-xl text-brandText"></i></div>
+          <div class="facility-label">Spa & Wellness</div>
+        </div>
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-dumbbell text-xl text-brandText"></i></div>
+          <div class="facility-label">Fitness Center</div>
+        </div>
+        <div class="facility-item">
+          <div class="icon-circle"><i class="fa-solid fa-van-shuttle text-xl text-brandText"></i></div>
+          <div class="facility-label">Airport Shuttle</div>
         </div>
       </div>
-      <aside>
-        <h4>Fakta Cepat</h4>
-        <ul style="margin-top:10px;color:#0f1724">
-          <li>Umur alam semesta sekitar 13.8 miliar tahun.</li>
-          <li>Diameter Bima Sakti ~100.000 tahun cahaya.</li>
-          <li>Cahaya terjauh yang terdeteksi datang dari galaksi sangat jauh.</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    </section>
 
-  <section id="foto">
-    <h2>Galeri Foto</h2>
-    <p style="margin-top:8px">Klik gambar untuk lihat ukuran besar.</p>
-    <div class="cards" style="margin-top:14px">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?q=80&w=1200&auto=format&fit=crop" alt="Nebula" data-large="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?q=80&w=2000&auto=format&fit=crop">
-        <h3>Nebula</h3>
-        <p>Awan gas dan debu. Tempat lahir bintang baru.</p>
+    <!-- 2. OUR ROOMS SECTION -->
+    <section id="rooms" class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brandText/70 block mb-3">OUR ROOMS</span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl leading-tight text-brandText">
+            Comfortable Rooms for a Better Stay
+          </h2>
+        </div>
+        <div class="mt-4 md:mt-0">
+          <a href="book-now.html" class="inline-flex items-center text-sm font-semibold text-brandText hover:opacity-70 transition border-b border-brandText pb-1">
+            View All Rooms &rarr;
+          </a>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1516110833967-578f0b30a0a3?q=80&w=1200&auto=format&fit=crop" alt="Gagak Bintang" data-large="https://images.unsplash.com/photo-1516110833967-578f0b30a0a3?q=80&w=2000&auto=format&fit=crop">
-        <h3>Supernova</h3>
-        <p>Ledakan akhir hayat bintang masif. Meninggalkan materi berat.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Deluxe Room -->
+        <div class="border border-brandBorder rounded-2xl overflow-hidden flex flex-col bg-brandCard/40">
+          <img src="[https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000](https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000)" alt="Deluxe Room" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl mb-2">Deluxe Room</h3>
+            <p class="text-xs sm:text-sm text-brandText/70 mb-6 flex-grow font-light">Spacious and elegant room with a private balcony and garden views.</p>
+            <div class="flex items-center justify-between text-xs text-brandText/70 mb-6 border-y border-brandBorder/40 py-3">
+              <span><i class="fa-solid fa-bed mr-1.5"></i> 1 King Bed</span>
+              <span><i class="fa-solid fa-user mr-1.5"></i> 2 Guests</span>
+              <span><i class="fa-solid fa-maximize mr-1.5"></i> 28 m²</span>
+            </div>
+            <a href="deluxe-room.html" class="inline-flex items-center justify-center bg-brandBtn text-brandBg text-xs px-6 py-2.5 rounded-full hover:bg-black transition self-start">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Pool Villa -->
+        <div class="border border-brandBorder rounded-2xl overflow-hidden flex flex-col bg-brandCard/40">
+          <img src="[https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000](https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000)" alt="Pool Villa" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl mb-2">Pool Villa</h3>
+            <p class="text-xs sm:text-sm text-brandText/70 mb-6 flex-grow font-light">Your private sanctuary with a pool, perfect for a relaxing getaway.</p>
+            <div class="flex items-center justify-between text-xs text-brandText/70 mb-6 border-y border-brandBorder/40 py-3">
+              <span><i class="fa-solid fa-bed mr-1.5"></i> 3 Bedrooms</span>
+              <span><i class="fa-solid fa-user mr-1.5"></i> 4 Guests</span>
+              <span><i class="fa-solid fa-maximize mr-1.5"></i> 45 m²</span>
+            </div>
+            <a href="pool-villa.html" class="inline-flex items-center justify-center bg-brandBtn text-brandBg text-xs px-6 py-2.5 rounded-full hover:bg-black transition self-start">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Family Room -->
+        <div class="border border-brandBorder rounded-2xl overflow-hidden flex flex-col bg-brandCard/40">
+          <img src="[https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000](https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000)" alt="Family Room" class="w-full h-56 object-cover">
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-2xl mb-2">Family Room</h3>
+            <p class="text-xs sm:text-sm text-brandText/70 mb-6 flex-grow font-light">More space for your loved ones, to create unforgettable memories.</p>
+            <div class="flex items-center justify-between text-xs text-brandText/70 mb-6 border-y border-brandBorder/40 py-3">
+              <span><i class="fa-solid fa-bed mr-1.5"></i> 2 King Beds</span>
+              <span><i class="fa-solid fa-user mr-1.5"></i> 4 Guests</span>
+              <span><i class="fa-solid fa-maximize mr-1.5"></i> 50 m²</span>
+            </div>
+            <a href="family-room.html" class="inline-flex items-center justify-center bg-brandBtn text-brandBg text-xs px-6 py-2.5 rounded-full hover:bg-black transition self-start">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1200&auto=format&fit=crop" alt="Galaksi" data-large="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2000&auto=format&fit=crop">
-        <h3>Galaksi Spiral</h3>
-        <p>Pembentukan bintang aktif di lengan spiral.</p>
+    </section>
+
+    <!-- 3. EXCLUSIVE OFFERS FOR YOU -->
+    <section class="w-full flex flex-col">
+      <div class="py-12 px-6 mx-auto max-w-4xl text-center">
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-brandText/70 block mb-3">Exclusive Offers For You</span>
+        <h2 class="text-3xl md:text-5xl leading-tight text-brandText mb-4">
+          Make Your Stay More Special
+        </h2>
+        <p class="text-xs sm:text-sm text-brandText/80 leading-relaxed max-w-xl mx-auto font-light">
+          Discover exclusive experiences designed to make your stay even more memorable. From extended stays to relaxing wellness moments, enjoy special benefits made just for you.
+        </p>
       </div>
-    </div>
-  </section>
 
-  <section id="sumber">
-    <h2>Sumber & Referensi</h2>
-    <ul style="margin-top:12px">
-      <li><a href="https://www.nasa.gov" target="_blank" rel="noopener">NASA</a></li>
-      <li><a href="https://www.esa.int" target="_blank" rel="noopener">European Space Agency</a></li>
-      <li><a href="https://www.space.com" target="_blank" rel="noopener">Space.com</a></li>
-    </ul>
-  </section>
+      <div class="w-full grid grid-cols-1 lg:grid-cols-3">
+        <div class="offer-card relative min-h-[500px] flex items-center justify-center p-8 overflow-hidden group">
+          <img src="[https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop](https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop)" alt="Stay Longer" class="bg-zoom absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
+          <div class="relative z-10 flex flex-col items-center text-center text-white w-full max-w-xs mx-auto">
+            <span class="text-[10px] uppercase tracking-[0.2em] mb-2 font-semibold">Stay Longer</span>
+            <h3 class="text-3xl mb-3">Stay 3 Nights, Pay 2</h3>
+            <p class="text-xs text-gray-200 mb-6 font-light">Enjoy an extra night on us when you stay for three nights. More time to relax, explore, and unwind.</p>
+            <a href="offers.html" class="inline-flex items-center justify-center border border-white/60 hover:border-white text-white text-[11px] tracking-widest uppercase px-8 py-3 rounded-full transition hover:bg-white/10">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
 
-  <section id="kontak">
-    <h2>Kontak</h2>
-    <p style="margin-top:12px">Ingin berkontribusi atau tanya? Kirim email ke: <strong>ramasky2006@gmail.com</strong></p>
-  </section>
-</main>
+        <div class="offer-card relative min-h-[500px] flex items-center justify-center p-8 overflow-hidden group">
+          <img src="[https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop](https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop)" alt="Wellness Escape" class="bg-zoom absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
+          <div class="relative z-10 flex flex-col items-center text-center text-white w-full max-w-xs mx-auto">
+            <span class="text-[10px] uppercase tracking-[0.2em] mb-2 font-semibold">Wellness</span>
+            <h3 class="text-3xl mb-3">Wellness Escape</h3>
+            <p class="text-xs text-gray-200 mb-6 font-light">Slow down and recharge with a relaxing spa experience designed to refresh your body and mind.</p>
+            <a href="spa.html" class="inline-flex items-center justify-center border border-white/60 hover:border-white text-white text-[11px] tracking-widest uppercase px-8 py-3 rounded-full transition hover:bg-white/10">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
 
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Astronomi Modern. Semua hak cipta milik penulis.</p>
-  </div>
-</footer>
+        <div class="offer-card relative min-h-[500px] flex items-center justify-center p-8 overflow-hidden group">
+          <img src="[https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop](https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop)" alt="Sunset Dinner" class="bg-zoom absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors"></div>
+          <div class="relative z-10 flex flex-col items-center text-center text-white w-full max-w-xs mx-auto">
+            <span class="text-[10px] uppercase tracking-[0.2em] mb-2 font-semibold">Dining</span>
+            <h3 class="text-3xl mb-3">Sunset Dinner</h3>
+            <p class="text-xs text-gray-200 mb-6 font-light">Enjoy an intimate dining experience with delicious cuisine and a beautiful tropical sunset.</p>
+            <a href="restaurant.html" class="inline-flex items-center justify-center border border-white/60 hover:border-white text-white text-[11px] tracking-widest uppercase px-8 py-3 rounded-full transition hover:bg-white/10">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- modal untuk tampilan gambar besar -->
-<div id="imgModal" class="modal" role="dialog" aria-hidden="true">
-  <button class="close-modal" id="closeModal" aria-label="Tutup">✕</button>
-  <img id="modalImg" src="" alt="Gambar besar">
-</div>
+    <!-- 4. MEETINGS & EVENTS -->
+    <section class="w-full flex flex-col">
+      <div class="py-12 px-6 mx-auto max-w-4xl text-center">
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-brandText/70 block mb-3">Meetings & Events</span>
+        <h2 class="text-3xl md:text-5xl leading-tight text-brandText mb-4">
+          Gather, Celebrate & Create Memories
+        </h2>
+        <p class="text-xs sm:text-sm text-brandText/80 leading-relaxed max-w-2xl mx-auto font-light">
+          From intimate gatherings to memorable celebrations, our versatile spaces are designed to bring every occasion to life with thoughtful service.
+        </p>
+      </div>
 
-<script>
-  // menu toggle mobile
-  const toggle = document.getElementById('menuToggle');
-  const menu = document.getElementById('menu');
-  toggle.addEventListener('click', ()=> menu.classList.toggle('show'));
+      <div class="w-full grid grid-cols-1 md:grid-cols-2">
+        <div class="offer-card relative min-h-[400px] flex items-end justify-center pb-12 px-8 overflow-hidden group">
+          <img src="[https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop](https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop)" alt="Weddings" class="bg-zoom absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <div class="relative z-10 flex flex-col items-center text-center text-white">
+            <h3 class="text-3xl md:text-4xl mb-4">Weddings</h3>
+            <a href="contact.html?subject=Weddings" class="inline-flex items-center justify-center border border-white/60 hover:border-white text-white text-[11px] tracking-widest uppercase px-8 py-3 rounded-full transition hover:bg-white/10">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
 
-  // smooth scroll and active link
-  const links = document.querySelectorAll('nav a');
-  links.forEach(l=>{
-    l.addEventListener('click', e=>{
-      e.preventDefault();
-      const id = l.getAttribute('href');
-      document.querySelector(id).scrollIntoView({behavior:'smooth',block:'start'});
-      // close mobile menu
-      menu.classList.remove('show');
-    });
-  });
+        <div class="offer-card relative min-h-[400px] flex items-end justify-center pb-12 px-8 overflow-hidden group">
+          <img src="[https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000](https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000)" alt="Meetings & Events" class="bg-zoom absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <div class="relative z-10 flex flex-col items-center text-center text-white">
+            <h3 class="text-3xl md:text-4xl mb-4">Meetings & Events</h3>
+            <a href="contact.html?subject=Meetings%20%26%20Events" class="inline-flex items-center justify-center border border-white/60 hover:border-white text-white text-[11px] tracking-widest uppercase px-8 py-3 rounded-full transition hover:bg-white/10">
+              View Details &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  // highlight active nav on scroll
-  const sections = document.querySelectorAll('main section[id]');
-  window.addEventListener('scroll', ()=>{
-    const y = window.scrollY;
-    sections.forEach(s=>{
-      const top = s.offsetTop - 80;
-      const h = s.offsetHeight;
-      const id = '#' + s.id;
-      if(y >= top && y < top + h){
-        document.querySelectorAll('nav a').forEach(a=> a.style.background='');
-        const active = document.querySelector('nav a[href="'+id+'"]');
-        if(active) active.style.background='rgba(255,255,255,0.08)';
-      }
-    });
-  });
+    <!-- 5. REAL STORIES, HAPPY GUESTS -->
+    <section class="w-full py-12 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="text-sm font-bold uppercase tracking-[0.15em] text-gray-800 mb-5">What Our Guests Say</p>
+          <h2 class="text-4xl md:text-5xl text-black mb-6">Real Stories, Happy Guests</h2>
+          <p class="text-sm md:text-base text-gray-700 max-w-2xl mx-auto leading-relaxed">Hear from our guests who have experienced the comfort, warmth, and tranquility of their stay with us.</p>
+        </div>
 
-  // image modal
-  const modal = document.getElementById('imgModal');
-  const modalImg = document.getElementById('modalImg');
-  const closeModal = document.getElementById('closeModal');
-  document.querySelectorAll('img[data-large]').forEach(img=>{
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', ()=>{
-      modalImg.src = img.dataset.large || img.src;
-      modal.classList.add('show');
-      modal.setAttribute('aria-hidden','false');
-    });
-  });
-  closeModal.addEventListener('click', ()=>{
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
-    modalImg.src = '';
-  });
-  modal.addEventListener('click', (e)=>{
-    if(e.target === modal) { closeModal.click(); }
-  });
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div class="border border-black/20 rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center justify-center text-center bg-[#ddddc9]">
+            <p class="text-[15px] font-medium text-gray-900 leading-relaxed mb-8 font-serif">"Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay."</p>
+            <p class="text-sm text-gray-600 font-medium"><span class="text-black">Sarah Mitchell</span> &mdash; United Kingdom</p>
+          </div>
+          <div class="border border-black/20 rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center justify-center text-center bg-[#ddddc9]">
+            <p class="text-[15px] font-medium text-gray-900 leading-relaxed mb-8 font-serif">"The room was beautiful, clean, and incredibly comfortable. Would definitely return."</p>
+            <p class="text-sm text-gray-600 font-medium"><span class="text-black">Daniel & Emma Carter</span> &mdash; Australia</p>
+          </div>
+          <div class="border border-black/20 rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center justify-center text-center bg-[#ddddc9]">
+            <p class="text-[15px] font-medium text-gray-900 leading-relaxed mb-8 font-serif">"A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared."</p>
+            <p class="text-sm text-gray-600 font-medium"><span class="text-black">Michael Tan</span> &mdash; Singapore</p>
+          </div>
+        </div>
 
-  // enable keyboard escape to close
-  document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeModal.click(); });
-</script>
+        <div class="text-center mt-4">
+          <a href="book-now.html" class="inline-block text-xs md:text-sm font-medium text-gray-700 hover:text-black underline underline-offset-4 transition-colors">
+            Reserve Your Experience &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="layout.js"></script>
 </body>
 </html>
