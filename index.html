@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#212622">
+    <meta id="themeColorMeta" name="theme-color" content="#191c1a">
     <title>Bali Serenity — Boutique Hotel & Resort</title>
     <meta name="description" content="Experience the quiet harmony of tropical gardens, warm teak interiors, and true Balinese hospitality in Nusa Dua, Bali.">
 
@@ -50,7 +50,7 @@
         }
 
         html {
-            background-color: #212622;
+            background-color: #191c1a;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -94,10 +94,10 @@
 
         /* Smoked Frosted Glass Header over Bright Hero -> Warm Limestone Glass on Scroll */
         .app-header {
-            background: linear-gradient(180deg, rgba(18, 20, 18, 0.54) 0%, rgba(18, 20, 18, 0.28) 100%);
-            backdrop-filter: blur(18px) saturate(160%);
-            -webkit-backdrop-filter: blur(18px) saturate(160%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(25, 28, 26, 0.72);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.14);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
             color: #ffffff;
             padding-top: max(12px, env(safe-area-inset-top));
@@ -108,14 +108,14 @@
         }
         .app-header .header-sub { color: rgba(255, 255, 255, 0.88); transition: color 0.32s ease; }
         .app-header .header-logo-badge {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.42);
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.38);
             color: #ffffff;
             transition: all 0.32s ease;
         }
         .app-header .header-cta {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.42);
             color: #ffffff;
             backdrop-filter: blur(8px);
             transition: all 0.32s ease;
@@ -123,7 +123,7 @@
 
         /* Scrolled or Light-Background Header State */
         .app-header.scrolled {
-            background: rgba(239, 238, 230, 0.9);
+            background: rgba(239, 238, 230, 0.94);
             backdrop-filter: blur(20px) saturate(155%);
             -webkit-backdrop-filter: blur(20px) saturate(155%);
             border-bottom: 1px solid rgba(36, 35, 32, 0.1);
@@ -142,7 +142,7 @@
             color: #f7f6f0;
         }
 
-        /* Liquid Glass Floating Bottom Dock (No White Top Border Line + Sliding Pill) */
+        /* Liquid Glass Floating Bottom Dock (Sliding Pill + Circle Morph) */
         .liquid-glass-dock {
             position: fixed;
             bottom: max(12px, env(safe-area-inset-bottom));
@@ -152,7 +152,7 @@
             height: 62px;
             padding: 6px;
             border-radius: 9999px;
-            background: rgba(247, 246, 240, 0.78);
+            background: rgba(247, 246, 240, 0.82);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: 1px solid rgba(36, 35, 32, 0.09);
@@ -512,46 +512,58 @@
         <!-- EXPLORE MAIN CONTENT -->
         <div class="pt-10 sm:pt-16 pb-14 space-y-14 sm:space-y-20">
 
-            <!-- Interactive Facilities Strip -->
-            <section class="reveal-up is-visible max-w-6xl mx-auto px-3 sm:px-6">
-                <div class="px-1 flex flex-col md:flex-row md:items-end justify-between gap-2 mb-5">
+            <!-- Stacked Multi-Row Facilities Grid (No Horizontal Scroll, No Info Box) -->
+            <section class="reveal-up is-visible max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-5">
                     <div>
                         <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Curated Comforts</span>
                         <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">Everything You Need <span class="italic">to Unwind</span></h2>
                     </div>
-                    <p class="text-xs text-inkMuted max-w-sm font-light">Tap any facility below to see hours and guest privileges.</p>
+                    <p class="text-xs text-inkMuted max-w-sm font-light">Thoughtful resort amenities prepared for every moment of your stay.</p>
                 </div>
 
-                <div class="-mx-3 px-4 md:mx-0 md:px-0 flex md:grid md:grid-cols-6 overflow-x-auto no-scrollbar gap-2.5 pb-1">
-                    <button type="button" data-info="Complimentary fiber Wi-Fi across all suites, pools, and garden lounges." class="facility-chip active tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-ink text-stoneLight border border-ink text-left">
-                        <i class="fa-solid fa-wifi text-xs"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Free Wi-Fi</span>
-                    </button>
-                    <button type="button" data-info="All-day Balinese & coastal dining served from 07:00 to 23:00." class="facility-chip tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-stoneCard border border-stoneBorder text-ink text-left">
-                        <i class="fa-solid fa-utensils text-xs text-inkMuted"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Restaurant</span>
-                    </button>
-                    <button type="button" data-info="Main infinity pool & sun deck open daily 06:00 – 22:00 with towel service." class="facility-chip tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-stoneCard border border-stoneBorder text-ink text-left">
-                        <i class="fa-solid fa-water-ladder text-xs text-inkMuted"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Swimming Pool</span>
-                    </button>
-                    <button type="button" data-info="Traditional Balinese massage & herbal flower baths (09:00 – 21:00)." class="facility-chip tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-stoneCard border border-stoneBorder text-ink text-left">
-                        <i class="fa-solid fa-spa text-xs text-inkMuted"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Spa & Wellness</span>
-                    </button>
-                    <button type="button" data-info="24-hour garden-view studio with cardio & free weights." class="facility-chip tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-stoneCard border border-stoneBorder text-ink text-left">
-                        <i class="fa-solid fa-dumbbell text-xs text-inkMuted"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Fitness Center</span>
-                    </button>
-                    <button type="button" data-info="Private chauffeur transfer from Ngurah Rai Airport (25 mins away)." class="facility-chip tap-react ripple-box ripple-box-dark shrink-0 flex items-center gap-2.5 px-4 py-3 rounded-2xl bg-stoneCard border border-stoneBorder text-ink text-left">
-                        <i class="fa-solid fa-van-shuttle text-xs text-inkMuted"></i>
-                        <span class="text-xs font-medium whitespace-nowrap">Airport Shuttle</span>
-                    </button>
-                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-wifi text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Free Wi-Fi</span>
+                    </div>
 
-                <div class="mx-1 md:mx-0 mt-3 px-4 py-3 rounded-2xl bg-stoneLight/70 border border-stoneBorder/70 flex items-center gap-3 text-xs text-inkMuted transition-all">
-                    <i class="fa-solid fa-circle-info text-ink text-xs"></i>
-                    <span id="facilityDetailText">Complimentary fiber Wi-Fi across all suites, pools, and garden lounges.</span>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-utensils text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Restaurant</span>
+                    </div>
+
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-water-ladder text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Swimming Pool</span>
+                    </div>
+
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-spa text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Spa & Wellness</span>
+                    </div>
+
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-dumbbell text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Fitness Center</span>
+                    </div>
+
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-van-shuttle text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Airport Shuttle</span>
+                    </div>
                 </div>
             </section>
 
@@ -1366,28 +1378,43 @@
     </div>
 
     <!-- ===================================================================== -->
-    <!-- SHARED SHARP FULL-BLEED FOOTER (Extends into Safari Bottom Safe Area) -->
+    <!-- SHARED COMPACT & REFINED FULL-BLEED FOOTER                            -->
     <!-- ===================================================================== -->
-    <footer class="site-footer bg-forest text-[#d4d7d2] pt-10 px-5 sm:px-8 w-full">
-        <div class="max-w-6xl mx-auto space-y-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
-                <div class="lg:col-span-5 space-y-4">
-                    <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react block relative h-36 sm:h-44 rounded-2xl overflow-hidden border border-white/10 group">
-                        <img src="https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w1000" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-85">
-                        <span class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-[11px] text-white border border-white/15">
-                            <i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i> Nusa Dua Selatan, Bali
+    <footer class="site-footer bg-forest text-[#d4d7d2] pt-9 px-5 sm:px-8 w-full">
+        <div class="max-w-6xl mx-auto space-y-7">
+            
+            <!-- Top Row: Brand Identity on Left + Compact Interactive Map on Right -->
+            <div class="flex items-center justify-between gap-4 pb-6 border-b border-white/10">
+                <div class="space-y-2 min-w-0">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-9 h-9 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-spa text-sm text-white"></i>
                         </span>
-                    </a>
-
-                    <div class="flex items-center gap-3 pt-1">
-                        <i class="fa-solid fa-spa text-xl text-white"></i>
                         <div>
-                            <h2 class="font-serif text-xl tracking-wider text-white leading-none">BALI SERENITY</h2>
+                            <h2 class="font-serif text-lg sm:text-xl tracking-wider text-white leading-none">BALI SERENITY</h2>
                             <p class="text-[9px] tracking-[0.25em] uppercase text-[#d4d7d2]/60 mt-1">Hotel & Resort</p>
                         </div>
                     </div>
+                    <p class="text-[11px] text-[#d4d7d2]/70 font-light leading-relaxed max-w-xs">
+                        Nusa Dua Selatan, Bali 80363 • 25 mins from Ngurah Rai Airport
+                    </p>
+                </div>
 
+                <!-- Compact Map Thumbnail Card -->
+                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
+                    <img src="https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+                    <span class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10px] text-white font-medium">
+                        <span class="truncate"><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i>Nusa Dua</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[8px] opacity-80"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Middle Grid: Quick Contact Actions + Navigation Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+                <div class="lg:col-span-4 space-y-3">
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-white/75 block">24/7 Concierge Desk</span>
                     <div class="grid grid-cols-2 gap-2.5">
                         <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box flex items-center justify-center gap-2 bg-[#f0f2ef] text-forest text-xs font-medium py-3 rounded-xl">
                             <i class="fa-brands fa-whatsapp text-sm text-green-700"></i>
@@ -1400,8 +1427,8 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs">
-                    <div class="space-y-2.5">
+                <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs">
+                    <div class="space-y-2">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Explore</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
                             <li><button type="button" onclick="navigateApp('explore')" class="hover:text-white transition">Sanctuaries & Rooms</button></li>
@@ -1411,7 +1438,7 @@
                         </ul>
                     </div>
 
-                    <div class="space-y-2.5">
+                    <div class="space-y-2">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Guest Services</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
                             <li><button type="button" onclick="navigateApp('book')" class="hover:text-white transition">Direct Booking</button></li>
@@ -1421,18 +1448,19 @@
                         </ul>
                     </div>
 
-                    <div class="space-y-2.5 col-span-2 sm:col-span-1">
+                    <div class="space-y-2 col-span-2 sm:col-span-1">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Reach Us</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
                             <li><a href="tel:02180962469" class="hover:text-white transition">(021) 8096 2469</a></li>
                             <li class="break-all">support@baliserenity.com</li>
-                            <li class="text-[#d4d7d2]/60 pt-1">Nusa Dua Selatan, Bali 80363, Indonesia</li>
+                            <li class="text-[#d4d7d2]/60">Daily Check-in 14:00 WITA</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <!-- Bottom Legal & Social Row -->
+            <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p class="text-[11px] text-[#d4d7d2]/60">&copy; 2026 Bali Serenity Hotel & Resort. All rights reserved.</p>
                 <div class="flex items-center gap-2.5">
                     <a href="#" aria-label="Instagram" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
@@ -1987,16 +2015,24 @@
         }
 
         // =====================================================================
-        // DYNAMIC GLASS HEADER, DOCK MORPH & PARALLAX ON SCROLL
+        // DYNAMIC GLASS HEADER, SAFARI STATUS BAR COLOR & DOCK MORPH
         // =====================================================================
         const topHeader = document.getElementById('topHeader');
         const heroImg = document.getElementById('heroParallaxImg');
+        const themeColorMeta = document.getElementById('themeColorMeta');
+
+        function setTopChromeTheme(isLight) {
+            const color = isLight ? '#efeee6' : '#191c1a';
+            if (themeColorMeta && themeColorMeta.getAttribute('content') !== color) {
+                themeColorMeta.setAttribute('content', color);
+            }
+            document.documentElement.style.backgroundColor = color;
+        }
 
         function handleScrollEffects() {
             const currentY = window.scrollY;
             const deltaY = currentY - lastScrollY;
 
-            // Morph bottom navbar into a circle on the right edge when scrolling down
             if (currentY > 110 && deltaY > 6) {
                 collapseBottomDock();
             } else if (deltaY < -10 || currentY <= 60) {
@@ -2013,6 +2049,7 @@
         function updateHeaderGlassState() {
             if (currentAppView === 'book') {
                 topHeader.classList.add('scrolled');
+                setTopChromeTheme(true);
                 return;
             }
             const activeContainer = document.getElementById(`view-${currentAppView}`);
@@ -2021,8 +2058,10 @@
 
             if (window.scrollY > threshold) {
                 topHeader.classList.add('scrolled');
+                setTopChromeTheme(true);
             } else {
                 topHeader.classList.remove('scrolled');
+                setTopChromeTheme(false);
             }
 
             if (currentAppView === 'explore' && heroImg && window.scrollY < 800) {
@@ -2059,32 +2098,8 @@
         });
 
         // =====================================================================
-        // EXPLORE VIEW: FACILITIES, CAROUSELS & CROSS-PLATFORM INFINITE MARQUEE
+        // EXPLORE VIEW: CAROUSELS & CROSS-PLATFORM INFINITE MARQUEE
         // =====================================================================
-        const facilityChips = document.querySelectorAll('.facility-chip');
-        const facilityText = document.getElementById('facilityDetailText');
-
-        facilityChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                facilityChips.forEach(c => {
-                    c.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
-                    c.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
-                    const icon = c.querySelector('i');
-                    if (icon) icon.classList.add('text-inkMuted');
-                });
-                chip.classList.remove('bg-stoneCard', 'text-ink', 'border-stoneBorder');
-                chip.classList.add('bg-ink', 'text-stoneLight', 'border-ink');
-                const activeIcon = chip.querySelector('i');
-                if (activeIcon) activeIcon.classList.remove('text-inkMuted');
-
-                facilityText.style.opacity = '0.3';
-                setTimeout(() => {
-                    facilityText.textContent = chip.getAttribute('data-info');
-                    facilityText.style.opacity = '1';
-                }, 120);
-            });
-        });
-
         function initCarouselSync(carouselId, slideSelector, dotSelector, prevBtnId, nextBtnId, leftPad = 16) {
             const carousel = document.getElementById(carouselId);
             const slides = document.querySelectorAll(slideSelector);
