@@ -2,10 +2,10 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#e2e1d0">
+    <meta name="theme-color" content="#212622">
     <title>Bali Serenity — Boutique Hotel & Resort</title>
     <meta name="description" content="Experience the quiet harmony of tropical gardens, warm teak interiors, and true Balinese hospitality in Nusa Dua, Bali.">
 
@@ -49,14 +49,24 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html {
+            background-color: #212622;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        body {
             background-color: #e2e1d0;
             color: #242320;
             font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
             padding: 0;
             width: 100%;
-            overflow-x: hidden;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: clip;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -70,14 +80,27 @@
             scrollbar-width: none;
         }
 
+        /* Fix iOS Safari Native Date & Select Overflow */
+        input[type="date"],
+        select {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            display: block;
+            box-sizing: border-box;
+        }
+
         /* Smoked Frosted Glass Header over Bright Hero -> Warm Limestone Glass on Scroll */
         .app-header {
             background: linear-gradient(180deg, rgba(18, 20, 18, 0.54) 0%, rgba(18, 20, 18, 0.28) 100%);
             backdrop-filter: blur(18px) saturate(160%);
             -webkit-backdrop-filter: blur(18px) saturate(160%);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.16);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.14);
             color: #ffffff;
+            padding-top: max(12px, env(safe-area-inset-top));
             transition: background 0.38s cubic-bezier(0.22, 1, 0.36, 1),
                         border-color 0.38s ease,
                         box-shadow 0.38s ease,
@@ -100,10 +123,10 @@
 
         /* Scrolled or Light-Background Header State */
         .app-header.scrolled {
-            background: rgba(239, 238, 230, 0.88);
+            background: rgba(239, 238, 230, 0.9);
             backdrop-filter: blur(20px) saturate(155%);
             -webkit-backdrop-filter: blur(20px) saturate(155%);
-            border-bottom: 1px solid rgba(36, 35, 32, 0.12);
+            border-bottom: 1px solid rgba(36, 35, 32, 0.1);
             box-shadow: 0 8px 28px rgba(36, 35, 32, 0.08);
             color: #242320;
         }
@@ -119,29 +142,21 @@
             color: #f7f6f0;
         }
 
-        /* Liquid Glass Floating Bottom Dock + Scroll-to-Right-Circle Morph */
+        /* Liquid Glass Floating Bottom Dock (No White Top Border Line + Sliding Pill) */
         .liquid-glass-dock {
             position: fixed;
-            bottom: 14px;
+            bottom: max(12px, env(safe-area-inset-bottom));
             right: 12px;
             width: calc(100vw - 24px);
             max-width: 560px;
             height: 62px;
             padding: 6px;
             border-radius: 9999px;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.56) 0%,
-                rgba(247, 246, 240, 0.36) 50%,
-                rgba(255, 255, 255, 0.48) 100%
-            );
-            backdrop-filter: blur(24px) saturate(185%);
-            -webkit-backdrop-filter: blur(24px) saturate(185%);
-            border: 1px solid rgba(255, 255, 255, 0.72);
-            box-shadow:
-                0 14px 34px rgba(24, 24, 20, 0.18),
-                inset 0 1.5px 1px rgba(255, 255, 255, 0.88),
-                inset 0 -1px 1px rgba(36, 35, 32, 0.08);
+            background: rgba(247, 246, 240, 0.78);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(36, 35, 32, 0.09);
+            box-shadow: 0 12px 32px rgba(24, 24, 20, 0.16);
             transition:
                 width 0.46s cubic-bezier(0.22, 1, 0.36, 1),
                 height 0.46s cubic-bezier(0.22, 1, 0.36, 1),
@@ -154,6 +169,7 @@
         }
 
         .liquid-glass-dock .dock-items-wrap {
+            position: relative;
             width: 100%;
             height: 100%;
             display: flex;
@@ -163,6 +179,22 @@
             opacity: 1;
             transform: scale(1);
             transition: opacity 0.24s ease 0.12s, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Sliding Active Tab Pill Indicator */
+        .dock-sliding-pill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 9999px;
+            background-color: #242320;
+            box-shadow: 0 4px 14px rgba(36, 35, 32, 0.24);
+            transition:
+                transform 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+                width 0.44s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .liquid-glass-dock .dock-circle-trigger {
@@ -185,13 +217,11 @@
             width: 54px;
             height: 54px;
             right: 16px;
-            bottom: 18px;
+            bottom: max(16px, env(safe-area-inset-bottom));
             padding: 0;
-            background: rgba(36, 35, 32, 0.86);
-            border: 1px solid rgba(255, 255, 255, 0.32);
-            box-shadow:
-                0 12px 28px rgba(24, 24, 20, 0.28),
-                inset 0 1px 1px rgba(255, 255, 255, 0.35);
+            background: rgba(36, 35, 32, 0.88);
+            border: 1px solid rgba(36, 35, 32, 0.2);
+            box-shadow: 0 12px 28px rgba(24, 24, 20, 0.28);
             cursor: pointer;
         }
 
@@ -207,6 +237,51 @@
             transform: scale(1) rotate(0deg);
             pointer-events: auto;
             transition: opacity 0.28s ease 0.14s, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+        }
+
+        /* Nav Tab States & Page Switch Icon Animation */
+        .nav-tab {
+            position: relative;
+            z-index: 1;
+            color: rgba(36, 35, 32, 0.78);
+            background-color: transparent;
+            transition: color 0.3s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-tab.active {
+            color: #f7f6f0;
+        }
+        .nav-tab.active i {
+            animation: navIconBounce 0.46s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes navIconBounce {
+            0% { transform: scale(0.8) translateY(2px); }
+            55% { transform: scale(1.22) translateY(-2px); }
+            100% { transform: scale(1) translateY(0); }
+        }
+
+        /* Desktop Nav Animated Underline */
+        .desktop-nav-btn {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .desktop-nav-btn::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .desktop-nav-btn.active {
+            font-weight: 600;
+        }
+        .desktop-nav-btn.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         /* Guaranteed Strong Card Gradient Scrims for Legible White Text */
@@ -240,6 +315,7 @@
 
         /* SPA View Transition */
         .app-view {
+            flex: 1 0 auto;
             animation: viewEnter 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .app-view.hidden {
@@ -327,24 +403,6 @@
             transform: scale(1.04);
         }
 
-        /* Uniform Nav Tab States */
-        .nav-tab {
-            color: rgba(36, 35, 32, 0.8);
-            background-color: transparent;
-            transition: background-color 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
-        }
-        .nav-tab.active {
-            background-color: #242320;
-            color: #f7f6f0;
-            box-shadow: 0 4px 12px rgba(36, 35, 32, 0.22);
-        }
-
-        .desktop-nav-btn.active {
-            text-decoration: underline;
-            text-underline-offset: 6px;
-            font-weight: 600;
-        }
-
         /* Booking Room Option Card */
         .room-card-opt.selected {
             border-color: #242320;
@@ -363,12 +421,23 @@
         .marquee-viewport:active {
             cursor: grabbing;
         }
+
+        /* Full-Bleed Footer Extending Into iOS Safari Bottom Safe Area */
+        .site-footer {
+            margin-top: auto;
+            padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
+        }
+        @media (min-width: 768px) {
+            .site-footer {
+                padding-bottom: 3rem;
+            }
+        }
     </style>
 </head>
-<body class="pb-24 md:pb-0">
+<body>
 
     <!-- FIXED GLASS TOP APP HEADER -->
-    <header id="topHeader" class="app-header fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3">
+    <header id="topHeader" class="app-header fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 pb-3">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <button type="button" onclick="navigateApp('explore')" class="flex items-center gap-2.5 tap-react text-left">
                 <span class="header-logo-badge w-8 h-8 rounded-full flex items-center justify-center text-xs">
@@ -441,7 +510,7 @@
         </section>
 
         <!-- EXPLORE MAIN CONTENT -->
-        <div class="pt-10 sm:pt-16 space-y-14 sm:space-y-20">
+        <div class="pt-10 sm:pt-16 pb-14 space-y-14 sm:space-y-20">
 
             <!-- Interactive Facilities Strip -->
             <section class="reveal-up is-visible max-w-6xl mx-auto px-3 sm:px-6">
@@ -826,7 +895,7 @@
             </div>
         </section>
 
-        <main class="max-w-6xl mx-auto px-3 sm:px-6 pt-8 sm:pt-12 space-y-8">
+        <main class="max-w-6xl mx-auto px-3 sm:px-6 pt-8 sm:pt-12 pb-14 space-y-8">
             <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2">
                 <button type="button" onclick="filterOffers('all', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">All Privileges</button>
                 <button type="button" onclick="filterOffers('stay', this)" class="filter-chip tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Extended Stay</button>
@@ -952,7 +1021,7 @@
             </div>
         </section>
 
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-9 sm:pt-14 space-y-10">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-9 sm:pt-14 pb-14 space-y-10">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Healing Rituals</span>
@@ -1059,7 +1128,7 @@
             </div>
         </section>
 
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 space-y-8">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-14 space-y-8">
             <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2">
                 <button type="button" onclick="switchMenu('tasting', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">Sunset Tasting</button>
                 <button type="button" onclick="switchMenu('coastal', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">All-Day Mains</button>
@@ -1067,7 +1136,7 @@
                 <button type="button" onclick="switchMenu('drinks', this)" class="menu-tab tap-react ripple-box ripple-box-dark shrink-0 px-4 py-2.5 rounded-full bg-stoneCard text-ink text-xs font-medium border border-stoneBorder">Botanical Bar</button>
             </div>
 
-            <div id="menuContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            <div id="menuContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
 
             <div class="bg-stoneCard border border-stoneBorder rounded-[26px] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
@@ -1087,7 +1156,7 @@
     <!-- VIEW 5: DIRECT RESERVATION (BOOK NOW)                                 -->
     <!-- ===================================================================== -->
     <div id="view-book" class="app-view hidden">
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-10">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-14">
             
             <div class="mb-7 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
                 <div>
@@ -1106,7 +1175,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                 
                 <!-- Left Steps -->
-                <div class="lg:col-span-7 space-y-7">
+                <div class="lg:col-span-7 space-y-7 min-w-0">
                     <section class="space-y-3">
                         <div class="flex items-center justify-between">
                             <h2 class="font-serif text-2xl text-ink">1. Choose Your Sanctuary</h2>
@@ -1167,25 +1236,28 @@
                         </div>
                     </section>
 
-                    <section class="bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 space-y-4">
+                    <section class="bg-stoneCard border border-stoneBorder rounded-[24px] p-4 sm:p-6 space-y-4 overflow-hidden">
                         <h2 class="font-serif text-2xl text-ink">2. Dates & Party Size</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Check-in Date</label>
-                                <input type="date" id="checkInInput" onchange="recalculateTotal()" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
+                                <input type="date" id="checkInInput" onchange="recalculateTotal()" class="w-full max-w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium text-center sm:text-left focus:outline-none">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Check-out Date</label>
-                                <input type="date" id="checkOutInput" onchange="recalculateTotal()" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
+                                <input type="date" id="checkOutInput" onchange="recalculateTotal()" class="w-full max-w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium text-center sm:text-left focus:outline-none">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Guests</label>
-                                <select id="guestsInput" onchange="recalculateTotal()" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
-                                    <option value="1 Adult">1 Adult</option>
-                                    <option value="2 Adults" selected>2 Adults</option>
-                                    <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
-                                    <option value="4 Guests">4 Guests</option>
-                                </select>
+                                <div class="relative">
+                                    <select id="guestsInput" onchange="recalculateTotal()" class="w-full max-w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 pr-8 text-ink font-medium focus:outline-none">
+                                        <option value="1 Adult">1 Adult</option>
+                                        <option value="2 Adults" selected>2 Adults</option>
+                                        <option value="2 Adults, 1 Child">2 Adults, 1 Child</option>
+                                        <option value="4 Guests">4 Guests</option>
+                                    </select>
+                                    <i class="fa-solid fa-chevron-down text-[10px] text-inkMuted absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                                </div>
                             </div>
                         </div>
 
@@ -1210,24 +1282,24 @@
                         </div>
                     </section>
 
-                    <section class="bg-stoneCard border border-stoneBorder rounded-[24px] p-5 sm:p-6 space-y-4">
+                    <section class="bg-stoneCard border border-stoneBorder rounded-[24px] p-4 sm:p-6 space-y-4 overflow-hidden">
                         <h2 class="font-serif text-2xl text-ink">3. Guest Details</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Full Name *</label>
-                                <input type="text" id="guestName" placeholder="e.g. Sarah Mitchell" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
+                                <input type="text" id="guestName" placeholder="e.g. Sarah Mitchell" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Email Address *</label>
-                                <input type="email" id="guestEmail" placeholder="name@example.com" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
+                                <input type="email" id="guestEmail" placeholder="name@example.com" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">WhatsApp / Phone *</label>
-                                <input type="tel" id="guestPhone" placeholder="+62 812 3456 7890" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
+                                <input type="tel" id="guestPhone" placeholder="+62 812 3456 7890" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
                             </div>
-                            <div>
+                            <div class="min-w-0">
                                 <label class="block text-inkMuted mb-1.5 font-medium">Arrival Flight / Notes</label>
-                                <input type="text" id="guestNotes" placeholder="Late check-in, dietary notes..." class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
+                                <input type="text" id="guestNotes" placeholder="Late check-in, dietary notes..." class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink focus:outline-none">
                             </div>
                         </div>
                     </section>
@@ -1294,9 +1366,9 @@
     </div>
 
     <!-- ===================================================================== -->
-    <!-- SHARED SHARP FULL-BLEED FOOTER (No Corner Radius)                     -->
+    <!-- SHARED SHARP FULL-BLEED FOOTER (Extends into Safari Bottom Safe Area) -->
     <!-- ===================================================================== -->
-    <footer class="mt-14 bg-forest text-[#d4d7d2] pt-10 pb-28 md:pb-12 px-5 sm:px-8 w-full">
+    <footer class="site-footer bg-forest text-[#d4d7d2] pt-10 px-5 sm:px-8 w-full">
         <div class="max-w-6xl mx-auto space-y-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 
@@ -1378,7 +1450,7 @@
     </footer>
 
     <!-- ===================================================================== -->
-    <!-- LIQUID GLASS FLOATING BOTTOM NAVIGATION (Morphs to Right Circle)      -->
+    <!-- LIQUID GLASS FLOATING BOTTOM NAVIGATION (Sliding Pill + Circle Morph) -->
     <!-- ===================================================================== -->
     <nav id="bottomDock" class="liquid-glass-dock md:hidden z-40">
         <!-- Collapsed Right-Edge Circular Button -->
@@ -1386,8 +1458,10 @@
             <i id="dockActiveIcon" class="fa-solid fa-compass text-base"></i>
         </button>
 
-        <!-- Full 5-Tab Pill Content -->
-        <div class="dock-items-wrap">
+        <!-- Full 5-Tab Pill Content with Smooth Sliding Active Indicator -->
+        <div id="dockItemsWrap" class="dock-items-wrap">
+            <div id="dockActivePill" class="dock-sliding-pill"></div>
+
             <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="nav-tab active tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-compass text-xs"></i>
                 <span>Explore</span>
@@ -1501,11 +1575,11 @@
             <div class="space-y-3 text-xs">
                 <div>
                     <label class="block text-inkMuted mb-1 font-medium">Preferred Date</label>
-                    <input type="date" id="spaDate" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
+                    <input type="date" id="spaDate" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
                 </div>
                 <div>
                     <label class="block text-inkMuted mb-1 font-medium">Preferred Time</label>
-                    <select id="spaTime" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
+                    <select id="spaTime" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
                         <option>10:00 AM — Morning Calm</option>
                         <option>02:00 PM — Afternoon Restore</option>
                         <option selected>05:00 PM — Sunset Ritual</option>
@@ -1514,7 +1588,7 @@
                 </div>
                 <div>
                     <label class="block text-inkMuted mb-1 font-medium">Guest Name / Room Number</label>
-                    <input type="text" id="spaGuest" placeholder="e.g. Room 104 / Emma" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
+                    <input type="text" id="spaGuest" placeholder="e.g. Room 104 / Emma" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
                 </div>
             </div>
             <a id="spaConfirmWa" href="https://wa.me/" target="_blank" rel="noopener" onclick="updateSpaWaLink()" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
@@ -1538,13 +1612,13 @@
             </div>
             <div class="space-y-3 text-xs">
                 <div class="grid grid-cols-2 gap-2.5">
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-inkMuted mb-1 font-medium">Date</label>
-                        <input type="date" id="tableDate" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3 py-2.5 text-ink focus:outline-none">
+                        <input type="date" id="tableDate" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3 py-2.5 text-ink focus:outline-none">
                     </div>
-                    <div>
+                    <div class="min-w-0">
                         <label class="block text-inkMuted mb-1 font-medium">Time</label>
-                        <select id="tableTime" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3 py-2.5 text-ink font-medium focus:outline-none">
+                        <select id="tableTime" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3 py-2.5 text-ink font-medium focus:outline-none">
                             <option>08:30 AM (Breakfast)</option>
                             <option>01:00 PM (Lunch)</option>
                             <option selected>06:00 PM (Sunset)</option>
@@ -1554,7 +1628,7 @@
                 </div>
                 <div>
                     <label class="block text-inkMuted mb-1 font-medium">Seating Preference</label>
-                    <select id="tableArea" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
+                    <select id="tableArea" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-3 text-ink font-medium focus:outline-none">
                         <option>Infinity Poolside Deck</option>
                         <option>Candlelit Garden Pavilion</option>
                         <option>Open-Air Teak Dining Room</option>
@@ -1562,7 +1636,7 @@
                 </div>
                 <div>
                     <label class="block text-inkMuted mb-1 font-medium">Guest Name & Party Size</label>
-                    <input type="text" id="tableGuest" placeholder="e.g. Daniel Carter • 2 Guests" class="w-full bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
+                    <input type="text" id="tableGuest" placeholder="e.g. Daniel Carter • 2 Guests" class="w-full min-w-0 bg-stoneLight border border-stoneBorder rounded-xl px-3.5 py-2.5 text-ink focus:outline-none">
                 </div>
             </div>
             <a id="tableWaBtn" href="https://wa.me/" target="_blank" rel="noopener" onclick="prepareTableWa()" class="tap-react ripple-box w-full bg-accentBtn text-stoneLight text-xs sm:text-sm font-medium py-3.5 rounded-full flex items-center justify-center gap-2 shadow-md">
@@ -1658,28 +1732,124 @@
 
         const MENUS = {
             tasting: [
-                { tag: 'Course I • Amuse', name: 'Jimbaran Scallop Crudo', price: '$18', desc: 'Wild-caught Lombok scallop cured in kaffir lime, torch ginger flower, and cold-pressed coconut dressing.' },
-                { tag: 'Course II • Warm', name: 'Lemongrass Smoked Duck Broth', price: '$16', desc: 'Clear aromatic Balinese consommé with shredded heritage duck, charred shallots, and baby bok choy.' },
-                { tag: 'Course III • Main', name: 'Charcoal-Grilled Red Snapper', price: '$29', desc: 'Basted in turmeric-lemongrass paste over coconut husks, served with sambal matah and heirloom red rice.' },
-                { tag: 'Course IV • Sweet', name: 'Black Rice & Palm Sugar Brulee', price: '$14', desc: 'Caramelized Balinese injin pudding topped with toasted coconut flakes and vanilla bean gelato.' }
+                {
+                    tag: 'Course I • Amuse',
+                    name: 'Jimbaran Scallop Crudo',
+                    price: '$18',
+                    img: 'https://images.unsplash.com/photo-1535140728325-a4d3707eee61?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Wild-caught Lombok scallop cured in kaffir lime, torch ginger flower, and coconut dressing.'
+                },
+                {
+                    tag: 'Course II • Warm',
+                    name: 'Lemongrass Duck Broth',
+                    price: '$16',
+                    img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Clear aromatic Balinese consommé with shredded heritage duck, charred shallots, and bok choy.'
+                },
+                {
+                    tag: 'Course III • Main',
+                    name: 'Charcoal Red Snapper',
+                    price: '$29',
+                    img: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Basted in turmeric-lemongrass paste over coconut husks, served with sambal matah and red rice.'
+                },
+                {
+                    tag: 'Course IV • Sweet',
+                    name: 'Black Rice Brulee',
+                    price: '$14',
+                    img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Caramelized Balinese injin pudding topped with toasted coconut flakes and vanilla bean gelato.'
+                }
             ],
             coastal: [
-                { tag: 'Signature', name: 'Bebek Betutu Slow Roast', price: '$26', desc: '12-hour banana-leaf braised organic duck with traditional bumbu genep, lawar greens, and sambal embe.' },
-                { tag: 'From the Grill', name: 'Nusa Dua King Prawns', price: '$32', desc: 'Wood-fired jumbo prawns glazed in tamarind-honey butter with charred asparagus and lime.' },
-                { tag: 'Plant-Based', name: 'Bedugul Harvest Bowl', price: '$17', desc: 'Roasted pumpkin, spiced tempeh, avocado, pickled red cabbage, and roasted sesame-ginger emulsion.' },
-                { tag: 'Artisan Pasta', name: 'Hand-Cut Crab Tagliolini', price: '$24', desc: 'Blue swimmer crab tossed with garlic confit, chili flakes, lemon zest, and white wine.' }
+                {
+                    tag: 'Signature',
+                    name: 'Bebek Betutu Slow Roast',
+                    price: '$26',
+                    img: 'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?q=80&w=400&auto=format&fit=crop',
+                    desc: '12-hour banana-leaf braised organic duck with bumbu genep, lawar greens, and sambal embe.'
+                },
+                {
+                    tag: 'From the Grill',
+                    name: 'Nusa Dua King Prawns',
+                    price: '$32',
+                    img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Wood-fired jumbo prawns glazed in tamarind-honey butter with charred asparagus and lime.'
+                },
+                {
+                    tag: 'Plant-Based',
+                    name: 'Bedugul Harvest Bowl',
+                    price: '$17',
+                    img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Roasted pumpkin, spiced tempeh, avocado, pickled red cabbage, and sesame-ginger emulsion.'
+                },
+                {
+                    tag: 'Artisan Pasta',
+                    name: 'Hand-Cut Crab Tagliolini',
+                    price: '$24',
+                    img: 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Blue swimmer crab tossed with garlic confit, chili flakes, lemon zest, and white wine.'
+                }
             ],
             morning: [
-                { tag: '07:00 – 11:00', name: 'Serenity Dragonfruit Bowl', price: '$12', desc: 'Blended red dragonfruit, mango, homemade cashew granola, chia seeds, and wild island honey.' },
-                { tag: '07:00 – 11:00', name: 'Poached Eggs & Smashed Avocado', price: '$15', desc: 'Country sourdough, organic Kintamani eggs, whipped feta, dukkah spice, and cherry tomatoes.' },
-                { tag: '07:00 – 11:00', name: 'Pandan Coconut Pancakes', price: '$13', desc: 'Fluffy pandan-infused stack layered with caramelized banana and warm gula aren syrup.' },
-                { tag: '07:00 – 11:00', name: 'Kintamani Single-Origin Pour Over', price: '$6', desc: 'Light-roasted Arabica beans grown on volcanic slopes, brewed tableside.' }
+                {
+                    tag: '07:00 – 11:00',
+                    name: 'Serenity Dragonfruit Bowl',
+                    price: '$12',
+                    img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Blended red dragonfruit, mango, homemade cashew granola, chia seeds, and wild island honey.'
+                },
+                {
+                    tag: '07:00 – 11:00',
+                    name: 'Poached Eggs & Avocado',
+                    price: '$15',
+                    img: 'https://images.unsplash.com/photo-1525351484163-7529414342d8?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Country sourdough, organic Kintamani eggs, whipped feta, dukkah spice, and cherry tomatoes.'
+                },
+                {
+                    tag: '07:00 – 11:00',
+                    name: 'Pandan Coconut Pancakes',
+                    price: '$13',
+                    img: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Fluffy pandan-infused stack layered with caramelized banana and warm gula aren syrup.'
+                },
+                {
+                    tag: '07:00 – 11:00',
+                    name: 'Kintamani Pour Over',
+                    price: '$6',
+                    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Light-roasted Arabica beans grown on volcanic slopes, brewed tableside.'
+                }
             ],
             drinks: [
-                { tag: 'Botanical Signature', name: 'Uluwatu Sunset Spritz', price: '$14', desc: 'Rosella hibiscus reduction, blood orange, prosecco, and fresh rosemary.' },
-                { tag: 'Botanical Signature', name: 'Smoked Pineapple Mezcalita', price: '$16', desc: 'Charred Bali pineapple, artisanal mezcal, kaffir lime leaf, and sea salt rim.' },
-                { tag: 'Zero-Proof Elixir', name: 'Jamu Kunyit Asam Tonic', price: '$9', desc: 'Fresh turmeric root, tamarind, wild honey, and sparkling mineral water.' },
-                { tag: 'Zero-Proof Elixir', name: 'Cucumber & Basil Cooler', price: '$9', desc: 'Cold-pressed cucumber, sweet Thai basil, yuzu citrus, and elderflower.' }
+                {
+                    tag: 'Botanical Signature',
+                    name: 'Uluwatu Sunset Spritz',
+                    price: '$14',
+                    img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Rosella hibiscus reduction, blood orange, prosecco, and fresh garden rosemary.'
+                },
+                {
+                    tag: 'Botanical Signature',
+                    name: 'Smoked Pineapple Mezcalita',
+                    price: '$16',
+                    img: 'https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Charred Bali pineapple, artisanal mezcal, kaffir lime leaf, and sea salt rim.'
+                },
+                {
+                    tag: 'Zero-Proof Elixir',
+                    name: 'Jamu Kunyit Asam Tonic',
+                    price: '$9',
+                    img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Fresh turmeric root, tamarind, wild honey, and sparkling mineral water.'
+                },
+                {
+                    tag: 'Zero-Proof Elixir',
+                    name: 'Cucumber & Basil Cooler',
+                    price: '$9',
+                    img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=400&auto=format&fit=crop',
+                    desc: 'Cold-pressed cucumber, sweet Thai basil, yuzu citrus, and elderflower.'
+                }
             ]
         };
 
@@ -1707,11 +1877,33 @@
         let currentSpaTreatment = '';
 
         // =====================================================================
-        // BOTTOM DOCK SCROLL MORPH (PILL <-> RIGHT-EDGE CIRCLE)
+        // BOTTOM DOCK SLIDING PILL & SCROLL MORPH (PILL <-> RIGHT-EDGE CIRCLE)
         // =====================================================================
         const bottomDock = document.getElementById('bottomDock');
+        const dockItemsWrap = document.getElementById('dockItemsWrap');
+        const dockActivePill = document.getElementById('dockActivePill');
         let lastScrollY = window.scrollY;
         let dockLockedExpanded = false;
+
+        function positionDockPill(animate = true) {
+            if (!dockItemsWrap || !dockActivePill) return;
+            const activeTab = dockItemsWrap.querySelector(`.nav-tab[data-nav="${currentAppView}"]`);
+            if (!activeTab) return;
+
+            if (!animate) {
+                dockActivePill.style.transition = 'none';
+            }
+            dockActivePill.style.width = `${activeTab.offsetWidth}px`;
+            dockActivePill.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+            if (!animate) {
+                dockActivePill.getBoundingClientRect();
+                dockActivePill.style.transition = '';
+            }
+        }
+
+        if (typeof ResizeObserver !== 'undefined' && dockItemsWrap) {
+            new ResizeObserver(() => positionDockPill(false)).observe(dockItemsWrap);
+        }
 
         function collapseBottomDock() {
             if (!bottomDock || dockLockedExpanded) return;
@@ -1722,6 +1914,7 @@
             if (e) e.stopPropagation();
             if (!bottomDock) return;
             bottomDock.classList.remove('dock-collapsed');
+            requestAnimationFrame(() => positionDockPill(true));
             dockLockedExpanded = true;
             setTimeout(() => {
                 dockLockedExpanded = false;
@@ -1752,6 +1945,7 @@
                 dockActiveIcon.className = `${VIEW_ICONS[viewName] || 'fa-solid fa-compass'} text-base`;
             }
             expandBottomDock();
+            requestAnimationFrame(() => positionDockPill(true));
 
             document.getElementById('headerSubtitle').textContent = VIEW_SUBTITLES[viewName];
             const brandIcon = document.getElementById('headerBrandIcon');
@@ -1808,6 +2002,7 @@
             } else if (deltaY < -10 || currentY <= 60) {
                 if (bottomDock && bottomDock.classList.contains('dock-collapsed')) {
                     bottomDock.classList.remove('dock-collapsed');
+                    requestAnimationFrame(() => positionDockPill(true));
                 }
             }
             lastScrollY = currentY;
@@ -1939,7 +2134,6 @@
             const track = document.getElementById('reviewMarqueeTrack');
             if (!viewport || !track) return;
 
-            // Detect real desktop hover capability so iOS touch never triggers sticky mouseenter
             const supportsHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
             let isHoverPaused = false;
@@ -1952,7 +2146,6 @@
 
             function step() {
                 if (!isHoverPaused && !isTouchActive && !isDragging && currentAppView === 'explore') {
-                    // Sub-pixel accumulator ensures iOS Safari integer scrollLeft still advances smoothly
                     virtualScroll += 0.65;
                     const halfWidth = track.scrollWidth / 2;
                     if (halfWidth > 0 && virtualScroll >= halfWidth) {
@@ -2107,7 +2300,7 @@
         }
 
         // =====================================================================
-        // DINING MENU & TABLE SHEET
+        // DINING MENU WITH COMPACT LEFT DISH THUMBNAILS & TABLE SHEET
         // =====================================================================
         function switchMenu(key, btn) {
             if (btn) {
@@ -2120,16 +2313,17 @@
             }
             const items = MENUS[key] || MENUS.tasting;
             document.getElementById('menuContainer').innerHTML = items.map(item => `
-                <div class="tap-react bg-stoneLight/85 border border-stoneBorder rounded-[22px] p-5 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">${item.tag}</span>
-                                <h3 class="font-serif text-2xl text-ink mt-0.5">${item.name}</h3>
+                <div class="tap-react bg-stoneLight/90 border border-stoneBorder rounded-[20px] p-3 sm:p-3.5 flex items-center gap-3.5">
+                    <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-20 h-20 sm:w-[88px] sm:h-[88px] rounded-2xl object-cover shrink-0 bg-stoneCard border border-stoneBorder/50">
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <span class="text-[9px] uppercase tracking-wider text-inkMuted block">${item.tag}</span>
+                                <h3 class="font-serif text-lg sm:text-xl text-ink leading-snug truncate">${item.name}</h3>
                             </div>
-                            <span class="font-serif text-xl font-semibold text-ink shrink-0">${item.price}</span>
+                            <span class="font-serif text-base sm:text-lg font-semibold text-ink shrink-0">${item.price}</span>
                         </div>
-                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">${item.desc}</p>
+                        <p class="text-[11px] text-inkMuted font-light leading-snug line-clamp-2 mt-1">${item.desc}</p>
                     </div>
                 </div>
             `).join('');
@@ -2252,6 +2446,7 @@
                 navigateApp(initialHash, {}, false);
             } else {
                 updateHeaderGlassState();
+                requestAnimationFrame(() => positionDockPill(false));
             }
         })();
 
