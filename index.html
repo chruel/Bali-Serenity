@@ -152,10 +152,10 @@
             height: 62px;
             padding: 6px;
             border-radius: 9999px;
-            background: rgba(247, 246, 240, 0.85);
+            background: rgba(247, 246, 240, 0.82);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(36, 35, 32, 0.1);
+            border: 1px solid rgba(36, 35, 32, 0.09);
             box-shadow: 0 12px 32px rgba(24, 24, 20, 0.16);
             transition:
                 width 0.46s cubic-bezier(0.22, 1, 0.36, 1),
@@ -219,7 +219,7 @@
             right: 16px;
             bottom: max(16px, env(safe-area-inset-bottom));
             padding: 0;
-            background: rgba(36, 35, 32, 0.9);
+            background: rgba(36, 35, 32, 0.88);
             border: 1px solid rgba(36, 35, 32, 0.2);
             box-shadow: 0 12px 28px rgba(24, 24, 20, 0.28);
             cursor: pointer;
@@ -263,7 +263,6 @@
         .desktop-nav-btn {
             position: relative;
             padding-bottom: 4px;
-            transition: opacity 0.25s ease, transform 0.25s ease;
         }
         .desktop-nav-btn::after {
             content: '';
@@ -277,13 +276,12 @@
             transform-origin: right;
             transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .desktop-nav-btn:hover::after,
+        .desktop-nav-btn.active {
+            font-weight: 600;
+        }
         .desktop-nav-btn.active::after {
             transform: scaleX(1);
             transform-origin: left;
-        }
-        .desktop-nav-btn.active {
-            font-weight: 600;
         }
 
         /* Guaranteed Strong Card Gradient Scrims for Legible White Text */
@@ -346,45 +344,17 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Universal Button & Interactive Hover + Spring Click Animations */
-        button,
+        /* Tactile Spring Press Reaction */
         .tap-react {
-            touch-action: manipulation;
-            cursor: pointer;
-            transition:
-                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                background-color 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease,
-                filter 0.25s ease;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
             will-change: transform;
+            cursor: pointer;
+        }
+        .tap-react:active {
+            transform: scale(0.975);
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            .tap-react:hover,
-            .btn-hover:hover {
-                transform: translateY(-2.5px);
-                box-shadow: 0 12px 26px -6px rgba(24, 24, 20, 0.18);
-            }
-            .tap-react:hover i.fa-arrow-right,
-            .btn-hover:hover i.fa-arrow-right {
-                transform: translateX(3px);
-            }
-            .tap-react i.fa-arrow-right,
-            .btn-hover i.fa-arrow-right {
-                transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
-            }
-        }
-
-        button:active,
-        .tap-react:active,
-        .btn-hover:active {
-            transform: translateY(0) scale(0.955) !important;
-            transition-duration: 0.12s !important;
-        }
-
-        /* Touch & Click Ripple Effect */
+        /* Touch Ripple Effect */
         .ripple-box {
             position: relative;
             overflow: hidden;
@@ -393,8 +363,8 @@
             position: absolute;
             border-radius: 50%;
             transform: scale(0);
-            animation: rippleAnim 0.62s cubic-bezier(0.22, 1, 0.36, 1);
-            background: rgba(255, 255, 255, 0.36);
+            animation: rippleAnim 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            background: rgba(255, 255, 255, 0.38);
             pointer-events: none;
         }
         .touch-ripple-dark {
@@ -402,20 +372,15 @@
         }
         @keyframes rippleAnim {
             to {
-                transform: scale(3.6);
+                transform: scale(3.5);
                 opacity: 0;
             }
         }
 
-        /* Bottom Sheet Transition & Full-Edge iOS Safari Bottom Skirt Fix */
+        /* Bottom Sheet Transition */
         .sheet-backdrop {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100dvh;
             opacity: 0;
             pointer-events: none;
-            overscroll-behavior: contain;
             transition: opacity 0.32s ease;
         }
         .sheet-backdrop.open {
@@ -423,29 +388,11 @@
             pointer-events: auto;
         }
         .sheet-panel {
-            position: relative;
             transform: translateY(100%);
             transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .sheet-backdrop.open .sheet-panel {
             transform: translateY(0);
-        }
-
-        /* Extends solid stoneBg 140px past the bottom edge on mobile so touching/bouncing never exposes a gap */
-        @media (max-width: 767px) {
-            .sheet-panel {
-                padding-bottom: calc(1.75rem + env(safe-area-inset-bottom));
-            }
-            .sheet-panel::after {
-                content: '';
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 99%;
-                height: 140px;
-                background-color: #e2e1d0;
-                pointer-events: none;
-            }
         }
 
         /* Image Zoom */
@@ -463,9 +410,8 @@
             box-shadow: 0 10px 26px rgba(36, 35, 32, 0.08);
         }
 
-        /* Full-Bleed Infinite Review Marquee */
+        /* Infinite Review Marquee */
         .marquee-viewport {
-            width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             cursor: grab;
@@ -505,10 +451,10 @@
 
             <!-- Desktop App Navigation -->
             <nav class="hidden md:flex items-center gap-7 text-xs font-medium">
-                <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="desktop-nav-btn active">Explore</button>
-                <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="desktop-nav-btn">Offers</button>
-                <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="desktop-nav-btn">Spa & Wellness</button>
-                <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="desktop-nav-btn">Dining</button>
+                <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="desktop-nav-btn active hover:opacity-75 transition">Explore</button>
+                <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="desktop-nav-btn hover:opacity-75 transition">Offers</button>
+                <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="desktop-nav-btn hover:opacity-75 transition">Spa & Wellness</button>
+                <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="desktop-nav-btn hover:opacity-75 transition">Dining</button>
             </nav>
 
             <!-- Action Pill -->
@@ -526,7 +472,7 @@
         
         <!-- FULL-BLEED HERO SECTION -->
         <section id="exploreHero" class="relative w-full min-h-[84svh] sm:min-h-[620px] flex flex-col justify-between pt-[74px] sm:pt-[86px] pb-8 sm:pb-12 px-4 sm:px-8 overflow-hidden">
-            <img id="heroParallaxImg" data-img="heroMain" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Resort" class="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.82] transition-transform duration-300 ease-out">
+            <img id="heroParallaxImg" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Resort" class="absolute inset-0 w-full h-full object-cover scale-105 brightness-[0.82] transition-transform duration-300 ease-out">
             <div class="absolute inset-0 bg-black/25"></div>
             <div class="absolute inset-0 hero-scrim-dual"></div>
 
@@ -535,7 +481,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     Nusa Dua Selatan • 29°C
                 </span>
-                <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center" aria-label="Chat WhatsApp">
+                <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center" aria-label="Chat WhatsApp">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                 </a>
             </div>
@@ -551,7 +497,7 @@
                     </p>
 
                     <div class="pt-2 flex flex-wrap items-center gap-2.5">
-                        <button type="button" onclick="navigateApp('book')" class="tap-react ripple-box ripple-box-dark bg-stoneLight text-ink text-xs sm:text-sm font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 shadow-lg">
+                        <button type="button" onclick="navigateApp('book')" class="tap-react ripple-box bg-stoneLight text-ink text-xs sm:text-sm font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2.5 shadow-lg">
                             <span>Book Your Stay</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </button>
@@ -566,7 +512,7 @@
         <!-- EXPLORE MAIN CONTENT -->
         <div class="pt-10 sm:pt-16 pb-14 space-y-14 sm:space-y-20">
 
-            <!-- Unified Architectural Facilities Strip (Single Cohesive Panel, Hairline Dividers) -->
+            <!-- Stacked Multi-Row Facilities Grid (No Horizontal Scroll, No Info Box) -->
             <section class="reveal-up is-visible max-w-6xl mx-auto px-4 sm:px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 mb-5">
                     <div>
@@ -576,53 +522,47 @@
                     <p class="text-xs text-inkMuted max-w-sm font-light">Thoughtful resort amenities prepared for every moment of your stay.</p>
                 </div>
 
-                <div class="bg-stoneLight/75 border border-stoneBorder/85 rounded-[26px] overflow-hidden grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3 border-b border-r border-stoneBorder/45 lg:border-b-0">
-                        <i class="fa-solid fa-wifi text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Free Wi-Fi</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Fiber resort-wide</p>
-                        </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-wifi text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Free Wi-Fi</span>
                     </div>
 
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3 border-b sm:border-r border-stoneBorder/45 lg:border-b-0">
-                        <i class="fa-solid fa-utensils text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Restaurant</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Coastal & Balinese</p>
-                        </div>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-utensils text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Restaurant</span>
                     </div>
 
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3 border-b border-r sm:border-r-0 lg:border-r border-stoneBorder/45 lg:border-b-0">
-                        <i class="fa-solid fa-water-ladder text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Swimming Pool</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Garden infinity lap</p>
-                        </div>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-water-ladder text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Swimming Pool</span>
                     </div>
 
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3 border-b sm:border-b-0 sm:border-r border-stoneBorder/45">
-                        <i class="fa-solid fa-spa text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Spa & Wellness</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Botanical rituals</p>
-                        </div>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-spa text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Spa & Wellness</span>
                     </div>
 
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3 border-r border-stoneBorder/45">
-                        <i class="fa-solid fa-dumbbell text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Fitness Center</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">24/7 teak studio</p>
-                        </div>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-dumbbell text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Fitness Center</span>
                     </div>
 
-                    <div class="p-4 sm:p-5 flex flex-col justify-between gap-3">
-                        <i class="fa-solid fa-van-shuttle text-sm text-ink/80"></i>
-                        <div>
-                            <h3 class="text-xs font-semibold text-ink">Airport Shuttle</h3>
-                            <p class="text-[11px] text-inkMuted font-light mt-0.5">Private chauffeur</p>
-                        </div>
+                    <div class="tap-react ripple-box ripple-box-dark flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-stoneCard border border-stoneBorder text-ink">
+                        <span class="w-8 h-8 rounded-full bg-stoneLight border border-stoneBorder/70 flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-van-shuttle text-xs text-ink"></i>
+                        </span>
+                        <span class="text-xs font-medium leading-tight">Airport Shuttle</span>
                     </div>
                 </div>
             </section>
@@ -642,9 +582,9 @@
                 <div id="roomsCarousel" class="-mx-3 px-4 md:mx-0 md:px-0 scroll-pl-4 flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-3.5 pb-2 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible">
                     
                     <!-- Deluxe Room -->
-                    <article onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react ripple-box ripple-box-dark snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('deluxe')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img data-img="deluxeBalcony" src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000" alt="Deluxe Room" class="img-zoom w-full h-full object-cover">
+                            <img src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000" alt="Deluxe Room" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Garden View</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -670,9 +610,9 @@
                     </article>
 
                     <!-- Pool Villa -->
-                    <article onclick="openRoomDrawer('villa')" class="room-slide group tap-react ripple-box ripple-box-dark snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('villa')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img data-img="villaMain" src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000" alt="Pool Villa" class="img-zoom w-full h-full object-cover">
+                            <img src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000" alt="Pool Villa" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Private Pool</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -698,9 +638,9 @@
                     </article>
 
                     <!-- Family Room -->
-                    <article onclick="openRoomDrawer('family')" class="room-slide group tap-react ripple-box ripple-box-dark snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
+                    <article onclick="openRoomDrawer('family')" class="room-slide group tap-react snap-start shrink-0 w-[84vw] max-w-[340px] md:w-auto md:max-w-none bg-stoneCard border border-stoneBorder rounded-[24px] overflow-hidden flex flex-col">
                         <div class="relative h-52 sm:h-56 overflow-hidden">
-                            <img data-img="familyMain" src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000" alt="Family Room" class="img-zoom w-full h-full object-cover">
+                            <img src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000" alt="Family Room" class="img-zoom w-full h-full object-cover">
                             <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white tracking-wider uppercase">Family Suite</span>
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
@@ -735,10 +675,10 @@
                         <button type="button" data-index="2" class="room-dot h-1.5 w-1.5 rounded-full bg-ink/25 transition-all duration-300" aria-label="Slide 3"></button>
                     </div>
                     <div class="flex items-center gap-2">
-                        <button type="button" id="prevRoomBtn" class="tap-react ripple-box ripple-box-dark w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Previous">
+                        <button type="button" id="prevRoomBtn" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Previous">
                             <i class="fa-solid fa-chevron-left"></i>
                         </button>
-                        <button type="button" id="nextRoomBtn" class="tap-react ripple-box ripple-box-dark w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Next">
+                        <button type="button" id="nextRoomBtn" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs" aria-label="Next">
                             <i class="fa-solid fa-chevron-right"></i>
                         </button>
                     </div>
@@ -754,7 +694,7 @@
 
                 <div id="offersCarousel" class="w-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-0 md:grid md:grid-cols-3 md:gap-0 md:overflow-visible">
                     <button type="button" onclick="navigateApp('offers')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img data-img="offerStayLonger" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop" alt="Stay Longer" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop" alt="Stay Longer" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Stay Longer</span>
@@ -767,7 +707,7 @@
                     </button>
 
                     <button type="button" onclick="navigateApp('spa')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img data-img="offerWellness" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Wellness</span>
@@ -780,7 +720,7 @@
                     </button>
 
                     <button type="button" onclick="navigateApp('dining')" class="offer-slide text-left group tap-react ripple-box snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
-                        <img data-img="offerSunsetDinner" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
                             <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Dining</span>
@@ -809,7 +749,7 @@
 
                 <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-0">
                     <button type="button" onclick="navigateApp('book', { promo: 'Intimate Island Wedding' })" class="text-left group tap-react ripple-box relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
-                        <img data-img="offerWedding" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Weddings" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Weddings" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
@@ -823,7 +763,7 @@
                     </button>
 
                     <button type="button" onclick="navigateApp('book', { promo: 'Private Executive Retreat' })" class="text-left group tap-react ripple-box relative h-64 sm:h-80 rounded-none overflow-hidden flex items-end p-6 sm:p-8 text-white">
-                        <img data-img="eventMeetings" src="https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000" alt="Meetings & Events" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+                        <img src="https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000" alt="Meetings & Events" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
@@ -838,22 +778,22 @@
                 </div>
             </section>
 
-            <!-- Full-Bleed Edge-to-Edge Infinite Guest Notes Marquee (iPhone, iPad & Windows) -->
-            <section class="reveal-up w-full overflow-hidden">
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-end justify-between mb-5">
+            <!-- Continuous Infinite Guest Notes Marquee -->
+            <section class="reveal-up max-w-6xl mx-auto px-3 sm:px-6">
+                <div class="px-1 flex items-end justify-between mb-5">
                     <div>
                         <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Guest Notes</span>
                         <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">Real Stories, <span class="italic">Happy Guests</span></h2>
                     </div>
                     <span class="text-[11px] text-inkMuted hidden sm:inline-flex items-center gap-1.5">
-                        <i class="fa-solid fa-hand-pointer text-[10px]"></i> Drag or hover to pause
+                        <i class="fa-solid fa-hand-pointer text-[10px]"></i> Swipe or hover to pause
                     </span>
                 </div>
 
-                <div id="reviewMarqueeViewport" class="marquee-viewport w-full px-4 sm:px-8 no-scrollbar">
-                    <div id="reviewMarqueeTrack" class="flex gap-4 sm:gap-5 w-max py-1.5">
+                <div id="reviewMarqueeViewport" class="marquee-viewport -mx-3 px-3 md:mx-0 md:px-0 no-scrollbar">
+                    <div id="reviewMarqueeTrack" class="flex gap-3.5 sm:gap-5 w-max py-1">
                         <!-- Set 1 -->
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -868,7 +808,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -883,7 +823,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -899,7 +839,7 @@
                         </div>
 
                         <!-- Set 2 (Seamless Loop Clone) -->
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -914,7 +854,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -929,53 +869,7 @@
                             </div>
                         </div>
 
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Michael Tan</span>
-                                <span class="text-inkMuted">Singapore</span>
-                            </div>
-                        </div>
-
-                        <!-- Set 3 (Extra Coverage for Wide Desktop & Windows Monitors) -->
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Sarah Mitchell</span>
-                                <span class="text-inkMuted">United Kingdom</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “The room was beautiful, clean, and incredibly comfortable. Would definitely return.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Daniel & Emma Carter</span>
-                                <span class="text-inkMuted">Australia</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
+                        <div class="tap-react shrink-0 w-[80vw] max-w-[330px] sm:w-[340px] bg-stoneLight/85 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
                             <div>
                                 <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -1000,7 +894,7 @@
     <!-- ===================================================================== -->
     <div id="view-offers" class="app-view hidden">
         <section class="relative w-full min-h-[54svh] sm:min-h-[420px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img data-img="offerStayLonger" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Offers" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop" alt="Bali Serenity Offers" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Curated Escapes</span>
@@ -1024,7 +918,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <article data-cat="stay" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerStayLonger" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop" alt="Stay 3 Nights Pay 2" class="img-zoom w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop" alt="Stay 3 Nights Pay 2" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Stay Longer</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -1048,7 +942,7 @@
 
                 <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerWellness" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop" alt="Wellness Escape" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Wellness</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -1072,7 +966,7 @@
 
                 <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerSunsetDinner" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop" alt="Sunset Dinner" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Coastal Dining</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -1096,7 +990,7 @@
 
                 <article data-cat="celebration" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
                     <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerWedding" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Intimate Island Vows" class="img-zoom w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop" alt="Intimate Island Vows" class="img-zoom w-full h-full object-cover">
                         <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Celebrations</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
@@ -1126,7 +1020,7 @@
     <!-- ===================================================================== -->
     <div id="view-spa" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img data-img="spaHero" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600&auto=format&fit=crop" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600&auto=format&fit=crop" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Open Daily • 09:00 – 21:00</span>
@@ -1233,7 +1127,7 @@
     <!-- ===================================================================== -->
     <div id="view-dining" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img data-img="diningHero" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">The Teak Terrace • 07:00 – 23:00</span>
@@ -1302,7 +1196,7 @@
 
                         <div class="space-y-3">
                             <div onclick="selectSanctuary('Deluxe Room', 185)" data-room="Deluxe Room" class="room-card-opt selected tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img data-img="deluxeBalcony" src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w600" alt="Deluxe Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                                <img src="https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w600" alt="Deluxe Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1319,7 +1213,7 @@
                             </div>
 
                             <div onclick="selectSanctuary('Pool Villa', 340)" data-room="Pool Villa" class="room-card-opt tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img data-img="villaMain" src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w600" alt="Pool Villa" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                                <img src="https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w600" alt="Pool Villa" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1336,7 +1230,7 @@
                             </div>
 
                             <div onclick="selectSanctuary('Family Room', 260)" data-room="Family Room" class="room-card-opt tap-react ripple-box ripple-box-dark bg-stoneCard border border-stoneBorder rounded-[22px] p-3.5 sm:p-4 flex gap-3.5 sm:gap-4 items-center">
-                                <img data-img="familyMain" src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w600" alt="Family Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
+                                <img src="https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w600" alt="Family Room" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover shrink-0">
                                 <div class="flex-grow min-w-0">
                                     <div class="flex items-start justify-between gap-2">
                                         <div>
@@ -1507,8 +1401,8 @@
                 </div>
 
                 <!-- Compact Map Thumbnail Card -->
-                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react ripple-box block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
-                    <img data-img="footerMap" src="https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
+                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
+                    <img src="https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
                     <span class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10px] text-white font-medium">
                         <span class="truncate"><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i>Nusa Dua</span>
@@ -1522,7 +1416,7 @@
                 <div class="lg:col-span-4 space-y-3">
                     <span class="text-[10px] font-semibold uppercase tracking-widest text-white/75 block">24/7 Concierge Desk</span>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box ripple-box-dark flex items-center justify-center gap-2 bg-[#f0f2ef] text-forest text-xs font-medium py-3 rounded-xl">
+                        <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react ripple-box flex items-center justify-center gap-2 bg-[#f0f2ef] text-forest text-xs font-medium py-3 rounded-xl">
                             <i class="fa-brands fa-whatsapp text-sm text-green-700"></i>
                             <span>WhatsApp</span>
                         </a>
@@ -1569,13 +1463,13 @@
             <div class="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p class="text-[11px] text-[#d4d7d2]/60">&copy; 2026 Bali Serenity Hotel & Resort. All rights reserved.</p>
                 <div class="flex items-center gap-2.5">
-                    <a href="#" aria-label="Instagram" class="tap-react ripple-box w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="Instagram" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-instagram text-xs"></i>
                     </a>
-                    <a href="#" aria-label="TikTok" class="tap-react ripple-box w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="TikTok" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-tiktok text-xs"></i>
                     </a>
-                    <a href="#" aria-label="X" class="tap-react ripple-box w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
+                    <a href="#" aria-label="X" class="tap-react w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/15">
                         <i class="fa-brands fa-x-twitter text-xs"></i>
                     </a>
                 </div>
@@ -1596,23 +1490,23 @@
         <div id="dockItemsWrap" class="dock-items-wrap">
             <div id="dockActivePill" class="dock-sliding-pill"></div>
 
-            <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="nav-tab active ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('explore')" data-nav="explore" class="nav-tab active tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-compass text-xs"></i>
                 <span>Explore</span>
             </button>
-            <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="nav-tab ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('offers')" data-nav="offers" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-tag text-xs"></i>
                 <span>Offers</span>
             </button>
-            <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="nav-tab ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('spa')" data-nav="spa" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-spa text-xs"></i>
                 <span>Spa</span>
             </button>
-            <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="nav-tab ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('dining')" data-nav="dining" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-solid fa-utensils text-xs"></i>
                 <span>Dining</span>
             </button>
-            <button type="button" onclick="navigateApp('book')" data-nav="book" class="nav-tab ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
+            <button type="button" onclick="navigateApp('book')" data-nav="book" class="nav-tab tap-react ripple-box ripple-box-dark flex-1 py-2 rounded-full flex flex-col items-center justify-center gap-0.5 text-[10px] font-medium">
                 <i class="fa-regular fa-calendar-check text-xs"></i>
                 <span>Book</span>
             </button>
@@ -1624,12 +1518,12 @@
     <!-- ===================================================================== -->
 
     <!-- 1. Room Details Drawer -->
-    <div id="roomDrawer" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeRoomDrawer()">
+    <div id="roomDrawer" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeRoomDrawer()">
         <div class="sheet-panel w-full max-w-2xl max-h-[88svh] bg-stoneBg rounded-t-[28px] md:rounded-[28px] overflow-hidden flex flex-col shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="px-5 pt-3 pb-3 bg-stoneCard border-b border-stoneBorder/70 flex items-center justify-between">
                 <div class="w-8"></div>
                 <div class="w-10 h-1 rounded-full bg-ink/20 md:hidden"></div>
-                <button type="button" onclick="closeRoomDrawer()" class="tap-react ripple-box ripple-box-dark w-8 h-8 rounded-full bg-stoneBg border border-stoneBorder flex items-center justify-center text-xs text-ink" aria-label="Close">
+                <button type="button" onclick="closeRoomDrawer()" class="tap-react w-8 h-8 rounded-full bg-stoneBg border border-stoneBorder flex items-center justify-center text-xs text-ink" aria-label="Close">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1695,14 +1589,14 @@
     </div>
 
     <!-- 2. Spa Reservation Drawer -->
-    <div id="spaSheet" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeSpaSheet()">
+    <div id="spaSheet" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeSpaSheet()">
         <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-5 sm:p-7 space-y-5 shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between">
                 <div>
                     <span id="spaSheetMeta" class="text-[10px] uppercase tracking-[0.2em] text-inkMuted font-semibold">90 Mins • $75</span>
                     <h3 id="spaSheetTitle" class="font-serif text-2xl sm:text-3xl text-ink">Serenity Massage</h3>
                 </div>
-                <button type="button" onclick="closeSpaSheet()" class="tap-react ripple-box ripple-box-dark w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
+                <button type="button" onclick="closeSpaSheet()" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1733,14 +1627,14 @@
     </div>
 
     <!-- 3. Table Reservation Drawer -->
-    <div id="tableSheet" class="sheet-backdrop z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeTableSheet()">
+    <div id="tableSheet" class="sheet-backdrop fixed inset-0 z-50 bg-black/55 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeTableSheet()">
         <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-5 sm:p-7 space-y-5 shadow-2xl border border-stoneBorder" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-inkMuted font-semibold">The Teak Terrace</span>
                     <h3 class="font-serif text-2xl sm:text-3xl text-ink">Reserve Your Table</h3>
                 </div>
-                <button type="button" onclick="closeTableSheet()" class="tap-react ripple-box ripple-box-dark w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
+                <button type="button" onclick="closeTableSheet()" class="tap-react w-8 h-8 rounded-full bg-stoneCard border border-stoneBorder flex items-center justify-center text-xs">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -1780,8 +1674,8 @@
         </div>
     </div>
 
-    <!-- 4. Stay Booking Confirmation Modal (Full-Edge Bottom Fix) -->
-    <div id="confirmModal" class="sheet-backdrop z-50 bg-black/60 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeConfirmModal()">
+    <!-- 4. Stay Booking Confirmation Modal -->
+    <div id="confirmModal" class="sheet-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end md:items-center justify-center" onclick="closeConfirmModal()">
         <div class="sheet-panel w-full max-w-md bg-stoneBg rounded-t-[28px] md:rounded-[28px] p-6 sm:p-8 space-y-5 shadow-2xl border border-stoneBorder text-center" onclick="event.stopPropagation()">
             <div class="w-12 h-12 rounded-full bg-ink text-stoneLight mx-auto flex items-center justify-center text-lg">
                 <i class="fa-solid fa-check"></i>
@@ -1810,36 +1704,6 @@
 
     <script>
         // =====================================================================
-        // CENTRAL PHOTO CONFIGURATION (Ganti link foto di sini kapan saja)
-        // =====================================================================
-        const SITE_IMAGES = {
-            heroMain: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop',
-
-            // Deluxe Room
-            deluxeMain: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000',
-            deluxeBath: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000',
-            deluxeBalcony: 'https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000',
-
-            // Pool Villa
-            villaMain: 'https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000',
-            villaBedroom: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000',
-
-            // Family Room
-            familyMain: 'https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000',
-            familyBath: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000',
-
-            // Offers, Spa & Dining
-            offerStayLonger: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop',
-            offerWellness: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop',
-            offerSunsetDinner: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop',
-            offerWedding: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop',
-            eventMeetings: 'https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000',
-            spaHero: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1600&auto=format&fit=crop',
-            diningHero: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop',
-            footerMap: 'https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600'
-        };
-
-        // =====================================================================
         // DATA REPOSITORIES
         // =====================================================================
         const ROOM_DATA = {
@@ -1849,9 +1713,9 @@
                 tag: 'Tropical Garden View',
                 desc: 'Designed as a serene sanctuary, the Deluxe Room blends authentic Balinese craftsmanship with modern luxury. Unwind with teak wood furnishings, plush linens, and floor-to-ceiling sliding doors opening onto your private balcony.',
                 photos: [
-                    { label: 'Main Bedroom', src: SITE_IMAGES.deluxeMain },
-                    { label: 'Bathroom & Toilet', src: SITE_IMAGES.deluxeBath },
-                    { label: 'Garden Terrace', src: SITE_IMAGES.deluxeBalcony }
+                    { label: 'Main Bedroom', src: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000' },
+                    { label: 'Bathroom & Toilet', src: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000' },
+                    { label: 'Garden Terrace', src: 'https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000' }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Bed', val: '1 King / 2 Twin' },
@@ -1866,8 +1730,8 @@
                 tag: 'Private Walled Sanctuary',
                 desc: 'An intimate tropical compound featuring a private plunge pool, shaded timber sundeck, and tranquil indoor-outdoor living spaces tailored for unhurried island days.',
                 photos: [
-                    { label: 'Private Pool', src: SITE_IMAGES.villaMain },
-                    { label: 'Master Suite', src: SITE_IMAGES.villaBedroom }
+                    { label: 'Private Pool', src: 'https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000' },
+                    { label: 'Master Suite', src: 'https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000' }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Layout', val: '3 Bedrooms' },
@@ -1882,8 +1746,8 @@
                 tag: 'Spacious Two-King Suite',
                 desc: 'Thoughtfully proportioned for families and small groups, offering dual king beds, a dedicated lounge corner, and seamless access to the resort gardens.',
                 photos: [
-                    { label: 'Family Suite', src: SITE_IMAGES.familyMain },
-                    { label: 'Bathroom', src: SITE_IMAGES.familyBath }
+                    { label: 'Family Suite', src: 'https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000' },
+                    { label: 'Bathroom', src: 'https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000' }
                 ],
                 specs: [
                     { icon: 'fa-bed', label: 'Beds', val: '2 King Beds' },
@@ -2039,12 +1903,6 @@
         let selectedRate = 185;
         let appliedPromo = '';
         let currentSpaTreatment = '';
-
-        // Hydrate Central Photos
-        document.querySelectorAll('[data-img]').forEach(img => {
-            const key = img.dataset.img;
-            if (SITE_IMAGES[key]) img.src = SITE_IMAGES[key];
-        });
 
         // =====================================================================
         // BOTTOM DOCK SLIDING PILL & SCROLL MORPH (PILL <-> RIGHT-EDGE CIRCLE)
@@ -2221,42 +2079,26 @@
         document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
 
         // =====================================================================
-        // UNIVERSAL BUTTON & TOUCH RIPPLE MICRO-INTERACTION
+        // TOUCH RIPPLE MICRO-INTERACTION
         // =====================================================================
         document.addEventListener('pointerdown', function(e) {
-            const target = e.target.closest('.ripple-box, button, .tap-react');
+            const target = e.target.closest('.ripple-box');
             if (!target) return;
             const rect = target.getBoundingClientRect();
-            if (rect.width < 28 || rect.height < 24) return;
-
-            if (getComputedStyle(target).position === 'static') {
-                target.style.position = 'relative';
-            }
-            target.style.overflow = 'hidden';
-
             const circle = document.createElement('span');
             const diameter = Math.max(rect.width, rect.height);
             circle.style.width = circle.style.height = `${diameter}px`;
             circle.style.left = `${e.clientX - rect.left - diameter / 2}px`;
             circle.style.top = `${e.clientY - rect.top - diameter / 2}px`;
             circle.classList.add('touch-ripple');
-
-            const bg = getComputedStyle(target).backgroundColor;
-            const isDarkBg = target.classList.contains('bg-accentBtn') ||
-                             target.classList.contains('bg-ink') ||
-                             bg === 'rgb(49, 48, 42)' ||
-                             bg === 'rgb(36, 35, 32)';
-            if (!isDarkBg) {
-                circle.classList.add('touch-ripple-dark');
-            }
-
+            if (target.classList.contains('ripple-box-dark')) circle.classList.add('touch-ripple-dark');
             const existing = target.querySelector('.touch-ripple');
             if (existing) existing.remove();
             target.appendChild(circle);
         });
 
         // =====================================================================
-        // EXPLORE VIEW: CAROUSELS & FULL-BLEED INFINITE MARQUEE
+        // EXPLORE VIEW: CAROUSELS & CROSS-PLATFORM INFINITE MARQUEE
         // =====================================================================
         function initCarouselSync(carouselId, slideSelector, dotSelector, prevBtnId, nextBtnId, leftPad = 16) {
             const carousel = document.getElementById(carouselId);
@@ -2314,4 +2156,321 @@
             let isDragging = false;
             let startX = 0;
             let scrollStart = 0;
-            let virtualScroll = 0
+            let virtualScroll = 0;
+            let resumeTimer = null;
+
+            function step() {
+                if (!isHoverPaused && !isTouchActive && !isDragging && currentAppView === 'explore') {
+                    virtualScroll += 0.65;
+                    const halfWidth = track.scrollWidth / 2;
+                    if (halfWidth > 0 && virtualScroll >= halfWidth) {
+                        virtualScroll -= halfWidth;
+                    }
+                    viewport.scrollLeft = virtualScroll;
+                } else {
+                    virtualScroll = viewport.scrollLeft;
+                }
+                requestAnimationFrame(step);
+            }
+
+            if (supportsHover) {
+                viewport.addEventListener('mouseenter', () => { isHoverPaused = true; });
+                viewport.addEventListener('mouseleave', () => { if (!isDragging) isHoverPaused = false; });
+            }
+
+            viewport.addEventListener('touchstart', () => {
+                clearTimeout(resumeTimer);
+                isTouchActive = true;
+                isHoverPaused = false;
+            }, { passive: true });
+
+            function releaseTouch() {
+                clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(() => {
+                    const halfWidth = track.scrollWidth / 2;
+                    if (halfWidth > 0 && viewport.scrollLeft >= halfWidth) {
+                        viewport.scrollLeft -= halfWidth;
+                    }
+                    virtualScroll = viewport.scrollLeft;
+                    isTouchActive = false;
+                }, 900);
+            }
+
+            viewport.addEventListener('touchend', releaseTouch, { passive: true });
+            viewport.addEventListener('touchcancel', releaseTouch, { passive: true });
+
+            viewport.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.pageX - viewport.offsetLeft;
+                scrollStart = viewport.scrollLeft;
+            });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                viewport.scrollLeft = scrollStart - ((e.pageX - viewport.offsetLeft) - startX) * 1.4;
+                virtualScroll = viewport.scrollLeft;
+            });
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                const halfWidth = track.scrollWidth / 2;
+                if (halfWidth > 0 && viewport.scrollLeft >= halfWidth) viewport.scrollLeft -= halfWidth;
+                else if (viewport.scrollLeft <= 0 && halfWidth > 0) viewport.scrollLeft += halfWidth;
+                virtualScroll = viewport.scrollLeft;
+                resumeTimer = setTimeout(() => { isHoverPaused = false; }, 1000);
+            });
+
+            requestAnimationFrame(step);
+        })();
+
+        // =====================================================================
+        // ROOM DETAILS DRAWER
+        // =====================================================================
+        function openRoomDrawer(key) {
+            const data = ROOM_DATA[key];
+            if (!data) return;
+            activeDrawerRoom = data.name;
+
+            document.getElementById('drawerTag').textContent = data.tag;
+            document.getElementById('drawerTitle').textContent = data.name;
+            document.getElementById('drawerPrice').textContent = `$${data.rate} / night`;
+            document.getElementById('drawerDesc').textContent = data.desc;
+
+            const mainImg = document.getElementById('drawerMainImg');
+            mainImg.src = data.photos[0].src;
+
+            const thumbsContainer = document.getElementById('drawerThumbs');
+            thumbsContainer.innerHTML = '';
+            data.photos.forEach((photo, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `tap-react px-3 py-1.5 rounded-full text-[11px] font-medium border transition ${idx === 0 ? 'bg-ink text-stoneLight border-ink' : 'bg-stoneCard text-ink border-stoneBorder'}`;
+                btn.textContent = photo.label;
+                btn.onclick = () => {
+                    mainImg.style.opacity = '0.4';
+                    setTimeout(() => { mainImg.src = photo.src; mainImg.style.opacity = '1'; }, 140);
+                    thumbsContainer.querySelectorAll('button').forEach(b => {
+                        b.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
+                        b.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+                    });
+                    btn.classList.remove('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+                    btn.classList.add('bg-ink', 'text-stoneLight', 'border-ink');
+                };
+                thumbsContainer.appendChild(btn);
+            });
+
+            document.getElementById('drawerSpecs').innerHTML = data.specs.map(s => `
+                <div class="bg-stoneCard border border-stoneBorder/80 rounded-xl p-3 text-center">
+                    <i class="fa-solid ${s.icon} text-xs text-inkMuted mb-1"></i>
+                    <span class="block text-[10px] uppercase tracking-wider text-inkMuted">${s.label}</span>
+                    <span class="block text-xs font-semibold text-ink mt-0.5">${s.val}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('roomDrawer').classList.add('open');
+        }
+
+        function closeRoomDrawer() {
+            document.getElementById('roomDrawer').classList.remove('open');
+        }
+
+        function proceedToBookingFromDrawer() {
+            closeRoomDrawer();
+            navigateApp('book', { room: activeDrawerRoom });
+        }
+
+        // =====================================================================
+        // OFFERS FILTER
+        // =====================================================================
+        function filterOffers(cat, btn) {
+            document.querySelectorAll('.filter-chip').forEach(c => {
+                c.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
+                c.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+            });
+            btn.classList.remove('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+            btn.classList.add('bg-ink', 'text-stoneLight', 'border-ink');
+
+            document.querySelectorAll('.offer-item').forEach(item => {
+                item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'flex' : 'none';
+            });
+        }
+
+        // =====================================================================
+        // SPA SHEET
+        // =====================================================================
+        function openSpaSheet(title, duration, price) {
+            currentSpaTreatment = `${title} (${duration} - ${price})`;
+            document.getElementById('spaSheetTitle').textContent = title;
+            document.getElementById('spaSheetMeta').textContent = `${duration} • ${price}`;
+            document.getElementById('spaDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('spaSheet').classList.add('open');
+        }
+        function closeSpaSheet() { document.getElementById('spaSheet').classList.remove('open'); }
+        function updateSpaWaLink() {
+            const d = document.getElementById('spaDate').value;
+            const t = document.getElementById('spaTime').value;
+            const g = document.getElementById('spaGuest').value || 'Resort Guest';
+            const msg = encodeURIComponent(`Hello Bali Serenity Spa! I would like to book:\n- Treatment: ${currentSpaTreatment}\n- Date: ${d}\n- Time: ${t}\n- Guest: ${g}`);
+            document.getElementById('spaConfirmWa').href = `https://wa.me/?text=${msg}`;
+        }
+
+        // =====================================================================
+        // DINING MENU WITH COMPACT LEFT DISH THUMBNAILS & TABLE SHEET
+        // =====================================================================
+        function switchMenu(key, btn) {
+            if (btn) {
+                document.querySelectorAll('.menu-tab').forEach(t => {
+                    t.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
+                    t.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+                });
+                btn.classList.remove('bg-stoneCard', 'text-ink', 'border-stoneBorder');
+                btn.classList.add('bg-ink', 'text-stoneLight', 'border-ink');
+            }
+            const items = MENUS[key] || MENUS.tasting;
+            document.getElementById('menuContainer').innerHTML = items.map(item => `
+                <div class="tap-react bg-stoneLight/90 border border-stoneBorder rounded-[20px] p-3 sm:p-3.5 flex items-center gap-3.5">
+                    <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-20 h-20 sm:w-[88px] sm:h-[88px] rounded-2xl object-cover shrink-0 bg-stoneCard border border-stoneBorder/50">
+                    <div class="flex-grow min-w-0">
+                        <div class="flex items-start justify-between gap-2">
+                            <div class="min-w-0">
+                                <span class="text-[9px] uppercase tracking-wider text-inkMuted block">${item.tag}</span>
+                                <h3 class="font-serif text-lg sm:text-xl text-ink leading-snug truncate">${item.name}</h3>
+                            </div>
+                            <span class="font-serif text-base sm:text-lg font-semibold text-ink shrink-0">${item.price}</span>
+                        </div>
+                        <p class="text-[11px] text-inkMuted font-light leading-snug line-clamp-2 mt-1">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openTableSheet() {
+            document.getElementById('tableDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('tableSheet').classList.add('open');
+        }
+        function closeTableSheet() { document.getElementById('tableSheet').classList.remove('open'); }
+        function prepareTableWa() {
+            const d = document.getElementById('tableDate').value;
+            const t = document.getElementById('tableTime').value;
+            const a = document.getElementById('tableArea').value;
+            const g = document.getElementById('tableGuest').value || '2 Guests';
+            const msg = encodeURIComponent(`Hello The Teak Terrace at Bali Serenity! I'd like to reserve a table:\n- Date: ${d}\n- Time: ${t}\n- Seating: ${a}\n- Guest: ${g}`);
+            document.getElementById('tableWaBtn').href = `https://wa.me/?text=${msg}`;
+        }
+
+        // =====================================================================
+        // BOOKING VIEW CALCULATOR & CONFIRMATION
+        // =====================================================================
+        function selectSanctuary(name, rate) {
+            selectedRoom = name;
+            selectedRate = rate;
+            document.querySelectorAll('.room-card-opt').forEach(card => {
+                card.classList.toggle('selected', card.dataset.room === name);
+            });
+            recalculateTotal();
+        }
+
+        function clearAppliedPromo() {
+            appliedPromo = '';
+            document.getElementById('activePromoBadge').classList.add('hidden');
+            recalculateTotal();
+        }
+
+        function recalculateTotal() {
+            const inVal = document.getElementById('checkInInput').value;
+            const outVal = document.getElementById('checkOutInput').value;
+            const guests = document.getElementById('guestsInput').value;
+
+            let nights = 2;
+            if (inVal && outVal) {
+                const diff = Math.round((new Date(outVal) - new Date(inVal)) / (1000 * 60 * 60 * 24));
+                nights = diff > 0 ? diff : 1;
+            }
+
+            const roomSub = selectedRate * nights;
+            let promoCredit = 0;
+            const promoRow = document.getElementById('summaryPromoRow');
+            if (appliedPromo === 'Stay 3 Nights, Pay 2' && nights >= 3) {
+                promoCredit = selectedRate;
+                promoRow.classList.remove('hidden');
+                document.getElementById('summaryPromoVal').textContent = `-$${promoCredit}`;
+            } else {
+                promoRow.classList.add('hidden');
+            }
+
+            let addons = 0;
+            if (document.getElementById('addonAirport').checked) addons += 35;
+            if (document.getElementById('addonSpa').checked) addons += 65;
+
+            const addonsRow = document.getElementById('summaryAddonsRow');
+            if (addons > 0) {
+                addonsRow.classList.remove('hidden');
+                document.getElementById('summaryAddonsVal').textContent = `+$${addons}`;
+            } else {
+                addonsRow.classList.add('hidden');
+            }
+
+            const total = Math.max(roomSub - promoCredit + addons, 0);
+
+            document.getElementById('summaryRoomName').textContent = selectedRoom;
+            document.getElementById('summaryNights').textContent = nights;
+            document.getElementById('summaryDates').textContent = (inVal && outVal) ? `${inVal} → ${outVal}` : 'Flexible Dates';
+            document.getElementById('summaryGuests').textContent = guests;
+            document.getElementById('summaryRateLabel').textContent = `$${selectedRate} × ${nights}`;
+            document.getElementById('summaryRoomSubtotal').textContent = `$${roomSub}`;
+            document.getElementById('summaryTotal').textContent = `$${total}`;
+        }
+
+        function confirmReservation() {
+            const name = document.getElementById('guestName').value.trim() || 'Valued Guest';
+            const dates = document.getElementById('summaryDates').textContent;
+            const total = document.getElementById('summaryTotal').textContent;
+            const ref = 'BS-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('refCodeBadge').textContent = `REF #${ref}`;
+            document.getElementById('confirmDesc').textContent = `Thank you, ${name}. Your reservation request has been prepared and held for confirmation.`;
+            document.getElementById('confRoom').textContent = selectedRoom;
+            document.getElementById('confDates').textContent = dates;
+            document.getElementById('confTotal').textContent = total;
+
+            const msg = encodeURIComponent(`Hello Bali Serenity! I'd like to confirm reservation #${ref}:\n- Guest: ${name}\n- Sanctuary: ${selectedRoom}\n- Dates: ${dates}\n- Total: ${total}`);
+            document.getElementById('waConfirmLink').href = `https://wa.me/?text=${msg}`;
+
+            document.getElementById('confirmModal').classList.add('open');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').classList.remove('open');
+        }
+
+        // =====================================================================
+        // INITIALIZE APP STATE ON LOAD
+        // =====================================================================
+        (function initApp() {
+            const today = new Date();
+            const twoDays = new Date(today);
+            twoDays.setDate(today.getDate() + 2);
+            document.getElementById('checkInInput').value = today.toISOString().split('T')[0];
+            document.getElementById('checkOutInput').value = twoDays.toISOString().split('T')[0];
+
+            switchMenu('tasting', null);
+            recalculateTotal();
+
+            const initialHash = window.location.hash.replace('#', '');
+            if (['explore', 'offers', 'spa', 'dining', 'book'].includes(initialHash)) {
+                navigateApp(initialHash, {}, false);
+            } else {
+                updateHeaderGlassState();
+                requestAnimationFrame(() => positionDockPill(false));
+            }
+        })();
+
+        window.addEventListener('hashchange', () => {
+            const hashView = window.location.hash.replace('#', '');
+            if (['explore', 'offers', 'spa', 'dining', 'book'].includes(hashView) && hashView !== currentAppView) {
+                navigateApp(hashView, {}, false);
+            }
+        });
+    </script>
+</body>
+</html>
