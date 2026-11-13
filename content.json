@@ -1,0 +1,39 @@
+{
+  "hero_title": "Your Perfect Stay <span class=\"italic font-normal text-stoneBg\">in Paradise</span>",
+  "hero_subtitle": "Experience the quiet harmony of tropical gardens, warm teak interiors, and true Balinese hospitality.",
+  "hero_image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop",
+  "rooms": [
+    {
+      "id": "deluxe",
+      "name": "Deluxe Room",
+      "tag": "Tropical Garden View",
+      "rate": 185,
+      "desc": "Spacious and elegant room with a private balcony and lush tropical garden views.",
+      "main_image": "https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000"
+    },
+    {
+      "id": "villa",
+      "name": "Pool Villa",
+      "tag": "Private Walled Sanctuary",
+      "rate": 340,
+      "desc": "Your private walled sanctuary with a plunge pool, outdoor daybed, and serene privacy.",
+      "main_image": "https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000"
+    },
+    {
+      "id": "family",
+      "name": "Family Room",
+      "tag": "Spacious Two-King Suite",
+      "rate": 260,
+      "desc": "Generous living space crafted for loved ones to gather and create lasting island memories.",
+      "main_image": "https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000"
+    }
+  ],
+  "offers": {
+    "offer_stay": "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop",
+    "offer_spa": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop",
+    "offer_dining": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop",
+    "event_wedding": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop",
+    "event_meeting": "https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000",
+    "footer_map": "https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600"
+  }
+}
