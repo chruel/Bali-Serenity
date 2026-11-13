@@ -1,6 +1,6 @@
 media:
   input: images
-  output: images
+  output: /images
 
 content:
   - name: site_content
@@ -9,77 +9,95 @@ content:
     path: content.json
     fields:
       - name: hero_title
-        label: Judul Utama (Hero)
+        label: Hero Title
         type: string
       - name: hero_subtitle
-        label: Deskripsi Hero
+        label: Hero Subtitle
         type: text
       - name: hero_image
-        label: Foto Utama (Hero)
+        label: Hero Background Image
         type: image
+
       - name: rooms
-        label: Daftar Kamar & Harga
+        label: Sanctuaries & Rooms
         type: object
         list: true
         fields:
           - name: id
-            label: ID Kamar (jangan diubah)
+            label: Room ID (deluxe / villa / family)
             type: string
           - name: name
-            label: Nama Kamar
+            label: Room Name
             type: string
           - name: tag
-            label: Label View
+            label: Badge Tag
             type: string
           - name: rate
-            label: Harga per Malam (USD)
+            label: Nightly Rate (USD)
             type: number
+          - name: size
+            label: Room Size
+            type: string
+          - name: bed
+            label: Bed Configuration
+            type: string
+          - name: guests
+            label: Max Guests
+            type: string
+          - name: feature
+            label: Highlight Feature
+            type: string
           - name: desc
-            label: Deskripsi Kamar
+            label: Description
             type: text
           - name: main_image
-            label: Foto Utama Kamar
+            label: Main Photo
             type: image
+          - name: bath_image
+            label: Bathroom Photo (Deluxe)
+            type: image
+          - name: terrace_image
+            label: Terrace Photo (Deluxe)
+            type: image
+
       - name: offers
-        label: Foto Promo & Gathering
+        label: Offers & Gatherings
         type: object
         fields:
           - name: offer_stay
-            label: Foto Stay 3 Nights Pay 2
+            label: Stay Longer Image
             type: image
           - name: offer_spa
-            label: Foto Wellness Escape (Spa)
+            label: Wellness Offer Image
             type: image
           - name: offer_dining
-            label: Foto Sunset Dinner
+            label: Sunset Dinner Image
             type: image
           - name: event_wedding
-            label: Foto Weddings
+            label: Weddings Image
             type: image
           - name: event_meeting
-            label: Foto Meetings & Events
+            label: Meetings & Events Image
             type: image
           - name: footer_map
-            label: Foto Peta Footer
+            label: Footer Map Image
             type: image
-            - name: spa
+
+      - name: spa
         label: Spa & Wellness
         type: object
         fields:
+          - name: hours
+            label: Jam Buka Spa
+            type: string
           - name: title
-            label: Judul Bagian Spa
+            label: Judul Utama Spa
             type: string
           - name: subtitle
-            label: Deskripsi Spa
+            label: Subjudul Spa
             type: text
-          - name: hours
-            label: Jam Operasional
-            type: string
-          - name: hero_image
-            label: Foto Utama Spa
-            type: image
           - name: treatments
-            label: Daftar Perawatan (Treatments)
+            label: Daftar Perawatan Spa
             type: object
             list: true
             fields:
@@ -87,72 +105,146 @@ content:
                 label: Nama Perawatan
                 type: string
               - name: duration
-                label: Durasi
+                label: Durasi (cth. 90 Minutes)
+                type: string
+              - name: category
+                label: Kategori (cth. Full Body)
                 type: string
               - name: price
-                label: Harga
+                label: Harga (cth. $75)
                 type: string
-              - name: description
-                label: Deskripsi Singkat
+              - name: desc
+                label: Deskripsi
                 type: text
-              - name: image
-                label: Foto Perawatan
-                type: image
+              - name: perk
+                label: Fasilitas Tambahan
+                type: string
 
       - name: dining
-        label: Dining & Culinary
+        label: Dining (The Teak Terrace)
         type: object
         fields:
+          - name: hours
+            label: Jam Buka Restoran
+            type: string
           - name: title
-            label: Judul Bagian Dining
+            label: Judul Utama Dining
             type: string
           - name: subtitle
-            label: Deskripsi Restoran
+            label: Subjudul Dining
             type: text
-          - name: hours
-            label: Jam Operasional
-            type: string
-          - name: hero_image
-            label: Foto Utama Restoran
-            type: image
-          - name: items
-            label: Menu Unggulan (Signature Dishes)
+          - name: tasting
+            label: Menu 1 - Sunset Tasting
             type: object
             list: true
             fields:
-              - name: name
-                label: Nama Menu
+              - name: tag
+                label: Label Course (cth. Course I • Amuse)
                 type: string
-              - name: category
-                label: Kategori (misal: Signature, Seafood, Cocktail)
+              - name: name
+                label: Nama Hidangan
+                type: string
+              - name: price
+                label: Harga (cth. $18)
+                type: string
+              - name: img
+                label: Foto Hidangan
+                type: image
+              - name: desc
+                label: Deskripsi Hidangan
+                type: text
+          - name: coastal
+            label: Menu 2 - All-Day Mains
+            type: object
+            list: true
+            fields:
+              - name: tag
+                label: Label Kategori
+                type: string
+              - name: name
+                label: Nama Hidangan
                 type: string
               - name: price
                 label: Harga
                 type: string
-              - name: description
+              - name: img
+                label: Foto Hidangan
+                type: image
+              - name: desc
                 label: Deskripsi Hidangan
                 type: text
-              - name: image
-                label: Foto Menu
+          - name: morning
+            label: Menu 3 - Morning Terrace
+            type: object
+            list: true
+            fields:
+              - name: tag
+                label: Jam Sajian
+                type: string
+              - name: name
+                label: Nama Hidangan
+                type: string
+              - name: price
+                label: Harga
+                type: string
+              - name: img
+                label: Foto Hidangan
                 type: image
+              - name: desc
+                label: Deskripsi Hidangan
+                type: text
+          - name: drinks
+            label: Menu 4 - Botanical Bar
+            type: object
+            list: true
+            fields:
+              - name: tag
+                label: Kategori Minuman
+                type: string
+              - name: name
+                label: Nama Minuman
+                type: string
+              - name: price
+                label: Harga
+                type: string
+              - name: img
+                label: Foto Minuman
+                type: image
+              - name: desc
+                label: Deskripsi Minuman
+                type: text
 
       - name: reviews
-        label: Guest Reviews (Testimoni)
+        label: Guest Reviews
         type: object
         list: true
         fields:
-          - name: guest_name
+          - name: quote
+            label: Kutipan Testimoni
+            type: text
+          - name: author
             label: Nama Tamu
             type: string
-          - name: origin
-            label: Asal / Kategori Tamu
+          - name: country
+            label: Negara Asal
             type: string
-          - name: rating
-            label: Rating Bintang (1-5)
-            type: number
-          - name: quote
-            label: Isi Ulasan
-            type: text
-          - name: date
-            label: Bulan / Tahun Kunjungan
+
+      - name: contact
+        label: Concierge & Footer Contact
+        type: object
+        fields:
+          - name: whatsapp
+            label: Nomor WhatsApp (cth. 6281234567890)
+            type: string
+          - name: email
+            label: Email Support
+            type: string
+          - name: phone
+            label: Nomor Telepon
+            type: string
+          - name: address
+            label: Alamat Resort
+            type: string
+          - name: checkin_note
+            label: Info Check-in
             type: string
