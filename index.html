@@ -1,8 +1,3 @@
-
-
-
-HTML icon
-index
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -525,7 +520,7 @@ index
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                     Nusa Dua Selatan • 29°C
                 </span>
-                <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-black/60" aria-label="Chat WhatsApp">
+                <a data-wa-link href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate w-9 h-9 rounded-full bg-black/40 backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-black/60" aria-label="Chat WhatsApp">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                 </a>
             </div>
@@ -567,7 +562,7 @@ index
                 </div>
 
                 <!-- Clean Hairline Architectural Grid (Zero Boxy Containers) -->
-                <div class="border-y border-stoneBorder/80 grid grid-cols-2 lg:grid-cols-3">
+                <div id="facilitiesGrid" class="border-y border-stoneBorder/80 grid grid-cols-2 lg:grid-cols-3">
                     <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 pr-3 sm:pr-6 border-b border-r lg:border-r border-stoneBorder/70">
                         <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
                             <i class="fa-solid fa-wifi text-xs"></i>
@@ -653,15 +648,15 @@ index
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
                                 <h3 data-room-name class="font-serif text-2xl text-ink">Deluxe Room</h3>
-                                <span class="text-xs font-medium text-inkMuted">28 m²</span>
+                                <span data-room-size class="text-xs font-medium text-inkMuted">28 m²</span>
                             </div>
                             <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Spacious and elegant room with a private balcony and lush tropical garden views.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
-                                <span><i class="fa-solid fa-bed mr-1"></i> 1 King / Twin</span>
-                                <span><i class="fa-solid fa-user mr-1"></i> 2 Guests</span>
-                                <span><i class="fa-solid fa-leaf mr-1"></i> Balcony</span>
+                                <span><i class="fa-solid fa-bed mr-1"></i> <span data-room-bed>1 King / Twin</span></span>
+                                <span><i class="fa-solid fa-user mr-1"></i> <span data-room-guests>2 Guests</span></span>
+                                <span><i class="fa-solid fa-leaf mr-1"></i> <span data-room-feature>Balcony</span></span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
@@ -681,15 +676,15 @@ index
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
                                 <h3 data-room-name class="font-serif text-2xl text-ink">Pool Villa</h3>
-                                <span class="text-xs font-medium text-inkMuted">45 m²</span>
+                                <span data-room-size class="text-xs font-medium text-inkMuted">45 m²</span>
                             </div>
                             <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Your private walled sanctuary with a plunge pool, outdoor daybed, and serene privacy.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
-                                <span><i class="fa-solid fa-bed mr-1"></i> 3 Bedrooms</span>
-                                <span><i class="fa-solid fa-user mr-1"></i> 4 Guests</span>
-                                <span><i class="fa-solid fa-water mr-1"></i> Private Pool</span>
+                                <span><i class="fa-solid fa-bed mr-1"></i> <span data-room-bed>3 Bedrooms</span></span>
+                                <span><i class="fa-solid fa-user mr-1"></i> <span data-room-guests>4 Guests</span></span>
+                                <span><i class="fa-solid fa-water mr-1"></i> <span data-room-feature>Private Pool</span></span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
@@ -709,15 +704,15 @@ index
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex items-baseline justify-between mb-1.5">
                                 <h3 data-room-name class="font-serif text-2xl text-ink">Family Room</h3>
-                                <span class="text-xs font-medium text-inkMuted">50 m²</span>
+                                <span data-room-size class="text-xs font-medium text-inkMuted">50 m²</span>
                             </div>
                             <p data-room-desc class="text-xs text-inkMuted font-light leading-relaxed mb-4 flex-grow">
                                 Generous living space crafted for loved ones to gather and create lasting island memories.
                             </p>
                             <div class="flex items-center justify-between text-[11px] text-inkMuted border-y border-stoneBorder/60 py-2.5 mb-4">
-                                <span><i class="fa-solid fa-bed mr-1"></i> 2 King Beds</span>
-                                <span><i class="fa-solid fa-user mr-1"></i> 4 Guests</span>
-                                <span><i class="fa-solid fa-couch mr-1"></i> Lounge</span>
+                                <span><i class="fa-solid fa-bed mr-1"></i> <span data-room-bed>2 King Beds</span></span>
+                                <span><i class="fa-solid fa-user mr-1"></i> <span data-room-guests>4 Guests</span></span>
+                                <span><i class="fa-solid fa-couch mr-1"></i> <span data-room-feature>Lounge</span></span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs font-semibold text-ink underline underline-offset-4">Inspect Room</span>
@@ -756,39 +751,39 @@ index
                 </div>
 
                 <div id="offersCarousel" class="w-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-0 md:grid md:grid-cols-3 md:gap-0 md:overflow-visible">
-                    <button type="button" onclick="navigateApp('offers')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <button type="button" data-explore-offer="0" onclick="navigateApp('offers')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
                         <img data-img="offerStay" src="" alt="Stay Longer" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
-                            <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Stay Longer</span>
-                            <h3 class="font-serif text-2xl sm:text-3xl text-white mb-2">Stay 3 Nights, Pay 2</h3>
-                            <p class="text-xs text-white/95 font-light leading-relaxed mb-4">Enjoy an extra complimentary night when you reserve three consecutive nights.</p>
+                            <span data-offer-tag class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Stay Longer</span>
+                            <h3 data-offer-title class="font-serif text-2xl sm:text-3xl text-white mb-2">Stay 3 Nights, Pay 2</h3>
+                            <p data-offer-desc class="text-xs text-white/95 font-light leading-relaxed mb-4">Enjoy an extra complimentary night when you reserve three consecutive nights.</p>
                             <span class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-white border-b border-white/80 pb-0.5">
                                 Claim Offer <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </span>
                         </div>
                     </button>
 
-                    <button type="button" onclick="navigateApp('spa')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <button type="button" data-explore-offer="1" onclick="navigateApp('spa')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
                         <img data-img="offerSpa" src="" alt="Wellness Escape" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
-                            <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Wellness</span>
-                            <h3 class="font-serif text-2xl sm:text-3xl text-white mb-2">Wellness Escape</h3>
-                            <p class="text-xs text-white/95 font-light leading-relaxed mb-4">Slow down and recharge with a 90-minute signature Balinese botanical spa ritual.</p>
+                            <span data-offer-tag class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Wellness</span>
+                            <h3 data-offer-title class="font-serif text-2xl sm:text-3xl text-white mb-2">Wellness Escape</h3>
+                            <p data-offer-desc class="text-xs text-white/95 font-light leading-relaxed mb-4">Slow down and recharge with a 90-minute signature Balinese botanical spa ritual.</p>
                             <span class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-white border-b border-white/80 pb-0.5">
                                 Explore Spa <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </span>
                         </div>
                     </button>
 
-                    <button type="button" onclick="navigateApp('dining')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
+                    <button type="button" data-explore-offer="2" onclick="navigateApp('dining')" class="offer-slide text-left group tap-react snap-start shrink-0 w-[86vw] sm:w-[58vw] md:w-auto relative min-h-[380px] sm:min-h-[420px] rounded-none overflow-hidden flex flex-col justify-end p-6 sm:p-8 text-white">
                         <img data-img="offerDining" src="" alt="Sunset Dinner" class="img-zoom absolute inset-0 w-full h-full object-cover brightness-[0.82]">
                         <div class="absolute inset-0 card-scrim-strong"></div>
                         <div class="relative z-10 drop-shadow-sm">
-                            <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Dining</span>
-                            <h3 class="font-serif text-2xl sm:text-3xl text-white mb-2">Sunset Dinner</h3>
-                            <p class="text-xs text-white/95 font-light leading-relaxed mb-4">An intimate candlelit tasting menu overlooking the tropical horizon.</p>
+                            <span data-offer-tag class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Dining</span>
+                            <h3 data-offer-title class="font-serif text-2xl sm:text-3xl text-white mb-2">Sunset Dinner</h3>
+                            <p data-offer-desc class="text-xs text-white/95 font-light leading-relaxed mb-4">An intimate candlelit tasting menu overlooking the tropical horizon.</p>
                             <span class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-white border-b border-white/80 pb-0.5">
                                 View Menu <i class="fa-solid fa-arrow-right text-[10px]"></i>
                             </span>
@@ -816,8 +811,8 @@ index
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Intimate Ceremonies</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-white">Weddings</h3>
+                                <span id="gatheringWeddingTag" class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Intimate Ceremonies</span>
+                                <h3 id="gatheringWeddingTitle" class="font-serif text-2xl sm:text-3xl text-white">Weddings</h3>
                             </div>
                             <span class="w-9 h-9 rounded-full bg-black/35 group-hover:bg-white group-hover:text-ink backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white transition-colors">
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -830,8 +825,8 @@ index
                         <div class="absolute inset-0 card-scrim-gathering"></div>
                         <div class="relative z-10 w-full flex items-end justify-between drop-shadow-sm">
                             <div>
-                                <span class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Private Retreats</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-white">Meetings & Events</h3>
+                                <span id="gatheringMeetingTag" class="text-[10px] uppercase tracking-[0.22em] text-stoneBg font-semibold block mb-1">Private Retreats</span>
+                                <h3 id="gatheringMeetingTitle" class="font-serif text-2xl sm:text-3xl text-white">Meetings & Events</h3>
                             </div>
                             <span class="w-9 h-9 rounded-full bg-black/35 group-hover:bg-white group-hover:text-ink backdrop-blur-md border border-white/40 flex items-center justify-center text-xs text-white transition-colors">
                                 <i class="fa-solid fa-arrow-right"></i>
@@ -854,145 +849,7 @@ index
                 </div>
 
                 <div id="reviewMarqueeViewport" class="marquee-viewport w-full px-4 sm:px-8 no-scrollbar">
-                    <div id="reviewMarqueeTrack" class="flex gap-4 sm:gap-5 w-max py-1">
-                        <!-- Set 1 -->
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Sarah Mitchell</span>
-                                <span class="text-inkMuted">United Kingdom</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “The room was beautiful, clean, and incredibly comfortable. Would definitely return.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Daniel & Emma Carter</span>
-                                <span class="text-inkMuted">Australia</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Michael Tan</span>
-                                <span class="text-inkMuted">Singapore</span>
-                            </div>
-                        </div>
-
-                        <!-- Set 2 (Seamless Loop Clone) -->
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Sarah Mitchell</span>
-                                <span class="text-inkMuted">United Kingdom</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “The room was beautiful, clean, and incredibly comfortable. Would definitely return.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Daniel & Emma Carter</span>
-                                <span class="text-inkMuted">Australia</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Michael Tan</span>
-                                <span class="text-inkMuted">Singapore</span>
-                            </div>
-                        </div>
-
-                        <!-- Set 3 (Extra Coverage for Wide iPad & Windows Screens) -->
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Sarah Mitchell</span>
-                                <span class="text-inkMuted">United Kingdom</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “The room was beautiful, clean, and incredibly comfortable. Would definitely return.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Daniel & Emma Carter</span>
-                                <span class="text-inkMuted">Australia</span>
-                            </div>
-                        </div>
-
-                        <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" aria-hidden="true">
-                            <div>
-                                <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                                <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
-                                    “A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”
-                                </p>
-                            </div>
-                            <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
-                                <span class="font-semibold text-ink">Michael Tan</span>
-                                <span class="text-inkMuted">Singapore</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="reviewMarqueeTrack" class="flex gap-4 sm:gap-5 w-max py-1"></div>
                 </div>
             </section>
         </div>
@@ -1007,10 +864,10 @@ index
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
                 <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Curated Escapes</span>
-                <h1 class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
+                <h1 id="offersHeroTitle" class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
                     Make Your Stay <span class="italic text-stoneBg">More Special</span>
                 </h1>
-                <p class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
+                <p id="offersHeroSubtitle" class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
                     Thoughtfully assembled privileges designed for unhurried island mornings, botanical restoration, and candlelit coastal evenings.
                 </p>
             </div>
@@ -1024,103 +881,7 @@ index
                 <button type="button" onclick="filterOffers('celebration', this)" class="filter-chip tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Celebrations</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <article data-cat="stay" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
-                    <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerStay" src="" alt="Stay 3 Nights Pay 2" class="img-zoom w-full h-full object-cover">
-                        <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Stay Longer</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
-                        <div>
-                            <h2 class="font-serif text-3xl text-ink mb-2">Stay 3 Nights, Pay 2</h2>
-                            <p class="text-xs sm:text-sm text-inkMuted font-light leading-relaxed mb-4">
-                                Linger a little longer in Nusa Dua. Reserve two nights in any Deluxe Room or Pool Villa and enjoy your third consecutive night with our compliments.
-                            </p>
-                            <ul class="space-y-1.5 text-xs text-ink border-t border-stoneBorder/60 pt-3">
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Daily à la carte tropical breakfast for two</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Complimentary late check-out until 15:00</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Welcome herbal rosella & ginger elixir</li>
-                            </ul>
-                        </div>
-                        <button type="button" onclick="navigateApp('book', { promo: 'Stay 3 Nights, Pay 2', nights: 3 })" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
-                            <span>Claim This Offer</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
-                    <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerSpa" src="" alt="Wellness Escape" class="img-zoom w-full h-full object-cover">
-                        <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Wellness</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
-                        <div>
-                            <h2 class="font-serif text-3xl text-ink mb-2">Wellness Escape</h2>
-                            <p class="text-xs sm:text-sm text-inkMuted font-light leading-relaxed mb-4">
-                                Restore balance with a 90-minute signature Balinese warm-stone and frangipani oil ritual paired with private herbal bath access.
-                            </p>
-                            <ul class="space-y-1.5 text-xs text-ink border-t border-stoneBorder/60 pt-3">
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>90-minute signature botanical massage for two</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Morning sunrise yoga session in the garden</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Cold-pressed wellness tonic bar access</li>
-                            </ul>
-                        </div>
-                        <button type="button" onclick="navigateApp('spa')" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
-                            <span>Explore Spa Rituals</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <article data-cat="wellness" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
-                    <div class="relative h-60 overflow-hidden">
-                        <img data-img="offerDining" src="" alt="Sunset Dinner" class="img-zoom w-full h-full object-cover">
-                        <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Coastal Dining</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
-                        <div>
-                            <h2 class="font-serif text-3xl text-ink mb-2">Candlelit Sunset Dinner</h2>
-                            <p class="text-xs sm:text-sm text-inkMuted font-light leading-relaxed mb-4">
-                                An intimate four-course coastal tasting menu served on our private garden deck as dusk settles over southern Bali.
-                            </p>
-                            <ul class="space-y-1.5 text-xs text-ink border-t border-stoneBorder/60 pt-3">
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>4-course Jimbaran seafood & heritage Balinese menu</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Two signature botanical sunset cocktails</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Reserved lantern-lit pavilion seating</li>
-                            </ul>
-                        </div>
-                        <button type="button" onclick="navigateApp('dining')" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
-                            <span>View Tasting Menu</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-
-                <article data-cat="celebration" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex flex-col">
-                    <div class="relative h-60 overflow-hidden">
-                        <img data-img="eventWedding" src="" alt="Intimate Island Vows" class="img-zoom w-full h-full object-cover">
-                        <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">Celebrations</span>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
-                        <div>
-                            <h2 class="font-serif text-3xl text-ink mb-2">Intimate Island Vows</h2>
-                            <p class="text-xs sm:text-sm text-inkMuted font-light leading-relaxed mb-4">
-                                Celebrate anniversaries, proposals, or intimate garden ceremonies with bespoke floral styling and two nights in our Pool Villa.
-                            </p>
-                            <ul class="space-y-1.5 text-xs text-ink border-t border-stoneBorder/60 pt-3">
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>2 nights in a private walled Pool Villa</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Floating tropical flower bath & artisan cake</li>
-                                <li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>Private chauffeur airport transfers both ways</li>
-                            </ul>
-                        </div>
-                        <button type="button" onclick="navigateApp('book', { room: 'Pool Villa', promo: 'Intimate Island Vows' })" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
-                            <span>Inquire Package</span>
-                            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </article>
-            </div>
+            <div id="offersGrid" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
         </main>
     </div>
 
@@ -1129,14 +890,14 @@ index
     <!-- ===================================================================== -->
     <div id="view-spa" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img data-img="offerSpa" src="" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img id="spaHeroImg" data-img="offerSpa" src="" alt="Balinese Botanical Spa" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
-                <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Open Daily • 09:00 – 21:00</span>
-                <h1 class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
+                <span id="spaHeroHours" class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">Open Daily • 09:00 – 21:00</span>
+                <h1 id="spaHeroTitle" class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
                     Botanical <span class="italic text-stoneBg">Sanctuary Spa</span>
                 </h1>
-                <p class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
+                <p id="spaHeroSubtitle" class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
                     Rooted in ancient Balinese healing traditions using wild-harvested frangipani, warm volcanic river stones, and virgin coconut oil.
                 </p>
             </div>
@@ -1146,88 +907,12 @@ index
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold block mb-1">Healing Rituals</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl text-ink">Signature Treatments</h2>
+                    <h2 id="spaSectionHeading" class="font-serif text-3xl sm:text-4xl text-ink">Signature Treatments</h2>
                 </div>
-                <p class="text-xs text-inkMuted font-light">Tap any treatment to reserve a private garden pavilion.</p>
+                <p id="spaSectionNote" class="text-xs text-inkMuted font-light">Tap any treatment to reserve a private garden pavilion.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-                <div onclick="openSpaSheet('Serenity Balinese Massage', '90 Mins', '$75')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
-                    <div>
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">90 Minutes • Full Body</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Serenity Balinese Massage</h3>
-                            </div>
-                            <span class="font-serif text-2xl font-semibold text-ink">$75</span>
-                        </div>
-                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">
-                            Deep rhythmic palm pressure and long sweeping strokes infused with warm sandalwood and ylang-ylang oil to release muscular tension.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-stoneBorder/60 text-xs">
-                        <span class="text-inkMuted"><i class="fa-solid fa-leaf mr-1"></i> Includes Herbal Ginger Tea</span>
-                        <span class="font-semibold text-ink underline underline-offset-4">Book Session &rarr;</span>
-                    </div>
-                </div>
-
-                <div onclick="openSpaSheet('Volcanic Warm Stone Ritual', '90 Mins', '$90')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
-                    <div>
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">90 Minutes • Thermal Therapy</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Volcanic Warm Stone Ritual</h3>
-                            </div>
-                            <span class="font-serif text-2xl font-semibold text-ink">$90</span>
-                        </div>
-                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">
-                            Smooth basalt stones heated in aromatic herbal water are placed along energy meridians to calm the nervous system.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-stoneBorder/60 text-xs">
-                        <span class="text-inkMuted"><i class="fa-solid fa-fire-flame-simple mr-1"></i> Deep Thermal Relaxation</span>
-                        <span class="font-semibold text-ink underline underline-offset-4">Book Session &rarr;</span>
-                    </div>
-                </div>
-
-                <div onclick="openSpaSheet('Royal Lulur & Flower Bath', '120 Mins', '$115')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
-                    <div>
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">120 Minutes • Scrub & Soak</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Royal Lulur & Flower Bath</h3>
-                            </div>
-                            <span class="font-serif text-2xl font-semibold text-ink">$115</span>
-                        </div>
-                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">
-                            Traditional Javanese turmeric and jasmine rice polish followed by a cooling yogurt mask and a private frangipani petal soak.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-stoneBorder/60 text-xs">
-                        <span class="text-inkMuted"><i class="fa-solid fa-spa mr-1"></i> Private Stone Tub</span>
-                        <span class="font-semibold text-ink underline underline-offset-4">Book Session &rarr;</span>
-                    </div>
-                </div>
-
-                <div onclick="openSpaSheet('Couples Harmony Journey', '150 Mins', '$195')" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
-                    <div>
-                        <div class="flex items-start justify-between gap-3">
-                            <div>
-                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">150 Minutes • For Two</span>
-                                <h3 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Couples Harmony Journey</h3>
-                            </div>
-                            <span class="font-serif text-2xl font-semibold text-ink">$195</span>
-                        </div>
-                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">
-                            Side-by-side Balinese massage, organic facial refresh, and candlelit tropical flower bath in our secluded garden suite.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between pt-3 border-t border-stoneBorder/60 text-xs">
-                        <span class="text-inkMuted"><i class="fa-solid fa-heart mr-1"></i> Private Couples Villa</span>
-                        <span class="font-semibold text-ink underline underline-offset-4">Book Session &rarr;</span>
-                    </div>
-                </div>
-            </div>
+            <div id="spaTreatmentsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5"></div>
         </main>
     </div>
 
@@ -1236,14 +921,14 @@ index
     <!-- ===================================================================== -->
     <div id="view-dining" class="app-view hidden">
         <section class="relative w-full min-h-[56svh] sm:min-h-[440px] flex flex-col justify-end pt-24 pb-9 px-4 sm:px-8 overflow-hidden">
-            <img data-img="offerDining" src="" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
+            <img id="diningHeroImg" data-img="offerDining" src="" alt="Sunset Dinner Bali Serenity" class="absolute inset-0 w-full h-full object-cover brightness-[0.82]">
             <div class="absolute inset-0 hero-scrim-dual"></div>
             <div class="relative z-10 max-w-6xl w-full mx-auto">
-                <span class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">The Teak Terrace • 07:00 – 23:00</span>
-                <h1 class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
+                <span id="diningHeroHours" class="text-[10px] uppercase tracking-[0.26em] text-white/90 block mb-2">The Teak Terrace • 07:00 – 23:00</span>
+                <h1 id="diningHeroTitle" class="font-serif text-4xl sm:text-6xl text-white font-normal leading-tight">
                     Coastal & <span class="italic text-stoneBg">Balinese Kitchen</span>
                 </h1>
-                <p class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
+                <p id="diningHeroSubtitle" class="text-xs sm:text-sm text-white/90 font-light max-w-lg mt-2.5">
                     Line-caught Jimbaran seafood, organic Bedugul harvest, and slow-roasted island spices served beside the infinity pool.
                 </p>
             </div>
@@ -1251,10 +936,10 @@ index
 
         <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-14 space-y-8">
             <div class="-mx-3 px-4 md:mx-0 md:px-0 flex overflow-x-auto no-scrollbar gap-2 py-1">
-                <button type="button" onclick="switchMenu('tasting', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">Sunset Tasting</button>
-                <button type="button" onclick="switchMenu('coastal', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">All-Day Mains</button>
-                <button type="button" onclick="switchMenu('morning', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Morning Terrace</button>
-                <button type="button" onclick="switchMenu('drinks', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Botanical Bar</button>
+                <button type="button" data-menu-cat="tasting" onclick="switchMenu('tasting', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-ink text-stoneLight text-xs font-medium border border-ink">Sunset Tasting</button>
+                <button type="button" data-menu-cat="coastal" onclick="switchMenu('coastal', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">All-Day Mains</button>
+                <button type="button" data-menu-cat="morning" onclick="switchMenu('morning', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Morning Terrace</button>
+                <button type="button" data-menu-cat="drinks" onclick="switchMenu('drinks', this)" class="menu-tab tap-react btn-elevate shrink-0 px-4 py-2.5 rounded-full bg-stoneCard hover:bg-stoneLight text-ink text-xs font-medium border border-stoneBorder">Botanical Bar</button>
             </div>
 
             <div id="menuContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5"></div>
@@ -1262,8 +947,8 @@ index
             <div class="bg-stoneCard border border-stoneBorder rounded-[26px] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                     <span class="text-[10px] uppercase tracking-[0.22em] text-inkMuted font-semibold">Golden Hour Seating</span>
-                    <h2 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Reserve a Lantern-Lit Pavilion</h2>
-                    <p class="text-xs text-inkMuted font-light mt-1">Recommended at 17:45 for unobstructed twilight views across the tropical garden.</p>
+                    <h2 id="diningCtaTitle" class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">Reserve a Lantern-Lit Pavilion</h2>
+                    <p id="diningCtaSubtitle" class="text-xs text-inkMuted font-light mt-1">Recommended at 17:45 for unobstructed twilight views across the tropical garden.</p>
                 </div>
                 <button type="button" onclick="openTableSheet()" class="tap-react btn-elevate shrink-0 bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium px-6 py-3.5 rounded-full inline-flex items-center gap-2 shadow-sm">
                     <span>Book a Table</span>
@@ -1504,13 +1189,13 @@ index
                             <p class="text-[9px] tracking-[0.25em] uppercase text-[#d4d7d2]/60 mt-1">Hotel & Resort</p>
                         </div>
                     </div>
-                    <p class="text-[11px] text-[#d4d7d2]/70 font-light leading-relaxed max-w-xs">
+                    <p id="footerAddressText" class="text-[11px] text-[#d4d7d2]/70 font-light leading-relaxed max-w-xs">
                         Nusa Dua Selatan, Bali 80363 • 25 mins from Ngurah Rai Airport
                     </p>
                 </div>
 
                 <!-- Compact Map Thumbnail Card -->
-                <a href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react btn-elevate block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
+                <a id="footerMapLink" href="https://maps.google.com/?q=Nusa+Dua+Selatan+Bali" target="_blank" rel="noopener" class="tap-react btn-elevate block relative w-32 sm:w-48 h-20 sm:h-24 rounded-2xl overflow-hidden border border-white/15 shrink-0 group shadow-md" aria-label="Open Nusa Dua Map">
                     <img data-img="footerMap" src="" alt="Nusa Dua Map" class="img-zoom w-full h-full object-cover opacity-90">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
                     <span class="absolute bottom-1.5 left-2 right-2 flex items-center justify-between text-[10px] text-white font-medium">
@@ -1525,11 +1210,11 @@ index
                 <div class="lg:col-span-4 space-y-3">
                     <span class="text-[10px] font-semibold uppercase tracking-widest text-white/75 block">24/7 Concierge Desk</span>
                     <div class="grid grid-cols-2 gap-2.5">
-                        <a href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-[#f0f2ef] hover:bg-white text-forest text-xs font-medium py-3 rounded-xl">
+                        <a data-wa-link href="https://wa.me/" target="_blank" rel="noopener" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-[#f0f2ef] hover:bg-white text-forest text-xs font-medium py-3 rounded-xl">
                             <i class="fa-brands fa-whatsapp text-sm text-green-700"></i>
                             <span>WhatsApp</span>
                         </a>
-                        <a href="mailto:support@baliserenity.com" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/15 text-xs font-medium py-3 rounded-xl">
+                        <a id="footerEmailBtn" href="mailto:support@baliserenity.com" class="tap-react btn-elevate flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/15 text-xs font-medium py-3 rounded-xl">
                             <i class="fa-regular fa-envelope text-sm"></i>
                             <span>Email Us</span>
                         </a>
@@ -1560,9 +1245,9 @@ index
                     <div class="space-y-2 col-span-2 sm:col-span-1">
                         <h3 class="text-[11px] font-semibold uppercase tracking-wider text-white">Reach Us</h3>
                         <ul class="space-y-2 text-[#d4d7d2]/75 font-light">
-                            <li><a href="tel:02180962469" class="hover:text-white transition">(021) 8096 2469</a></li>
-                            <li class="break-all">support@baliserenity.com</li>
-                            <li class="text-[#d4d7d2]/60">Daily Check-in 14:00 WITA</li>
+                            <li><a id="footerPhoneLink" href="tel:02180962469" class="hover:text-white transition">(021) 8096 2469</a></li>
+                            <li id="footerEmailText" class="break-all">support@baliserenity.com</li>
+                            <li id="footerCheckinText" class="text-[#d4d7d2]/60">Daily Check-in 14:00 WITA</li>
                         </ul>
                     </div>
                 </div>
@@ -1828,6 +1513,19 @@ index
             footerMap:      'https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600'
         };
 
+        let RESORT_CONTACT = {
+            whatsapp: '',
+            email: 'support@baliserenity.com',
+            phone: '(021) 8096 2469',
+            address: 'Nusa Dua Selatan, Bali 80363 • 25 mins from Ngurah Rai Airport',
+            checkin_note: 'Daily Check-in 14:00 WITA'
+        };
+
+        function getWaBaseUrl() {
+            const clean = (RESORT_CONTACT.whatsapp || '').replace(/\D/g, '');
+            return clean ? `https://wa.me/${clean}` : 'https://wa.me/';
+        }
+
         function normalizeCmsAssetPath(url) {
             if (!url || typeof url !== 'string') return url;
             if (url.startsWith('/images/')) return '.' + url;
@@ -1843,8 +1541,35 @@ index
             });
         }
 
+        function applyContactDetails() {
+            const waUrl = getWaBaseUrl();
+            document.querySelectorAll('[data-wa-link]').forEach(el => {
+                el.href = waUrl;
+            });
+            const addrEl = document.getElementById('footerAddressText');
+            if (addrEl && RESORT_CONTACT.address) addrEl.textContent = RESORT_CONTACT.address;
+
+            const phoneEl = document.getElementById('footerPhoneLink');
+            if (phoneEl && RESORT_CONTACT.phone) {
+                phoneEl.textContent = RESORT_CONTACT.phone;
+                phoneEl.href = `tel:${RESORT_CONTACT.phone.replace(/[^+\d]/g, '')}`;
+            }
+
+            const emailTextEl = document.getElementById('footerEmailText');
+            const emailBtnEl = document.getElementById('footerEmailBtn');
+            if (RESORT_CONTACT.email) {
+                if (emailTextEl) emailTextEl.textContent = RESORT_CONTACT.email;
+                if (emailBtnEl) emailBtnEl.href = `mailto:${RESORT_CONTACT.email}`;
+            }
+
+            const checkinEl = document.getElementById('footerCheckinText');
+            if (checkinEl && RESORT_CONTACT.checkin_note) {
+                checkinEl.textContent = RESORT_CONTACT.checkin_note;
+            }
+        }
+
         // =====================================================================
-        // DATA REPOSITORIES
+        // DATA REPOSITORIES (Default + CMS Live Override)
         // =====================================================================
         const ROOM_DATA = {
             deluxe: {
@@ -1898,7 +1623,139 @@ index
             }
         };
 
-        const MENUS = {
+        let SPA_TREATMENTS = [
+            {
+                name: 'Serenity Balinese Massage',
+                duration: '90 Minutes',
+                shortDuration: '90 Mins',
+                category: 'Full Body',
+                price: '$75',
+                desc: 'Deep rhythmic palm pressure and long sweeping strokes infused with warm sandalwood and ylang-ylang oil to release muscular tension.',
+                icon: 'fa-leaf',
+                perk: 'Includes Herbal Ginger Tea'
+            },
+            {
+                name: 'Volcanic Warm Stone Ritual',
+                duration: '90 Minutes',
+                shortDuration: '90 Mins',
+                category: 'Thermal Therapy',
+                price: '$90',
+                desc: 'Smooth basalt stones heated in aromatic herbal water are placed along energy meridians to calm the nervous system.',
+                icon: 'fa-fire-flame-simple',
+                perk: 'Deep Thermal Relaxation'
+            },
+            {
+                name: 'Royal Lulur & Flower Bath',
+                duration: '120 Minutes',
+                shortDuration: '120 Mins',
+                category: 'Scrub & Soak',
+                price: '$115',
+                desc: 'Traditional Javanese turmeric and jasmine rice polish followed by a cooling yogurt mask and a private frangipani petal soak.',
+                icon: 'fa-spa',
+                perk: 'Private Stone Tub'
+            },
+            {
+                name: 'Couples Harmony Journey',
+                duration: '150 Minutes',
+                shortDuration: '150 Mins',
+                category: 'For Two',
+                price: '$195',
+                desc: 'Side-by-side Balinese massage, organic facial refresh, and candlelit tropical flower bath in our secluded garden suite.',
+                icon: 'fa-heart',
+                perk: 'Private Couples Villa'
+            }
+        ];
+
+        let OFFERS_LIST = [
+            {
+                category: 'stay',
+                tag: 'Stay Longer',
+                title: 'Stay 3 Nights, Pay 2',
+                shortDesc: 'Enjoy an extra complimentary night when you reserve three consecutive nights.',
+                desc: 'Linger a little longer in Nusa Dua. Reserve two nights in any Deluxe Room or Pool Villa and enjoy your third consecutive night with our compliments.',
+                imageKey: 'offerStay',
+                image: SITE_IMAGES.offerStay,
+                perks: [
+                    'Daily à la carte tropical breakfast for two',
+                    'Complimentary late check-out until 15:00',
+                    'Welcome herbal rosella & ginger elixir'
+                ],
+                ctaLabel: 'Claim This Offer',
+                actionType: 'book',
+                promoName: 'Stay 3 Nights, Pay 2',
+                nights: 3
+            },
+            {
+                category: 'wellness',
+                tag: 'Wellness',
+                title: 'Wellness Escape',
+                shortDesc: 'Slow down and recharge with a 90-minute signature Balinese botanical spa ritual.',
+                desc: 'Restore balance with a 90-minute signature Balinese warm-stone and frangipani oil ritual paired with private herbal bath access.',
+                imageKey: 'offerSpa',
+                image: SITE_IMAGES.offerSpa,
+                perks: [
+                    '90-minute signature botanical massage for two',
+                    'Morning sunrise yoga session in the garden',
+                    'Cold-pressed wellness tonic bar access'
+                ],
+                ctaLabel: 'Explore Spa Rituals',
+                actionType: 'spa'
+            },
+            {
+                category: 'wellness',
+                tag: 'Coastal Dining',
+                title: 'Candlelit Sunset Dinner',
+                shortDesc: 'An intimate candlelit tasting menu overlooking the tropical horizon.',
+                desc: 'An intimate four-course coastal tasting menu served on our private garden deck as dusk settles over southern Bali.',
+                imageKey: 'offerDining',
+                image: SITE_IMAGES.offerDining,
+                perks: [
+                    '4-course Jimbaran seafood & heritage Balinese menu',
+                    'Two signature botanical sunset cocktails',
+                    'Reserved lantern-lit pavilion seating'
+                ],
+                ctaLabel: 'View Tasting Menu',
+                actionType: 'dining'
+            },
+            {
+                category: 'celebration',
+                tag: 'Celebrations',
+                title: 'Intimate Island Vows',
+                shortDesc: 'Celebrate anniversaries or intimate garden ceremonies in our Pool Villa.',
+                desc: 'Celebrate anniversaries, proposals, or intimate garden ceremonies with bespoke floral styling and two nights in our Pool Villa.',
+                imageKey: 'eventWedding',
+                image: SITE_IMAGES.eventWedding,
+                perks: [
+                    '2 nights in a private walled Pool Villa',
+                    'Floating tropical flower bath & artisan cake',
+                    'Private chauffeur airport transfers both ways'
+                ],
+                ctaLabel: 'Inquire Package',
+                actionType: 'book',
+                roomName: 'Pool Villa',
+                promoName: 'Intimate Island Vows'
+            }
+        ];
+
+        let REVIEWS_LIST = [
+            {
+                quote: '“Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”',
+                author: 'Sarah Mitchell',
+                country: 'United Kingdom'
+            },
+            {
+                quote: '“The room was beautiful, clean, and incredibly comfortable. Would definitely return.”',
+                author: 'Daniel & Emma Carter',
+                country: 'Australia'
+            },
+            {
+                quote: '“A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”',
+                author: 'Michael Tan',
+                country: 'Singapore'
+            }
+        ];
+
+        let MENUS = {
             tasting: [
                 {
                     tag: 'Course I • Amuse',
@@ -2038,11 +1895,159 @@ index
         };
 
         let currentAppView = 'explore';
+        let currentMenuCategory = 'tasting';
+        let activeOfferFilter = 'all';
         let activeDrawerRoom = 'Deluxe Room';
         let selectedRoom = 'Deluxe Room';
         let selectedRate = 185;
         let appliedPromo = '';
         let currentSpaTreatment = '';
+
+        // =====================================================================
+        // RENDER FUNCTIONS (SPA, OFFERS, REVIEWS, FACILITIES)
+        // =====================================================================
+        function renderSpaTreatments() {
+            const container = document.getElementById('spaTreatmentsGrid');
+            if (!container) return;
+
+            container.innerHTML = SPA_TREATMENTS.map((item, idx) => `
+                <div onclick="openSpaSheetByIndex(${idx})" class="tap-react btn-elevate bg-stoneCard hover:bg-stoneLight border border-stoneBorder rounded-[24px] p-5 sm:p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider text-inkMuted">${item.duration}${item.category ? ' • ' + item.category : ''}</span>
+                                <h3 class="font-serif text-2xl sm:text-3xl text-ink mt-0.5">${item.name}</h3>
+                            </div>
+                            <span class="font-serif text-2xl font-semibold text-ink shrink-0">${item.price}</span>
+                        </div>
+                        <p class="text-xs text-inkMuted font-light leading-relaxed mt-2">
+                            ${item.desc}
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-stoneBorder/60 text-xs">
+                        <span class="text-inkMuted"><i class="fa-solid ${item.icon || 'fa-spa'} mr-1"></i> ${item.perk || 'Private Garden Pavilion'}</span>
+                        <span class="font-semibold text-ink underline underline-offset-4">Book Session &rarr;</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderOffersSection() {
+            const grid = document.getElementById('offersGrid');
+            if (grid) {
+                grid.innerHTML = OFFERS_LIST.map((offer, idx) => {
+                    const imgSrc = normalizeCmsAssetPath(offer.image || (offer.imageKey ? SITE_IMAGES[offer.imageKey] : SITE_IMAGES.offerStay));
+                    const perksHtml = Array.isArray(offer.perks) && offer.perks.length
+                        ? `<ul class="space-y-1.5 text-xs text-ink border-t border-stoneBorder/60 pt-3">
+                            ${offer.perks.map(p => `<li><i class="fa-solid fa-check text-[10px] mr-2 text-inkMuted"></i>${p}</li>`).join('')}
+                           </ul>`
+                        : '';
+                    const isHidden = activeOfferFilter !== 'all' && offer.category !== activeOfferFilter;
+
+                    return `
+                        <article data-cat="${offer.category || 'stay'}" style="display: ${isHidden ? 'none' : 'flex'}" class="offer-item group bg-stoneCard border border-stoneBorder rounded-[26px] overflow-hidden flex-col">
+                            <div class="relative h-60 overflow-hidden">
+                                <img src="${imgSrc}" alt="${offer.title}" class="img-zoom w-full h-full object-cover">
+                                <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-black/50 backdrop-blur-md text-[10px] text-white uppercase tracking-wider">${offer.tag}</span>
+                            </div>
+                            <div class="p-6 flex flex-col flex-grow justify-between space-y-5">
+                                <div>
+                                    <h2 class="font-serif text-3xl text-ink mb-2">${offer.title}</h2>
+                                    <p class="text-xs sm:text-sm text-inkMuted font-light leading-relaxed mb-4">
+                                        ${offer.desc}
+                                    </p>
+                                    ${perksHtml}
+                                </div>
+                                <button type="button" onclick="handleOfferAction(${idx})" class="tap-react btn-elevate w-full bg-accentBtn hover:bg-ink text-stoneLight text-xs font-medium py-3.5 rounded-full flex items-center justify-center gap-2">
+                                    <span>${offer.ctaLabel || 'Claim This Offer'}</span>
+                                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+            }
+
+            // Sinkronkan 3 kartu offer pertama di halaman Explore
+            OFFERS_LIST.slice(0, 3).forEach((offer, idx) => {
+                const card = document.querySelector(`[data-explore-offer="${idx}"]`);
+                if (!card) return;
+                const tagEl = card.querySelector('[data-offer-tag]');
+                const titleEl = card.querySelector('[data-offer-title]');
+                const descEl = card.querySelector('[data-offer-desc]');
+                const imgEl = card.querySelector('img');
+                if (tagEl && offer.tag) tagEl.textContent = offer.tag;
+                if (titleEl && offer.title) titleEl.textContent = offer.title;
+                if (descEl) descEl.textContent = offer.shortDesc || offer.desc;
+                if (imgEl && offer.image) imgEl.src = normalizeCmsAssetPath(offer.image);
+            });
+        }
+
+        function handleOfferAction(idx) {
+            const offer = OFFERS_LIST[idx];
+            if (!offer) return;
+            if (offer.actionType === 'spa') {
+                navigateApp('spa');
+            } else if (offer.actionType === 'dining') {
+                navigateApp('dining');
+            } else {
+                const opts = {};
+                if (offer.roomName) opts.room = offer.roomName;
+                if (offer.promoName || offer.title) opts.promo = offer.promoName || offer.title;
+                if (offer.nights) opts.nights = Number(offer.nights);
+                navigateApp('book', opts);
+            }
+        }
+
+        function renderReviewsMarquee() {
+            const track = document.getElementById('reviewMarqueeTrack');
+            if (!track || !REVIEWS_LIST.length) return;
+
+            const buildCard = (rev, isClone) => `
+                <div class="tap-react btn-elevate shrink-0 w-[80vw] max-w-[330px] sm:w-[350px] bg-stoneLight/90 border border-stoneBorder rounded-[24px] p-6 flex flex-col justify-between shadow-2xs" ${isClone ? 'aria-hidden="true"' : ''}>
+                    <div>
+                        <div class="flex items-center gap-1 text-[10px] text-amber-700/80 mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="font-serif italic text-lg sm:text-xl text-ink leading-relaxed mb-6">
+                            ${rev.quote}
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-stoneBorder/60 pt-3 text-xs">
+                        <span class="font-semibold text-ink">${rev.author}</span>
+                        <span class="text-inkMuted">${rev.country}</span>
+                    </div>
+                </div>
+            `;
+
+            const set1 = REVIEWS_LIST.map(r => buildCard(r, false)).join('');
+            const cloneSet = REVIEWS_LIST.map(r => buildCard(r, true)).join('');
+            track.innerHTML = set1 + cloneSet + cloneSet;
+        }
+
+        function renderFacilitiesGrid(facilities) {
+            const grid = document.getElementById('facilitiesGrid');
+            if (!grid || !Array.isArray(facilities) || !facilities.length) return;
+
+            grid.innerHTML = facilities.map((f, i) => {
+                const isEvenCol = i % 2 === 0;
+                const isLastRowMobile = i >= facilities.length - 2;
+                const isLastRowDesktop = i >= facilities.length - 3;
+                const isRightmostDesktop = (i + 1) % 3 === 0;
+
+                return `
+                    <div class="flex items-start sm:items-center gap-3.5 py-4 sm:py-5 ${isEvenCol ? 'pr-3 sm:pr-6 border-r' : 'pl-3.5 sm:pl-6'} ${isRightmostDesktop ? 'lg:border-r-0 lg:pr-0' : 'lg:border-r'} ${!isLastRowMobile ? 'border-b' : ''} ${isLastRowDesktop ? 'lg:border-b-0' : 'lg:border-b'} border-stoneBorder/70">
+                        <span class="w-9 h-9 rounded-full border border-ink/25 flex items-center justify-center shrink-0 text-ink">
+                            <i class="fa-solid ${f.icon || 'fa-spa'} text-xs"></i>
+                        </span>
+                        <div class="min-w-0">
+                            <h3 class="font-serif text-lg sm:text-xl text-ink leading-tight">${f.title}</h3>
+                            <p class="text-[11px] text-inkMuted font-light mt-0.5">${f.subtitle || ''}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
 
         // =====================================================================
         // BOTTOM DOCK SLIDING PILL & SCROLL MORPH
@@ -2429,6 +2434,7 @@ index
         // OFFERS FILTER
         // =====================================================================
         function filterOffers(cat, btn) {
+            activeOfferFilter = cat;
             document.querySelectorAll('.filter-chip').forEach(c => {
                 c.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
                 c.classList.add('bg-stoneCard', 'text-ink', 'border-stoneBorder');
@@ -2444,6 +2450,12 @@ index
         // =====================================================================
         // SPA SHEET
         // =====================================================================
+        function openSpaSheetByIndex(idx) {
+            const item = SPA_TREATMENTS[idx];
+            if (!item) return;
+            openSpaSheet(item.name, item.shortDuration || item.duration, item.price);
+        }
+
         function openSpaSheet(title, duration, price) {
             currentSpaTreatment = `${title} (${duration} - ${price})`;
             document.getElementById('spaSheetTitle').textContent = title;
@@ -2457,13 +2469,14 @@ index
             const t = document.getElementById('spaTime').value;
             const g = document.getElementById('spaGuest').value || 'Resort Guest';
             const msg = encodeURIComponent(`Hello Bali Serenity Spa! I would like to book:\n- Treatment: ${currentSpaTreatment}\n- Date: ${d}\n- Time: ${t}\n- Guest: ${g}`);
-            document.getElementById('spaConfirmWa').href = `https://wa.me/?text=${msg}`;
+            document.getElementById('spaConfirmWa').href = `${getWaBaseUrl()}?text=${msg}`;
         }
 
         // =====================================================================
         // DINING MENU WITH COMPACT LEFT DISH THUMBNAILS & TABLE SHEET
         // =====================================================================
         function switchMenu(key, btn) {
+            currentMenuCategory = key || 'tasting';
             if (btn) {
                 document.querySelectorAll('.menu-tab').forEach(t => {
                     t.classList.remove('bg-ink', 'text-stoneLight', 'border-ink');
@@ -2472,14 +2485,14 @@ index
                 btn.classList.remove('bg-stoneCard', 'text-ink', 'border-stoneBorder');
                 btn.classList.add('bg-ink', 'text-stoneLight', 'border-ink');
             }
-            const items = MENUS[key] || MENUS.tasting;
+            const items = MENUS[currentMenuCategory] || MENUS.tasting;
             document.getElementById('menuContainer').innerHTML = items.map(item => `
                 <div class="tap-react btn-elevate bg-stoneLight/90 hover:bg-white border border-stoneBorder rounded-[20px] p-3 sm:p-3.5 flex items-center gap-3.5">
-                    <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-20 h-20 sm:w-[88px] sm:h-[88px] rounded-2xl object-cover shrink-0 bg-stoneCard border border-stoneBorder/50">
+                    <img src="${normalizeCmsAssetPath(item.img)}" alt="${item.name}" loading="lazy" class="w-20 h-20 sm:w-[88px] sm:h-[88px] rounded-2xl object-cover shrink-0 bg-stoneCard border border-stoneBorder/50">
                     <div class="flex-grow min-w-0">
                         <div class="flex items-start justify-between gap-2">
                             <div class="min-w-0">
-                                <span class="text-[9px] uppercase tracking-wider text-inkMuted block">${item.tag}</span>
+                                <span class="text-[9px] uppercase tracking-wider text-inkMuted block">${item.tag || 'Chef Selection'}</span>
                                 <h3 class="font-serif text-lg sm:text-xl text-ink leading-snug truncate">${item.name}</h3>
                             </div>
                             <span class="font-serif text-base sm:text-lg font-semibold text-ink shrink-0">${item.price}</span>
@@ -2501,7 +2514,7 @@ index
             const a = document.getElementById('tableArea').value;
             const g = document.getElementById('tableGuest').value || '2 Guests';
             const msg = encodeURIComponent(`Hello The Teak Terrace at Bali Serenity! I'd like to reserve a table:\n- Date: ${d}\n- Time: ${t}\n- Seating: ${a}\n- Guest: ${g}`);
-            document.getElementById('tableWaBtn').href = `https://wa.me/?text=${msg}`;
+            document.getElementById('tableWaBtn').href = `${getWaBaseUrl()}?text=${msg}`;
         }
 
         // =====================================================================
@@ -2568,7 +2581,6 @@ index
         }
 
         function confirmReservation() {
-            // Dismiss virtual keyboard on iOS/Android so modal sits 100% flush to bottom edge
             if (document.activeElement && typeof document.activeElement.blur === 'function') {
                 document.activeElement.blur();
             }
@@ -2585,7 +2597,7 @@ index
             document.getElementById('confTotal').textContent = total;
 
             const msg = encodeURIComponent(`Hello Bali Serenity! I'd like to confirm reservation #${ref}:\n- Guest: ${name}\n- Sanctuary: ${selectedRoom}\n- Dates: ${dates}\n- Total: ${total}`);
-            document.getElementById('waConfirmLink').href = `https://wa.me/?text=${msg}`;
+            document.getElementById('waConfirmLink').href = `${getWaBaseUrl()}?text=${msg}`;
 
             setTimeout(() => {
                 document.getElementById('confirmModal').classList.add('open');
@@ -2618,7 +2630,12 @@ index
                     SITE_IMAGES.hero = normalizeCmsAssetPath(data.hero_image);
                 }
 
-                // 2. Offers & Gathering Images
+                // 2. Facilities (Explore)
+                if (Array.isArray(data.facilities) && data.facilities.length) {
+                    renderFacilitiesGrid(data.facilities);
+                }
+
+                // 3. Offers & Gathering Images + Optional Text Overrides
                 if (data.offers) {
                     if (data.offers.offer_stay) SITE_IMAGES.offerStay = normalizeCmsAssetPath(data.offers.offer_stay);
                     if (data.offers.offer_spa) SITE_IMAGES.offerSpa = normalizeCmsAssetPath(data.offers.offer_spa);
@@ -2626,9 +2643,41 @@ index
                     if (data.offers.event_wedding) SITE_IMAGES.eventWedding = normalizeCmsAssetPath(data.offers.event_wedding);
                     if (data.offers.event_meeting) SITE_IMAGES.eventMeeting = normalizeCmsAssetPath(data.offers.event_meeting);
                     if (data.offers.footer_map) SITE_IMAGES.footerMap = normalizeCmsAssetPath(data.offers.footer_map);
+
+                    if (data.offers.title) {
+                        const el = document.getElementById('offersHeroTitle');
+                        if (el) el.innerHTML = data.offers.title;
+                    }
+                    if (data.offers.subtitle) {
+                        const el = document.getElementById('offersHeroSubtitle');
+                        if (el) el.textContent = data.offers.subtitle;
+                    }
+                    if (data.offers.wedding_tag) {
+                        const el = document.getElementById('gatheringWeddingTag');
+                        if (el) el.textContent = data.offers.wedding_tag;
+                    }
+                    if (data.offers.wedding_title) {
+                        const el = document.getElementById('gatheringWeddingTitle');
+                        if (el) el.textContent = data.offers.wedding_title;
+                    }
+                    if (data.offers.meeting_tag) {
+                        const el = document.getElementById('gatheringMeetingTag');
+                        if (el) el.textContent = data.offers.meeting_tag;
+                    }
+                    if (data.offers.meeting_title) {
+                        const el = document.getElementById('gatheringMeetingTitle');
+                        if (el) el.textContent = data.offers.meeting_title;
+                    }
+                    if (Array.isArray(data.offers.items) && data.offers.items.length) {
+                        OFFERS_LIST = data.offers.items.map((o, i) => ({
+                            ...OFFERS_LIST[i % OFFERS_LIST.length],
+                            ...o,
+                            image: o.image ? normalizeCmsAssetPath(o.image) : (OFFERS_LIST[i]?.image || SITE_IMAGES.offerStay)
+                        }));
+                    }
                 }
 
-                // 3. Rooms (Data, Explore Cards & Booking Cards)
+                // 4. Rooms (Data, Explore Cards & Booking Cards)
                 if (Array.isArray(data.rooms)) {
                     data.rooms.forEach((r, idx) => {
                         const roomObj = ROOM_DATA[r.id];
@@ -2639,6 +2688,11 @@ index
                         roomObj.rate = Number(r.rate) || roomObj.rate;
                         roomObj.desc = r.desc || roomObj.desc;
 
+                        if (r.size && roomObj.specs[2]) roomObj.specs[2].val = r.size;
+                        if (r.bed && roomObj.specs[0]) roomObj.specs[0].val = r.bed;
+                        if (r.guests && roomObj.specs[1]) roomObj.specs[1].val = r.guests;
+                        if (r.feature && roomObj.specs[3]) roomObj.specs[3].val = r.feature;
+
                         if (r.main_image) {
                             const cleanImg = normalizeCmsAssetPath(r.main_image);
                             roomObj.photos[0].src = cleanImg;
@@ -2646,19 +2700,31 @@ index
                             if (r.id === 'villa') SITE_IMAGES.roomVillaMain = cleanImg;
                             if (r.id === 'family') SITE_IMAGES.roomFamilyMain = cleanImg;
                         }
+                        if (r.bath_image && roomObj.photos[1]) {
+                            roomObj.photos[1].src = normalizeCmsAssetPath(r.bath_image);
+                        }
+                        if (r.terrace_image && roomObj.photos[2]) {
+                            roomObj.photos[2].src = normalizeCmsAssetPath(r.terrace_image);
+                        }
 
-                        // Update kartu kamar di halaman Explore
                         const exploreCard = document.querySelector(`[data-room-card="${r.id}"]`);
                         if (exploreCard) {
                             const tagEl = exploreCard.querySelector('[data-room-tag]');
                             const nameEl = exploreCard.querySelector('[data-room-name]');
                             const descEl = exploreCard.querySelector('[data-room-desc]');
+                            const sizeEl = exploreCard.querySelector('[data-room-size]');
+                            const bedEl = exploreCard.querySelector('[data-room-bed]');
+                            const guestsEl = exploreCard.querySelector('[data-room-guests]');
+                            const featureEl = exploreCard.querySelector('[data-room-feature]');
                             if (tagEl && r.tag) tagEl.textContent = r.tag;
                             if (nameEl && r.name) nameEl.textContent = r.name;
                             if (descEl && r.desc) descEl.textContent = r.desc;
+                            if (sizeEl && r.size) sizeEl.textContent = r.size;
+                            if (bedEl && r.bed) bedEl.textContent = r.bed;
+                            if (guestsEl && r.guests) guestsEl.textContent = r.guests;
+                            if (featureEl && r.feature) featureEl.textContent = r.feature;
                         }
 
-                        // Update kartu pilihan kamar di halaman Book
                         const bookOpt = document.querySelector(`[data-room-opt="${r.id}"]`);
                         if (bookOpt) {
                             const optName = bookOpt.querySelector('[data-opt-name]');
@@ -2678,7 +2744,97 @@ index
                     });
                 }
 
+                // 5. Spa & Wellness (Hero + Treatments)
+                if (data.spa) {
+                    if (data.spa.hours) {
+                        const el = document.getElementById('spaHeroHours');
+                        if (el) el.textContent = data.spa.hours;
+                    }
+                    if (data.spa.title) {
+                        const el = document.getElementById('spaHeroTitle');
+                        if (el) el.innerHTML = data.spa.title;
+                    }
+                    if (data.spa.subtitle) {
+                        const el = document.getElementById('spaHeroSubtitle');
+                        if (el) el.textContent = data.spa.subtitle;
+                    }
+                    if (data.spa.hero_image) {
+                        SITE_IMAGES.offerSpa = normalizeCmsAssetPath(data.spa.hero_image);
+                    }
+                    if (Array.isArray(data.spa.treatments) && data.spa.treatments.length) {
+                        SPA_TREATMENTS = data.spa.treatments.map(t => ({
+                            name: t.name || t.title || 'Botanical Ritual',
+                            duration: t.duration || '90 Minutes',
+                            shortDuration: t.short_duration || t.duration || '90 Mins',
+                            category: t.category || t.tag || 'Signature',
+                            price: t.price || '$85',
+                            desc: t.desc || t.description || '',
+                            icon: t.icon || 'fa-spa',
+                            perk: t.perk || t.highlight || 'Private Garden Pavilion'
+                        }));
+                    }
+                }
+
+                // 6. Dining — The Teak Terrace (Hero + Menus + CTA)
+                if (data.dining) {
+                    if (data.dining.hours) {
+                        const el = document.getElementById('diningHeroHours');
+                        if (el) el.textContent = data.dining.hours;
+                    }
+                    if (data.dining.title) {
+                        const el = document.getElementById('diningHeroTitle');
+                        if (el) el.innerHTML = data.dining.title;
+                    }
+                    if (data.dining.subtitle) {
+                        const el = document.getElementById('diningHeroSubtitle');
+                        if (el) el.textContent = data.dining.subtitle;
+                    }
+                    if (data.dining.hero_image) {
+                        SITE_IMAGES.offerDining = normalizeCmsAssetPath(data.dining.hero_image);
+                    }
+                    if (data.dining.cta_title) {
+                        const el = document.getElementById('diningCtaTitle');
+                        if (el) el.textContent = data.dining.cta_title;
+                    }
+                    if (data.dining.cta_subtitle) {
+                        const el = document.getElementById('diningCtaSubtitle');
+                        if (el) el.textContent = data.dining.cta_subtitle;
+                    }
+
+                    const menuSource = data.dining.menus || data.dining;
+                    ['tasting', 'coastal', 'morning', 'drinks'].forEach(cat => {
+                        if (Array.isArray(menuSource[cat]) && menuSource[cat].length) {
+                            MENUS[cat] = menuSource[cat].map(dish => ({
+                                tag: dish.tag || 'Chef Selection',
+                                name: dish.name || dish.title || 'Seasonal Dish',
+                                price: dish.price || '$18',
+                                img: normalizeCmsAssetPath(dish.img || dish.image || SITE_IMAGES.offerDining),
+                                desc: dish.desc || dish.description || ''
+                            }));
+                        }
+                    });
+                }
+
+                // 7. Guest Reviews Marquee
+                if (Array.isArray(data.reviews) && data.reviews.length) {
+                    REVIEWS_LIST = data.reviews.map(r => ({
+                        quote: r.quote || r.text || '',
+                        author: r.author || r.name || 'Resort Guest',
+                        country: r.country || r.location || ''
+                    }));
+                }
+
+                // 8. Resort Concierge Contact & Footer
+                if (data.contact) {
+                    RESORT_CONTACT = { ...RESORT_CONTACT, ...data.contact };
+                }
+
                 applySiteImages();
+                applyContactDetails();
+                renderOffersSection();
+                renderSpaTreatments();
+                renderReviewsMarquee();
+                switchMenu(currentMenuCategory, null);
                 recalculateTotal();
             } catch (err) {
                 console.warn('Pages CMS sync skipped:', err);
@@ -2690,6 +2846,10 @@ index
         // =====================================================================
         (function initApp() {
             applySiteImages();
+            applyContactDetails();
+            renderOffersSection();
+            renderSpaTreatments();
+            renderReviewsMarquee();
 
             const today = new Date();
             const twoDays = new Date(today);
@@ -2719,4 +2879,3 @@ index
     </script>
 </body>
 </html>
-Ensuring seamless user HTML file handling
