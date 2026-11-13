@@ -37,3 +37,63 @@
     "footer_map": "images/IMG_1387-8.jpeg"
   }
 }
+"spa": {
+    "title": "Serenity Sanctuary Spa",
+    "subtitle": "Holistic Balinese healing rituals using organic botanicals, warm volcanic stones, and aromatic essential oils.",
+    "hours": "Daily • 09:00 – 21:00 WITA",
+    "hero_image": "images/spa-hero.jpg",
+    "treatments": [
+      {
+        "name": "Traditional Balinese Boreh Ritual",
+        "duration": "90 Min",
+        "price": "IDR 1.250.000",
+        "description": "Deep-tissue acupressure massage followed by a warming spice body mask and herbal flower bath.",
+        "image": "images/spa-boreh.jpg"
+      },
+      {
+        "name": "Ocean Breeze Aromatherapy",
+        "duration": "60 Min",
+        "price": "IDR 950.000",
+        "description": "Calming full-body massage blended with frangipani and sandalwood oils to restore balance.",
+        "image": "images/spa-aroma.jpg"
+      }
+    ]
+  },
+  "dining": {
+    "title": "Botanica Coastal Dining",
+    "subtitle": "Farm-to-table Indonesian heritage flavors paired with fresh Jimbaran seafood and artisanal botanical cocktails.",
+    "hours": "Breakfast, Lunch & Dinner • 07:00 – 23:00 WITA",
+    "hero_image": "images/dining-hero.jpg",
+    "items": [
+      {
+        "name": "Grilled Jimbaran Lobster & Sambal Matah",
+        "category": "Signature Seafood",
+        "price": "IDR 480.000",
+        "description": "Charcoal-grilled local spiny lobster served with lemongrass-infused coconut rice and fresh shallot relish.",
+        "image": "images/dining-lobster.jpg"
+      },
+      {
+        "name": "Slow-Braised Bebek Betutu",
+        "category": "Balinese Heritage",
+        "price": "IDR 310.000",
+        "description": "Twelve-hour spiced duck wrapped in banana leaf, served with lawar vegetables and aromatic broth.",
+        "image": "images/dining-bebek.jpg"
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "guest_name": "Clarissa Tan",
+      "origin": "Singapore • Honeymoon Stay",
+      "rating": 5,
+      "quote": "Waking up to the private garden terrace and ending our evening with the Boreh spa ritual made this the most peaceful stay we have ever had in Bali.",
+      "date": "October 2026"
+    },
+    {
+      "guest_name": "Marcus Lindqvist",
+      "origin": "Stockholm • Ocean Suite",
+      "rating": 5,
+      "quote": "Impeccable hospitality, thoughtful architecture, and unforgettable coastal dining. Every detail feels calm and unhurried.",
+      "date": "September 2026"
+    }
+  ]
