@@ -1,1 +1,64 @@
-y
+media:
+  input: images
+  output: images
+
+content:
+  - name: site_content
+    label: Konten & Foto Website
+    type: file
+    path: content.json
+    fields:
+      - name: hero_title
+        label: Judul Utama (Hero)
+        type: string
+      - name: hero_subtitle
+        label: Deskripsi Hero
+        type: text
+      - name: hero_image
+        label: Foto Utama (Hero)
+        type: image
+      - name: rooms
+        label: Daftar Kamar & Harga
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: ID Kamar (jangan diubah)
+            type: string
+          - name: name
+            label: Nama Kamar
+            type: string
+          - name: tag
+            label: Label View
+            type: string
+          - name: rate
+            label: Harga per Malam (USD)
+            type: number
+          - name: desc
+            label: Deskripsi Kamar
+            type: text
+          - name: main_image
+            label: Foto Utama Kamar
+            type: image
+      - name: offers
+        label: Foto Promo & Gathering
+        type: object
+        fields:
+          - name: offer_stay
+            label: Foto Stay 3 Nights Pay 2
+            type: image
+          - name: offer_spa
+            label: Foto Wellness Escape (Spa)
+            type: image
+          - name: offer_dining
+            label: Foto Sunset Dinner
+            type: image
+          - name: event_wedding
+            label: Foto Weddings
+            type: image
+          - name: event_meeting
+            label: Foto Meetings & Events
+            type: image
+          - name: footer_map
+            label: Foto Peta Footer
+            type: image
