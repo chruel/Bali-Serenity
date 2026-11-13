@@ -1,99 +1,241 @@
 {
   "hero_title": "Your Perfect Stay <span class=\"italic font-normal text-stoneBg\">in Paradise</span>",
   "hero_subtitle": "Experience the quiet harmony of tropical gardens, warm teak interiors, and true Balinese hospitality.",
-  "hero_image": "images/IMG_1387.jpeg",
+  "hero_image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1600&auto=format&fit=crop",
   "rooms": [
     {
       "id": "deluxe",
       "name": "Deluxe Room",
-      "tag": "Tropical Garden View",
+      "tag": "Garden View",
       "rate": 185,
+      "size": "28 m²",
+      "bed": "1 King / Twin",
+      "guests": "2 Guests",
+      "feature": "Balcony",
       "desc": "Spacious and elegant room with a private balcony and lush tropical garden views.",
-      "main_image": "images/IMG_1387-1.jpeg"
+      "main_image": "https://drive.google.com/thumbnail?id=1Ydk4tlpEj9Jue8ZccLI7h-HUVChwXwjW&sz=w1000",
+      "bath_image": "https://drive.google.com/thumbnail?id=16XSAF-ngOR5j4l7z5B9h0cuR7Idjs764&sz=w1000",
+      "terrace_image": "https://drive.google.com/thumbnail?id=1hdXf9l19ng_hreMDG966nsEXEvWv-tyd&sz=w1000"
     },
     {
       "id": "villa",
       "name": "Pool Villa",
-      "tag": "Private Walled Sanctuary",
+      "tag": "Private Pool",
       "rate": 340,
+      "size": "45 m²",
+      "bed": "3 Bedrooms",
+      "guests": "4 Guests",
+      "feature": "Private Pool",
       "desc": "Your private walled sanctuary with a plunge pool, outdoor daybed, and serene privacy.",
-      "main_image": "images/IMG_1387-2.jpeg"
+      "main_image": "https://drive.google.com/thumbnail?id=1YXvcs7T-CszIFR6Kki1vJpBmXjcchk7P&sz=w1000"
     },
     {
       "id": "family",
       "name": "Family Room",
-      "tag": "Spacious Two-King Suite",
+      "tag": "Family Suite",
       "rate": 260,
+      "size": "50 m²",
+      "bed": "2 King Beds",
+      "guests": "4 Guests",
+      "feature": "Lounge",
       "desc": "Generous living space crafted for loved ones to gather and create lasting island memories.",
-      "main_image": "images/IMG_1387-3.jpeg"
+      "main_image": "https://drive.google.com/thumbnail?id=1cBUcB0zPqv1_kqe4iUmmZ13DM4AQGdk9&sz=w1000"
     }
   ],
   "offers": {
-    "offer_stay": "images/IMG_1387-4.jpeg",
-    "offer_spa": "images/IMG_1387-5.jpeg",
-    "offer_dining": "images/IMG_1387-6.jpeg",
-    "event_wedding": "images/IMG_1387-7.jpeg",
-    "event_meeting": "images/IMG_1387-9.jpeg",
-    "footer_map": "images/IMG_1387-8.jpeg"
-  }
-}
-"spa": {
-    "title": "Serenity Sanctuary Spa",
-    "subtitle": "Holistic Balinese healing rituals using organic botanicals, warm volcanic stones, and aromatic essential oils.",
-    "hours": "Daily • 09:00 – 21:00 WITA",
-    "hero_image": "images/spa-hero.jpg",
+    "offer_stay": "https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=1000&auto=format&fit=crop",
+    "offer_spa": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop",
+    "offer_dining": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop",
+    "event_wedding": "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop",
+    "event_meeting": "https://drive.google.com/thumbnail?id=1dbME3pPOQo67DDlDjeNCqzJnCwqGtgUH&sz=w1000",
+    "footer_map": "https://drive.google.com/thumbnail?id=1NA3NqR1XZx4sYoglhQbarowqSRqkLmdi&sz=w600"
+  },
+  "spa": {
+    "hours": "Open Daily • 09:00 – 21:00",
+    "title": "Botanical <span class=\"italic text-stoneBg\">Sanctuary Spa</span>",
+    "subtitle": "Rooted in ancient Balinese healing traditions using wild-harvested frangipani, warm volcanic river stones, and virgin coconut oil.",
     "treatments": [
       {
-        "name": "Traditional Balinese Boreh Ritual",
-        "duration": "90 Min",
-        "price": "IDR 1.250.000",
-        "description": "Deep-tissue acupressure massage followed by a warming spice body mask and herbal flower bath.",
-        "image": "images/spa-boreh.jpg"
+        "name": "Serenity Balinese Massage",
+        "duration": "90 Minutes",
+        "category": "Full Body",
+        "price": "$75",
+        "desc": "Deep rhythmic palm pressure and long sweeping strokes infused with warm sandalwood and ylang-ylang oil to release muscular tension.",
+        "perk": "Includes Herbal Ginger Tea"
       },
       {
-        "name": "Ocean Breeze Aromatherapy",
-        "duration": "60 Min",
-        "price": "IDR 950.000",
-        "description": "Calming full-body massage blended with frangipani and sandalwood oils to restore balance.",
-        "image": "images/spa-aroma.jpg"
+        "name": "Volcanic Warm Stone Ritual",
+        "duration": "90 Minutes",
+        "category": "Thermal Therapy",
+        "price": "$90",
+        "desc": "Smooth basalt stones heated in aromatic herbal water are placed along energy meridians to calm the nervous system.",
+        "perk": "Deep Thermal Relaxation"
+      },
+      {
+        "name": "Royal Lulur & Flower Bath",
+        "duration": "120 Minutes",
+        "category": "Scrub & Soak",
+        "price": "$115",
+        "desc": "Traditional Javanese turmeric and jasmine rice polish followed by a cooling yogurt mask and a private frangipani petal soak.",
+        "perk": "Private Stone Tub"
+      },
+      {
+        "name": "Couples Harmony Journey",
+        "duration": "150 Minutes",
+        "category": "For Two",
+        "price": "$195",
+        "desc": "Side-by-side Balinese massage, organic facial refresh, and candlelit tropical flower bath in our secluded garden suite.",
+        "perk": "Private Couples Villa"
       }
     ]
   },
   "dining": {
-    "title": "Botanica Coastal Dining",
-    "subtitle": "Farm-to-table Indonesian heritage flavors paired with fresh Jimbaran seafood and artisanal botanical cocktails.",
-    "hours": "Breakfast, Lunch & Dinner • 07:00 – 23:00 WITA",
-    "hero_image": "images/dining-hero.jpg",
-    "items": [
+    "hours": "The Teak Terrace • 07:00 – 23:00",
+    "title": "Coastal & <span class=\"italic text-stoneBg\">Balinese Kitchen</span>",
+    "subtitle": "Line-caught Jimbaran seafood, organic Bedugul harvest, and slow-roasted island spices served beside the infinity pool.",
+    "tasting": [
       {
-        "name": "Grilled Jimbaran Lobster & Sambal Matah",
-        "category": "Signature Seafood",
-        "price": "IDR 480.000",
-        "description": "Charcoal-grilled local spiny lobster served with lemongrass-infused coconut rice and fresh shallot relish.",
-        "image": "images/dining-lobster.jpg"
+        "tag": "Course I • Amuse",
+        "name": "Jimbaran Scallop Crudo",
+        "price": "$18",
+        "img": "https://images.unsplash.com/photo-1535140728325-a4d3707eee61?q=80&w=400&auto=format&fit=crop",
+        "desc": "Wild-caught Lombok scallop cured in kaffir lime, torch ginger flower, and coconut dressing."
       },
       {
-        "name": "Slow-Braised Bebek Betutu",
-        "category": "Balinese Heritage",
-        "price": "IDR 310.000",
-        "description": "Twelve-hour spiced duck wrapped in banana leaf, served with lawar vegetables and aromatic broth.",
-        "image": "images/dining-bebek.jpg"
+        "tag": "Course II • Warm",
+        "name": "Lemongrass Duck Broth",
+        "price": "$16",
+        "img": "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=400&auto=format&fit=crop",
+        "desc": "Clear aromatic Balinese consommé with shredded heritage duck, charred shallots, and bok choy."
+      },
+      {
+        "tag": "Course III • Main",
+        "name": "Charcoal Red Snapper",
+        "price": "$29",
+        "img": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=400&auto=format&fit=crop",
+        "desc": "Basted in turmeric-lemongrass paste over coconut husks, served with sambal matah and red rice."
+      },
+      {
+        "tag": "Course IV • Sweet",
+        "name": "Black Rice Brulee",
+        "price": "$14",
+        "img": "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=400&auto=format&fit=crop",
+        "desc": "Caramelized Balinese injin pudding topped with toasted coconut flakes and vanilla bean gelato."
+      }
+    ],
+    "coastal": [
+      {
+        "tag": "Signature",
+        "name": "Bebek Betutu Slow Roast",
+        "price": "$26",
+        "img": "https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?q=80&w=400&auto=format&fit=crop",
+        "desc": "12-hour banana-leaf braised organic duck with bumbu genep, lawar greens, and sambal embe."
+      },
+      {
+        "tag": "From the Grill",
+        "name": "Nusa Dua King Prawns",
+        "price": "$32",
+        "img": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=400&auto=format&fit=crop",
+        "desc": "Wood-fired jumbo prawns glazed in tamarind-honey butter with charred asparagus and lime."
+      },
+      {
+        "tag": "Plant-Based",
+        "name": "Bedugul Harvest Bowl",
+        "price": "$17",
+        "img": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400&auto=format&fit=crop",
+        "desc": "Roasted pumpkin, spiced tempeh, avocado, pickled red cabbage, and sesame-ginger emulsion."
+      },
+      {
+        "tag": "Artisan Pasta",
+        "name": "Hand-Cut Crab Tagliolini",
+        "price": "$24",
+        "img": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=400&auto=format&fit=crop",
+        "desc": "Blue swimmer crab tossed with garlic confit, chili flakes, lemon zest, and white wine."
+      }
+    ],
+    "morning": [
+      {
+        "tag": "07:00 – 11:00",
+        "name": "Serenity Dragonfruit Bowl",
+        "price": "$12",
+        "img": "https://images.unsplash.com/photo-1590301157890-4810ed352733?q=80&w=400&auto=format&fit=crop",
+        "desc": "Blended red dragonfruit, mango, homemade cashew granola, chia seeds, and wild island honey."
+      },
+      {
+        "tag": "07:00 – 11:00",
+        "name": "Poached Eggs & Avocado",
+        "price": "$15",
+        "img": "https://images.unsplash.com/photo-1525351484163-7529414342d8?q=80&w=400&auto=format&fit=crop",
+        "desc": "Country sourdough, organic Kintamani eggs, whipped feta, dukkah spice, and cherry tomatoes."
+      },
+      {
+        "tag": "07:00 – 11:00",
+        "name": "Pandan Coconut Pancakes",
+        "price": "$13",
+        "img": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=400&auto=format&fit=crop",
+        "desc": "Fluffy pandan-infused stack layered with caramelized banana and warm gula aren syrup."
+      },
+      {
+        "tag": "07:00 – 11:00",
+        "name": "Kintamani Pour Over",
+        "price": "$6",
+        "img": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=400&auto=format&fit=crop",
+        "desc": "Light-roasted Arabica beans grown on volcanic slopes, brewed tableside."
+      }
+    ],
+    "drinks": [
+      {
+        "tag": "Botanical Signature",
+        "name": "Uluwatu Sunset Spritz",
+        "price": "$14",
+        "img": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=400&auto=format&fit=crop",
+        "desc": "Rosella hibiscus reduction, blood orange, prosecco, and fresh garden rosemary."
+      },
+      {
+        "tag": "Botanical Signature",
+        "name": "Smoked Pineapple Mezcalita",
+        "price": "$16",
+        "img": "https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=400&auto=format&fit=crop",
+        "desc": "Charred Bali pineapple, artisanal mezcal, kaffir lime leaf, and sea salt rim."
+      },
+      {
+        "tag": "Zero-Proof Elixir",
+        "name": "Jamu Kunyit Asam Tonic",
+        "price": "$9",
+        "img": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=400&auto=format&fit=crop",
+        "desc": "Fresh turmeric root, tamarind, wild honey, and sparkling mineral water."
+      },
+      {
+        "tag": "Zero-Proof Elixir",
+        "name": "Cucumber & Basil Cooler",
+        "price": "$9",
+        "img": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=400&auto=format&fit=crop",
+        "desc": "Cold-pressed cucumber, sweet Thai basil, yuzu citrus, and elderflower."
       }
     ]
   },
   "reviews": [
     {
-      "guest_name": "Clarissa Tan",
-      "origin": "Singapore • Honeymoon Stay",
-      "rating": 5,
-      "quote": "Waking up to the private garden terrace and ending our evening with the Boreh spa ritual made this the most peaceful stay we have ever had in Bali.",
-      "date": "October 2026"
+      "quote": "“Beautiful place, peaceful atmosphere, and wonderful service. Truly loved our stay.”",
+      "author": "Sarah Mitchell",
+      "country": "United Kingdom"
     },
     {
-      "guest_name": "Marcus Lindqvist",
-      "origin": "Stockholm • Ocean Suite",
-      "rating": 5,
-      "quote": "Impeccable hospitality, thoughtful architecture, and unforgettable coastal dining. Every detail feels calm and unhurried.",
-      "date": "September 2026"
+      "quote": "“The room was beautiful, clean, and incredibly comfortable. Would definitely return.”",
+      "author": "Daniel & Emma Carter",
+      "country": "Australia"
+    },
+    {
+      "quote": "“A perfect escape in Bali. Everything felt calm, warm, and thoughtfully prepared.”",
+      "author": "Michael Tan",
+      "country": "Singapore"
     }
-  ]
+  ],
+  "contact": {
+    "whatsapp": "",
+    "email": "support@baliserenity.com",
+    "phone": "(021) 8096 2469",
+    "address": "Nusa Dua Selatan, Bali 80363 • 25 mins from Ngurah Rai Airport",
+    "checkin_note": "Daily Check-in 14:00 WITA"
+  }
+}
