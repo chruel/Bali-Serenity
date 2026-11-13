@@ -62,3 +62,97 @@ content:
           - name: footer_map
             label: Foto Peta Footer
             type: image
+            - name: spa
+        label: Spa & Wellness
+        type: object
+        fields:
+          - name: title
+            label: Judul Bagian Spa
+            type: string
+          - name: subtitle
+            label: Deskripsi Spa
+            type: text
+          - name: hours
+            label: Jam Operasional
+            type: string
+          - name: hero_image
+            label: Foto Utama Spa
+            type: image
+          - name: treatments
+            label: Daftar Perawatan (Treatments)
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: Nama Perawatan
+                type: string
+              - name: duration
+                label: Durasi
+                type: string
+              - name: price
+                label: Harga
+                type: string
+              - name: description
+                label: Deskripsi Singkat
+                type: text
+              - name: image
+                label: Foto Perawatan
+                type: image
+
+      - name: dining
+        label: Dining & Culinary
+        type: object
+        fields:
+          - name: title
+            label: Judul Bagian Dining
+            type: string
+          - name: subtitle
+            label: Deskripsi Restoran
+            type: text
+          - name: hours
+            label: Jam Operasional
+            type: string
+          - name: hero_image
+            label: Foto Utama Restoran
+            type: image
+          - name: items
+            label: Menu Unggulan (Signature Dishes)
+            type: object
+            list: true
+            fields:
+              - name: name
+                label: Nama Menu
+                type: string
+              - name: category
+                label: Kategori (misal: Signature, Seafood, Cocktail)
+                type: string
+              - name: price
+                label: Harga
+                type: string
+              - name: description
+                label: Deskripsi Hidangan
+                type: text
+              - name: image
+                label: Foto Menu
+                type: image
+
+      - name: reviews
+        label: Guest Reviews (Testimoni)
+        type: object
+        list: true
+        fields:
+          - name: guest_name
+            label: Nama Tamu
+            type: string
+          - name: origin
+            label: Asal / Kategori Tamu
+            type: string
+          - name: rating
+            label: Rating Bintang (1-5)
+            type: number
+          - name: quote
+            label: Isi Ulasan
+            type: text
+          - name: date
+            label: Bulan / Tahun Kunjungan
+            type: string
